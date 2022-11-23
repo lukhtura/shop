@@ -1,8 +1,6 @@
 .header {
     max-width: 1440px;
     height: 80px;
-    margin: 0 auto;
-    padding: 0 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -10,10 +8,12 @@
 
 .header-links {
     display: flex;
+    width: 234px;
+    height: 80px;
+    gap: 32px;
 }
 
 .header-links a {
-    margin: 0 16px;
     display: flex;
     align-items: center;
     height: 80px;
@@ -28,11 +28,20 @@
 }
 
 .header-buttons {
+    width: 234px;
+    height: 80px;
     display: flex;
     gap: 22px;
+    justify-content: flex-end;
+    align-items: center;
 }
 
-.currency-selector {
+.currency-select {
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
+}
+
+.cart-button {
+    cursor: pointer;
 }
