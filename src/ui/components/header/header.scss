@@ -1,0 +1,70 @@
+.header {
+    width: 100%;
+    background: #fff;
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    -webkit-box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+
+    &__inner {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1440px;
+        max-height: 80px;
+        display: flex;
+        justify-content: space-between;
+
+        &-links {
+            display: flex;
+            width: 234px;
+            height: 80px;
+            justify-content: space-around;
+
+            a {
+                display: flex;
+                align-items: center;
+                height: 80px;
+                text-decoration: none;
+                color: #1d1f22;
+                cursor: pointer;
+            }
+            a:hover {
+                text-decoration: none;
+                color: #5ece7b;
+                border-bottom: 2px solid #5ece7b;
+            }
+        }
+
+        &-buttons {
+            width: 234px;
+            height: 80px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            div {
+                cursor: pointer;
+            }
+
+            .cart-button {
+                position: relative;
+                &-counter {
+                    width: 20px;
+                    height: 20px;
+                    background-color: black;
+                    border-radius: 50px;
+                    text-align: center;
+                    color: #fff;
+                    font-weight: 700;
+                    font-size: 14px;
+                    line-height: 16px;
+                    position: absolute;
+                    bottom: 15px;
+                    left: 10px;
+                }
+            }
+        }
+    }
+}

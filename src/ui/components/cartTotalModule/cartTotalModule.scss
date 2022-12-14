@@ -1,0 +1,35 @@
+.cart-total-module {
+    margin-top: 32px;
+    width: 280px;
+    height: 160px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    &-text {
+        &-constant {
+            margin: 0 0 8px;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 28px;
+        }
+
+        &-dynamic {
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 24px;
+        }
+    }
+
+    &-button {
+        background: #5ece7b;
+        color: white;
+        border: none;
+        height: 45px;
+        cursor: pointer;
+
+        &:hover {
+            background: #439058;
+        }
+    }
+}
