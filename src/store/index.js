@@ -1,7 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import header from './../ui/components/header/headerSlice';
 import cart from './../ui/pages/cartPage/cartSlice';
-import products from '../ui/components/productsList/productsSlice'
+import products from '../ui/components/productsList/productsSlice';
+// import chosenProduct from '../ui/pages/pdp/chosenProductSlice';
 
 export const store = configureStore({
     reducer: { header, cart, products },

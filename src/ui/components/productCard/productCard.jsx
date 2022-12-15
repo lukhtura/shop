@@ -1,7 +1,5 @@
 //Core
 import { useDispatch } from 'react-redux';
-//Actions
-import { addToCart } from '../../pages/cartPage/cartSlice';
 //Styles
 import './productCard.scss'
 
@@ -29,8 +27,6 @@ const ProductCard = (props) => {
                     price={price}>{price}</p>
             </div>
             <img
-                style={{ zIndex: 500 }}
-                onClick={() => dispatch(addToCart(id))}
                 className="product-card-cart-icon"
                 src={icon} alt="cart" />
         </div>

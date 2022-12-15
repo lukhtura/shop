@@ -31,14 +31,16 @@
     line-height: 24px;
 }
 
-.cart-item-size-label, .color-label {
+.cart-item-size-label,
+.color-label {
     font-weight: 700;
     font-size: 18px;
     line-height: 18px;
     margin: 0 0 8px;
 }
 
-.size-box-container, .color-container {
+.size-box-container,
+.color-container {
     display: flex;
     justify-content: space-between;
     gap: 8px;
@@ -61,7 +63,7 @@
     color: white;
 }
 
-.color-container {
+/* .color-container {
     width: 116px;
     height: 36px;
 }
@@ -76,7 +78,7 @@
 
 .color-btn-active, .color-btn:hover {
     border: 1px solid #5ECE7B
-}
+} */
 
 
 

@@ -1,0 +1,128 @@
+.product-form {
+    width: 295px;
+
+    &-name {
+        margin: 0 0 16px;
+        font-weight: 600;
+        font-size: 30px;
+        line-height: 27px;
+    }
+
+    &-type {
+        margin: 16px 0 20px;
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 27px;
+    }
+
+    &-price {
+        margin: 20px 0;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 24px;
+    }
+
+    &-label {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 18px;
+        margin: 0 0 10px;
+    }
+
+    // &-price {
+    //     font-weight: 700;
+    //     font-size: 24px;
+    //     line-height: 18px;
+    //     margin-bottom: 20px;
+    // }
+
+    .attributes-container {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 16px;
+    }
+
+    .add-button {
+        width: 100%;
+        background: #5ece7b;
+        color: white;
+        border: none;
+        height: 50px;
+        cursor: pointer;
+
+        &:hover {
+            background: #439058;
+        }
+    }
+
+    &-descr {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+    }
+}
+
+.form_radio-color {
+    height: 32px;
+    width: 32px;
+
+    input {
+        display: none;
+    }
+
+    input:checked + label {
+        border: 3px solid #5ece7b;
+    }
+
+    label {
+        border: 1px solid black;
+        height: 32px;
+        width: 32px;
+        display: flex;
+        justify-content: center;
+        line-height: 45px;
+        cursor: pointer;
+        user-select: none;
+    }
+}
+
+.form_radio {
+    width: 63px;
+    border: 1px solid black;
+
+    input {
+        display: none;
+    }
+
+    input:checked + label,
+    &:hover {
+        background-color: black;
+        color: white;
+    }
+
+    label {
+        width: 63px;
+        display: flex;
+        justify-content: center;
+        line-height: 45px;
+        cursor: pointer;
+        user-select: none;
+    }
+}
+
+.size-btn-active {
+    background-color: black;
+    color: white;
+}
+
+// .color-btn {
+//     border: 1px solid black;
+//     height: 32px;
+//     width: 32px;
+//     cursor: pointer;
+// }
+
+// .color-btn-active,
+// .color-btn:hover {
+//     border: 3px solid #5ece7b;
+// }

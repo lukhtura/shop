@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     productsLoadingStatus: 'idle',
     products: [],
-    singleProduct: {},
 };
 
 
@@ -21,9 +20,6 @@ const productsSlice = createSlice({
         productsFetchingError: state => {
             state.productsLoadingStatus = 'error'
         },
-        singleProductFetched: (state, action) => {
-            state.singleProduct = action.payload;
-        }
     }
 });
 

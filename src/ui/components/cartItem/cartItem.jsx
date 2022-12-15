@@ -1,16 +1,14 @@
 //Styles
 import './cartItem.css'
 
-//IMG
-import fakeimg from './../../../assets/img/modal/fakecartitem.jpg'
+const CartItem = (props) => {
 
-
-const CartItem = () => {
+    const { name, prices, attributes, gallery } = props;
 
     return (
         <div className="cart-item">
             <div className="cart-item-inner-left">
-                <h2 className="cart-item-name">Apollo</h2>
+                <h2 className="cart-item-name">{name}</h2>
                 <h3 className="cart-item-descr">Running Short</h3>
                 <p className="cart-item-price">$50.00</p>
                 <p className="cart-item-size-label">size:</p>
@@ -39,7 +37,7 @@ const CartItem = () => {
                     <button type='button' className="decr-btn">-</button>
                 </div>
                 <div className="img-container">
-                    <img src={fakeimg} alt="fakeimg" />
+                    <img src={gallery[0]} alt="fakeimg" />
                 </div>
             </div>
         </div>
