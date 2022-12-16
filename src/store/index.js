@@ -2,10 +2,11 @@ import { configureStore } from '@reduxjs/toolkit';
 import header from './../ui/components/header/headerSlice';
 import cart from './../ui/pages/cartPage/cartSlice';
 import products from '../ui/components/productsList/productsSlice';
+import slider from '../ui/components/productGallerySlider/productGallerySliderSlice'
 // import chosenProduct from '../ui/pages/pdp/chosenProductSlice';
 
 export const store = configureStore({
-    reducer: { header, cart, products },
+    reducer: { header, cart, products, slider },
     middleware: getDefaultMiddleware => getDefaultMiddleware(),
     devTools: process.env.NODE_ENV !== 'production',
 });

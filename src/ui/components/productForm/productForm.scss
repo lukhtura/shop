@@ -22,7 +22,7 @@
         line-height: 24px;
     }
 
-    &-label {
+    &-field-label {
         font-weight: 700;
         font-size: 18px;
         line-height: 18px;
@@ -75,7 +75,7 @@
     }
 
     label {
-        border: 1px solid black;
+        border: 1px solid #d5cece;
         height: 32px;
         width: 32px;
         display: flex;
@@ -114,15 +114,3 @@
     background-color: black;
     color: white;
 }
-
-// .color-btn {
-//     border: 1px solid black;
-//     height: 32px;
-//     width: 32px;
-//     cursor: pointer;
-// }
-
-// .color-btn-active,
-// .color-btn:hover {
-//     border: 3px solid #5ece7b;
-// }

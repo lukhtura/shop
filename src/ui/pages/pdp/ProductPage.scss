@@ -1,38 +1,6 @@
 .product-page-container {
     margin-top: 160px;
     display: flex;
-
-    .product-page-gallery {
-        margin-right: 40px;
-
-        &-item {
-            margin-bottom: 40px;
-            width: 80px;
-            height: 80px;
-
-            &-img {
-                object-fit: cover;
-                width: 80px;
-                height: 80px;
-            }
-        }
-    }
-
-    .product-page-item {
-        display: flex;
-        justify-content: space-between;
-        gap: 100px;
-
-        &-img {
-            text-align: center;
-
-            img {
-                width: 610px;
-                height: 510px;
-                object-fit: contain;
-            }
-        }
-    }
 }
 
 .product-item-inner-right {

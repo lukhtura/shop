@@ -1,0 +1,36 @@
+.product-page-gallery {
+    margin-right: 40px;
+
+    &-item {
+        margin-bottom: 40px;
+        width: 80px;
+        height: 80px;
+        cursor: pointer;
+
+        &:hover {
+            border: 3px solid blue;
+        }
+
+        &-img {
+            object-fit: cover;
+            width: 80px;
+            height: 80px;
+        }
+    }
+}
+
+.product-page-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 100px;
+
+    &-img {
+        text-align: center;
+
+        img {
+            width: 610px;
+            height: 510px;
+            object-fit: contain;
+        }
+    }
+}
