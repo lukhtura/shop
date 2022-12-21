@@ -9,17 +9,17 @@ import './cartPage.scss';
 
 const CartPage = () => {
 
-    const { qty } = useSelector(state => state.cart);
+    const { qty, itemsInCart } = useSelector(state => state.cart);
 
     return (
         <>
             <h1 className="cart-page-header">CART</h1>
-            <CartList />
+            <CartList data={itemsInCart} />
             <CartTotalModule qty={qty} />
         </>
-    )
+    );
 
-}
+};
 
 
 export default CartPage;

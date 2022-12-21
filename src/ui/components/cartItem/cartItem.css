@@ -1,12 +1,11 @@
 .cart-item {
     width: 1240px;
-    height: 336px;
+    min-height: 336px;
     margin: 0 auto;
     padding: 24px 0;
     display: flex;
     justify-content: space-between;
     border-top: 1px solid #E5E5E5;
-    ;
     border-bottom: 1px solid #E5E5E5;
 }
 
@@ -31,13 +30,20 @@
     line-height: 24px;
 }
 
-.cart-item-size-label,
+.product-form-field-label,
 .color-label {
     font-weight: 700;
     font-size: 18px;
     line-height: 18px;
     margin: 0 0 8px;
 }
+
+.attributes-container {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
 
 .size-box-container,
 .color-container {
@@ -86,8 +92,14 @@
 
 .cart-item-inner-right {
     width: 270px;
+    gap: 24px;
     display: flex;
-    justify-content: space-between;
+}
+
+.img-container img {
+    object-fit: contain;
+    width: 200px;
+    height: 288px;
 }
 
 .qty-container {

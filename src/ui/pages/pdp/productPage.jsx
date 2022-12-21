@@ -38,7 +38,8 @@ const ProductPage = () => {
                     inStock={inStock}
                     description={description}
                     attributes={attributes}
-                    prices={prices} />
+                    prices={prices}
+                    gallery={gallery} />
             </>
         );
     };

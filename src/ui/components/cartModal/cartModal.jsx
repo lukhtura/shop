@@ -3,6 +3,8 @@ import { Link } from "react-router-dom"
 //Actions
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleCartModal } from "./../header/headerSlice";
+//Components
+import CartItem from "../cartItem/cartItem";
 //Style
 import './cartModal.scss'
 import { CSSTransition } from 'react-transition-group';
@@ -13,6 +15,21 @@ function CartModal() {
 
     const dispatch = useDispatch();
     const cartModalOpened = useSelector(state => state.header.cartModalOpened);
+    const { qty, itemsInCart } = useSelector(state => state.cart);
+
+    const renderItems = (data) => {
+        return (
+            data.length < 1
+                ? <h2>Your cart is empty</h2>
+                : data.map((item, i) => {
+                    console.log(item)
+                    return <CartItem key={i}
+                        id={item.id}
+                        price={item.price}
+                    />
+                })
+        );
+    };
 
     return (
         <CSSTransition
@@ -25,14 +42,9 @@ function CartModal() {
                 className='modal'>
                 <div onClick={e => e.stopPropagation()} className='cart-modal'>
                     <div className="cart-modal-content">
-                        <h3 className='cart-modal-content-header'>My Bag<span className='items-qty'>, 3 items</span></h3>
+                        <h3 className='cart-modal-content-header'>My Bag<span className='items-qty'>, {qty} items</span></h3>
                         <div className="cart-modal-content-inner">
-                            <div className='cart-modal-content-inner-item'>
-                                <img src={fakeItem} alt="fake-card-item" />
-                            </div>
-                            <div className='cart-modal-content-item'>
-                                <img src={fakeItem} alt="fake-card-item" />
-                            </div>
+                            <p>items...</p>
                         </div>
                         <div className='total-price'>
                             <p className='total-price-left'>Total</p>

@@ -52,7 +52,7 @@ function Header() {
                             src={cartImg}
                             alt="cart"
                         />
-                        { qty > 0 ? <div className="cart-button-counter">{qty}</div> : null}
+                        {qty > 0 ? <div onClick={() => dispatch(toggleCartModal(!cartModalOpened))} className="cart-button-counter">{qty}</div> : null}
                     </div>
                 </div>
             </div>

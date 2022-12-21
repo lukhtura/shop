@@ -3,13 +3,14 @@ import { useDispatch } from 'react-redux';
 //Utils
 import { Formik, Form, Field } from 'formik';
 import { addToCart } from '../../pages/cartPage/cartSlice';
+import { v4 } from 'uuid';
 //Styles
 import './productForm.scss';
 
 
 const ProductForm = (props) => {
 
-    const { name, id, description, attributes, prices } = props;
+    const { name, id, description, attributes, prices, gallery } = props;
     const dispatch = useDispatch();
 
 
@@ -25,9 +26,14 @@ const ProductForm = (props) => {
     const onSubmit = (fields) => {
         console.log('item added to cart')
         dispatch(addToCart({
-            id,
-            price: prices[0].amount,
-            attr: fields
+            technicId: v4(),
+            itemId: id,
+            name,
+            prices,
+            attributes,
+            activeAttrs: fields,
+            gallery,
+            qty: 1,
         }))
     };
 
@@ -61,7 +67,7 @@ const ProductForm = (props) => {
 
                 return (
                     <div key={i}>
-                        <p className='-label'>{item.name.toUpperCase()}:</p>
+                        <p className='product-form-field-label'>{item.name.toUpperCase()}:</p>
                         <div className='attributes-container'>
                             {item.items.map((attribute, i) => {
                                 return (

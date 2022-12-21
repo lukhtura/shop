@@ -1,5 +1,3 @@
-//Core
-import { useDispatch } from 'react-redux';
 //Styles
 import './productCard.scss'
 
@@ -8,8 +6,7 @@ import icon from './../../../assets/icons/toCartIcon.svg'
 
 const ProductCard = (props) => {
 
-    const dispatch = useDispatch();
-    const { name, price, image, inStock, id } = props;
+    const { name, price, image, inStock } = props;
 
     let classNames = 'product-card';
 
