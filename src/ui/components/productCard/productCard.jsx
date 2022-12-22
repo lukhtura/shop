@@ -13,6 +13,7 @@ const ProductCard = (props) => {
     return (
         <div className={inStock ? classNames : classNames + ' out-stock'}>
             <div className="product-card-img-container" >
+                {inStock ? null : <p className='out-of-stock-text' >OUT OF STOCK</p>}
                 <img className="product-card-img" src={image} alt="product" />
             </div>
             <div className="product-card-descr">
@@ -21,11 +22,9 @@ const ProductCard = (props) => {
                     name={name}>{name}</p>
                 <p
                     className="product-card-descr-price"
-                    price={price}>{price}</p>
+                    price={price}>${price}</p>
             </div>
-            <img
-                className="product-card-cart-icon"
-                src={icon} alt="cart" />
+            {inStock ? <img className="product-card-cart-icon" src={icon} alt="cart" /> : null}
         </div>
     )
 };

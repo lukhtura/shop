@@ -9,8 +9,6 @@ import CartItem from "../cartItem/cartItem";
 import './cartModal.scss'
 import { CSSTransition } from 'react-transition-group';
 
-import fakeItem from './../../../assets/img/modal/fakeitem.jpg'
-
 function CartModal() {
 
     const dispatch = useDispatch();
@@ -24,8 +22,12 @@ function CartModal() {
                 : data.map((item, i) => {
                     console.log(item)
                     return <CartItem key={i}
+                        name={item.name}
                         id={item.id}
-                        price={item.price}
+                        prices={item.prices}
+                        gallery={item.gallery}
+                        attributes={item.attributes}
+                        activeAttrs={item.activeAttrs}
                     />
                 })
         );
@@ -44,11 +46,12 @@ function CartModal() {
                     <div className="cart-modal-content">
                         <h3 className='cart-modal-content-header'>My Bag<span className='items-qty'>, {qty} items</span></h3>
                         <div className="cart-modal-content-inner">
-                            <p>items...</p>
+                            {/* {renderItems(itemsInCart)} */}
+                            <p>press view bag</p>
                         </div>
                         <div className='total-price'>
                             <p className='total-price-left'>Total</p>
-                            <p className='total-price-right'>$200.00</p>
+                            <p className='total-price-right'>N/A</p>
                         </div>
                         <div className="modal-btn-container">
                             <Link

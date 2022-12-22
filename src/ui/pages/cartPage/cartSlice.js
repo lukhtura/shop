@@ -13,12 +13,20 @@ const cartSlice = createSlice(
             addToCart: (state, action) => {
                 state.itemsInCart.push(action.payload);
                 state.qty += 1;
+            },
+            increaseQty: (state, action) => {
+                state.itemsInCart.push(action.payload);
+                state.qty += 1;
+            },
+            decreaseQty: (state, action) => {
+                let index = state.itemsInCart.findIndex(item => item.id === action.payload)
+                state.itemsInCart.splice(index, 1);
+                state.qty -= 1;
             }
         }
     }
 )
 
-const {actions, reducer} = cartSlice;
-
+const { actions, reducer } = cartSlice;
 export default reducer;
-export const { addToCart } = actions;
+export const { addToCart, increaseQty, decreaseQty } = actions;

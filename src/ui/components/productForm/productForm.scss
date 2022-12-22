@@ -55,6 +55,14 @@
         }
     }
 
+    .disabled {
+        background: #d1ded4;
+
+        &:hover {
+            background-color: #d1ded4;
+        }
+    }
+
     &-descr {
         font-style: normal;
         font-weight: 400;

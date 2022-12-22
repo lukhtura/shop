@@ -18,6 +18,16 @@
         width: 354px;
         height: 330px;
         margin-bottom: 24px;
+
+        .out-of-stock-text {
+            text-decoration: none;
+            position: absolute;
+            top: 30%;
+            left: 28%;
+            font-size: 24px;
+            line-height: 160%;
+            color: black;
+        }
     }
 
     .product-card-img {
@@ -25,38 +35,38 @@
         height: 330px;
         object-fit: contain;
     }
-    
+
     .product-card-descr {
         width: 354px;
         height: 58;
-    
+
         p {
             margin: 0;
             font-size: 18px;
             color: #1d1f22;
         }
     }
-    
+
     &-descr-name {
         font-weight: 300;
     }
-    
+
     &-descr-price {
         font-weight: 500;
     }
-    
+
     &-cart-icon {
         position: absolute;
         bottom: 72px;
         right: 31px;
         opacity: 0;
     }
-    
 }
-
 
 .out-stock {
     opacity: 0.3;
-    
-}
 
+    & img {
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px;
+    }
+}

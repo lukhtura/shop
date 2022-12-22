@@ -1,12 +1,28 @@
+//Core
+import { useDispatch, useSelector } from 'react-redux';
 //Utils
+import { increaseQty, decreaseQty } from '../../pages/cartPage/cartSlice';
+//Components
 import { Formik, Form, Field } from 'formik';
 //Styles
-import './cartItem.css'
+import './cartItem.scss'
 
 const CartItem = (props) => {
 
-    const { name, prices, gallery, attributes, activeAttrs } = props;
-    console.log(activeAttrs)
+    const dispatch = useDispatch();
+    const { itemsInCart } = useSelector(state => state.cart)
+
+    const countQuantity = (data, id) => {
+        let counter = 0;
+        data.forEach(item => {
+            if (item.id === id) {
+                counter++
+            }
+        })
+        return counter;
+    };
+
+    const { id, name, prices, gallery, attributes, activeAttrs } = props;
 
     return (
         <div className="cart-item">
@@ -68,9 +84,9 @@ const CartItem = (props) => {
             </div>
             <div className="cart-item-inner-right">
                 <div className="qty-container">
-                    <button type='button' className="incr-btn">+</button>
-                    <div className="qty">1</div>
-                    <button type='button' className="decr-btn">-</button>
+                    <button onClick={() => dispatch(increaseQty(props))} type='button' className="incr-btn">+</button>
+                    <div className="qty">{countQuantity(itemsInCart, id)}</div>
+                    <button onClick={() => dispatch(decreaseQty(id))} type='button' className="decr-btn">-</button>
                 </div>
                 <div className="img-container">
                     <img src={gallery[0]} alt='alt' />

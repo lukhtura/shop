@@ -3,16 +3,14 @@ import { useDispatch } from 'react-redux';
 //Utils
 import { Formik, Form, Field } from 'formik';
 import { addToCart } from '../../pages/cartPage/cartSlice';
-import { v4 } from 'uuid';
 //Styles
 import './productForm.scss';
 
 
 const ProductForm = (props) => {
 
-    const { name, id, description, attributes, prices, gallery } = props;
+    const { id, name, description, attributes, prices, gallery, inStock } = props;
     const dispatch = useDispatch();
-
 
     const createInitialValues = (data) => {
         const initialValues = {};
@@ -24,10 +22,8 @@ const ProductForm = (props) => {
     };
 
     const onSubmit = (fields) => {
-        console.log('item added to cart')
         dispatch(addToCart({
-            technicId: v4(),
-            itemId: id,
+            id: id + JSON.stringify(fields),
             name,
             prices,
             attributes,
@@ -88,10 +84,19 @@ const ProductForm = (props) => {
         );
     };
 
+    const renderSubmitButton = (status) => {
+        return (
+            status
+                ? <button className='add-button' type='submit'>ADD TO CART</button>
+                : <button disabled className='add-button disabled' type='submit'>OUT OF STOCK</button>
+        );
+    };
+
 
     return (
         <div className='product-form'>
             <h2 className='product-form-name'>{name}</h2>
+            {inStock ? null : <h3 style={{ color: "red" }}> Out of stock!</h3>}
             <Formik
                 initialValues={createInitialValues(attributes)}
                 onSubmit={onSubmit}
@@ -102,7 +107,7 @@ const ProductForm = (props) => {
                         <p className='product-form-field-label'>PRICE:</p>
                         <p className='product-form-price'>{prices[0].currency.symbol}{prices[0].amount}</p>
                     </div>
-                    <button className='add-button' type='submit'>ADD TO CART</button>
+                    {renderSubmitButton(inStock)}
                 </Form>
             </Formik>
             {description[0] === '<' || description[1] === '<'

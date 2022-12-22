@@ -41,6 +41,7 @@ function Header() {
                 <div className="header__inner-buttons">
                     <div className="currency-selector">
                         <img
+                            style={{ opacity: 0.3 }}
                             onClick={() => dispatch(toggleSelector(!selectorOpened))}
                             src={currencyImg}
                             alt="dollar"
