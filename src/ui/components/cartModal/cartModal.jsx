@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleCartModal } from "./../header/headerSlice";
 //Components
-import CartItem from "../cartItem/cartItem";
+import CartList from "../cartList/cartList";
 //Style
 import './cartModal.scss'
 import { CSSTransition } from 'react-transition-group';
@@ -13,25 +13,7 @@ function CartModal() {
 
     const dispatch = useDispatch();
     const cartModalOpened = useSelector(state => state.header.cartModalOpened);
-    const { qty, itemsInCart } = useSelector(state => state.cart);
-
-    const renderItems = (data) => {
-        return (
-            data.length < 1
-                ? <h2>Your cart is empty</h2>
-                : data.map((item, i) => {
-                    console.log(item)
-                    return <CartItem key={i}
-                        name={item.name}
-                        id={item.id}
-                        prices={item.prices}
-                        gallery={item.gallery}
-                        attributes={item.attributes}
-                        activeAttrs={item.activeAttrs}
-                    />
-                })
-        );
-    };
+    const { qty, itemsInCart, totalPrice } = useSelector(state => state.cart);
 
     return (
         <CSSTransition
@@ -46,12 +28,11 @@ function CartModal() {
                     <div className="cart-modal-content">
                         <h3 className='cart-modal-content-header'>My Bag<span className='items-qty'>, {qty} items</span></h3>
                         <div className="cart-modal-content-inner">
-                            {/* {renderItems(itemsInCart)} */}
-                            <p>press view bag</p>
+                            {/* <CartList data={itemsInCart} /> */}
                         </div>
                         <div className='total-price'>
                             <p className='total-price-left'>Total</p>
-                            <p className='total-price-right'>N/A</p>
+                            <p className='total-price-right'>${totalPrice}</p>
                         </div>
                         <div className="modal-btn-container">
                             <Link

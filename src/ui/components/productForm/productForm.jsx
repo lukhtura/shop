@@ -2,15 +2,17 @@
 import { useDispatch } from 'react-redux';
 //Utils
 import { Formik, Form, Field } from 'formik';
-import { addToCart } from '../../pages/cartPage/cartSlice';
+import { addToCart, countTotalPrice } from '../../pages/cartPage/cartSlice';
 //Styles
 import './productForm.scss';
 
 
 const ProductForm = (props) => {
 
-    const { id, name, description, attributes, prices, gallery, inStock } = props;
     const dispatch = useDispatch();
+
+    const { id, name, description, attributes, prices, gallery, inStock } = props;
+
 
     const createInitialValues = (data) => {
         const initialValues = {};
@@ -23,14 +25,15 @@ const ProductForm = (props) => {
 
     const onSubmit = (fields) => {
         dispatch(addToCart({
-            id: id + JSON.stringify(fields),
+            shopId: id + JSON.stringify(fields),
             name,
             prices,
             attributes,
             activeAttrs: fields,
             gallery,
             qty: 1,
-        }))
+        }));
+        dispatch(countTotalPrice());
     };
 
     const renderFormFields = (data) => {

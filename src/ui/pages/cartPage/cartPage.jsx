@@ -9,11 +9,13 @@ import './cartPage.scss';
 
 const CartPage = () => {
 
-    const { qty, itemsInCart } = useSelector(state => state.cart);
+    const { qty, itemsInCart, totalPrice } = useSelector(state => state.cart);
 
     const renderCartModule = () => {
         if (qty > 0) {
-            return <CartTotalModule qty={qty} />
+            return <CartTotalModule
+                qty={qty}
+                totalPrice={totalPrice} />
         }
     };
 

@@ -27,6 +27,12 @@
         font-size: 18px;
         line-height: 18px;
         margin: 0 0 10px;
+
+        @container (max-width: 325px) {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 16px;
+        }
     }
 
     // &-price {
@@ -74,6 +80,11 @@
     height: 32px;
     width: 32px;
 
+    @container (max-width: 325px) {
+        height: 20px;
+        width: 20px;
+    }
+
     input {
         display: none;
     }
@@ -91,12 +102,22 @@
         line-height: 45px;
         cursor: pointer;
         user-select: none;
+
+        @container (max-width: 325px) {
+            height: 20px;
+            width: 20px;
+        }
     }
 }
 
 .form_radio {
     width: 63px;
     border: 1px solid black;
+
+    @container (max-width: 325px) {
+        width: 24px;
+        height: 24px;
+    }
 
     input {
         display: none;
@@ -115,6 +136,12 @@
         line-height: 45px;
         cursor: pointer;
         user-select: none;
+
+        @container (max-width: 325px) {
+            width: 24px;
+            height: 24px;
+            line-height: normal;
+        }
     }
 }
 

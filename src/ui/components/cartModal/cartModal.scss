@@ -47,6 +47,8 @@
         background-color: white;
 
         &-content {
+            container-type: inline-size;
+
             &-header {
                 margin: 32px 0;
             }
@@ -71,7 +73,6 @@
             .total-price {
                 display: flex;
                 justify-content: space-between;
-                margin: 32px 0;
 
                 &-left,
                 &-right {

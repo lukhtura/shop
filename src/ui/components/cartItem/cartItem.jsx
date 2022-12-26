@@ -1,7 +1,7 @@
 //Core
 import { useDispatch, useSelector } from 'react-redux';
 //Utils
-import { increaseQty, decreaseQty } from '../../pages/cartPage/cartSlice';
+import { addToCart, removeFromCart, countTotalPrice } from '../../pages/cartPage/cartSlice';
 //Components
 import { Formik, Form, Field } from 'formik';
 //Styles
@@ -15,14 +15,15 @@ const CartItem = (props) => {
     const countQuantity = (data, id) => {
         let counter = 0;
         data.forEach(item => {
-            if (item.id === id) {
+            if (item.shopId === id) {
                 counter++
             }
         })
         return counter;
     };
 
-    const { id, name, prices, gallery, attributes, activeAttrs } = props;
+    const { shopId, name, prices, gallery, attributes, activeAttrs } = props;
+    console.log(props)
 
     return (
         <div className="cart-item">
@@ -70,7 +71,8 @@ const CartItem = (props) => {
                                                         type="radio"
                                                         name={item.name}
                                                         id={item.name + attribute.value}
-                                                        value={attribute.displayValue} />
+                                                        value={attribute.displayValue}
+                                                        onClick={() => console.log({ [item.name]: attribute.value })} />
                                                     <label htmlFor={item.name + attribute.value}>{attribute.value}</label>
                                                 </div>
                                             )
@@ -84,9 +86,20 @@ const CartItem = (props) => {
             </div>
             <div className="cart-item-inner-right">
                 <div className="qty-container">
-                    <button onClick={() => dispatch(increaseQty(props))} type='button' className="incr-btn">+</button>
-                    <div className="qty">{countQuantity(itemsInCart, id)}</div>
-                    <button onClick={() => dispatch(decreaseQty(id))} type='button' className="decr-btn">-</button>
+                    <div
+                        onClick={() => {
+                            dispatch(addToCart(props));
+                            dispatch(countTotalPrice());
+                        }}
+                        type='button'
+                        className="change-qty-btn">+</div>
+                    <div className="qty">{countQuantity(itemsInCart, shopId)}</div>
+                    <div onClick={() => {
+                        dispatch(removeFromCart(shopId));
+                        dispatch(countTotalPrice());
+                    }}
+                        type='button'
+                        className="change-qty-btn">-</div>
                 </div>
                 <div className="img-container">
                     <img src={gallery[0]} alt='alt' />
