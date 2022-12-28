@@ -28,7 +28,7 @@ function CartModal() {
                     <div className="cart-modal-content">
                         <h3 className='cart-modal-content-header'>My Bag<span className='items-qty'>, {qty} items</span></h3>
                         <div className="cart-modal-content-inner">
-                            {/* <CartList data={itemsInCart} /> */}
+                            <CartList data={itemsInCart} />
                         </div>
                         <div className='total-price'>
                             <p className='total-price-left'>Total</p>

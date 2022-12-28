@@ -2,8 +2,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 //Utils
 import { addToCart, removeFromCart, countTotalPrice } from '../../pages/cartPage/cartSlice';
-//Components
-import { Formik, Form, Field } from 'formik';
 //Styles
 import './cartItem.scss'
 
@@ -13,76 +11,49 @@ const CartItem = (props) => {
     const { itemsInCart } = useSelector(state => state.cart)
 
     const countQuantity = (data, id) => {
-        let counter = 0;
+        let res = 0;
         data.forEach(item => {
             if (item.shopId === id) {
-                counter++
+                res = item.quantity
             }
         })
-        return counter;
+        return res;
     };
 
-    const { shopId, name, prices, gallery, attributes, activeAttrs } = props;
-    console.log(props)
+    const { shopId, name, brand, prices, gallery, activeAttrs } = props;
+
+    const renderActiveAttrs = (attrs) => {
+        return attrs.map((item, i) => {
+            if (item.name === 'Color') {
+                return (
+                    <div className='cart-item-attribute' key={i}>
+                        <p className='cart-item-attribute-name'>
+                            {item.name.toUpperCase()}:<br />
+                            <div
+                                style={{ backgroundColor: item.value, display: 'inline-block' }}
+                                className='cart-item-attribute-color' key={i}>
+                            </div>
+                        </p>
+                    </div>
+                )
+            };
+
+            return (
+                <div key={i}>
+                    <p className='cart-item-attribute-name'>{item.name.toUpperCase()}:</p>
+                    <p className='cart-item-attribute-value'>{item.value}</p>
+                </div>
+            )
+        });
+    };
 
     return (
         <div className="cart-item">
             <div className="cart-item-inner-left">
-                <h2 className="cart-item-name">{name}</h2>
+                <h2 className="cart-item-brand">{brand}</h2>
+                <h3 className="cart-item-name">{name}</h3>
                 <p className="cart-item-price">${prices[0].amount}</p>
-                <Formik
-                    initialValues={activeAttrs}
-                    onSubmit={() => console.log('submit')}
-                >
-                    <Form>
-                        {attributes.map((item, i) => {
-                            if (item.name === 'Color') {
-                                return (
-                                    <div key={i}>
-                                        <p className='product-form-field-label'>{item.name.toUpperCase()}:</p>
-                                        <div className='attributes-container'>
-                                            {item.items.map((color, i) => {
-                                                return (
-                                                    <div
-                                                        style={{ backgroundColor: color.value }}
-                                                        className='form_radio-color color-btn' key={i}>
-                                                        <Field
-                                                            type="radio"
-                                                            name='Color'
-                                                            id={item.name + color.value}
-                                                            value={color.displayValue} />
-                                                        <label htmlFor={item.name + color.value}></label>
-                                                    </div>
-                                                )
-                                            })}
-                                        </div>
-                                    </div>
-                                )
-                            };
-
-                            return (
-                                <div key={i}>
-                                    <p className='product-form-field-label'>{item.name.toUpperCase()}:</p>
-                                    <div className='attributes-container'>
-                                        {item.items.map((attribute, i) => {
-                                            return (
-                                                <div key={i} className="form_radio">
-                                                    <Field
-                                                        type="radio"
-                                                        name={item.name}
-                                                        id={item.name + attribute.value}
-                                                        value={attribute.displayValue}
-                                                        onClick={() => console.log({ [item.name]: attribute.value })} />
-                                                    <label htmlFor={item.name + attribute.value}>{attribute.value}</label>
-                                                </div>
-                                            )
-                                        })}
-                                    </div>
-                                </div >
-                            );
-                        })}
-                    </Form>
-                </Formik>
+                {renderActiveAttrs(activeAttrs)}
             </div>
             <div className="cart-item-inner-right">
                 <div className="qty-container">
@@ -93,7 +64,7 @@ const CartItem = (props) => {
                         }}
                         type='button'
                         className="change-qty-btn">+</div>
-                    <div className="qty">{countQuantity(itemsInCart, shopId)}</div>
+                    <div className="cart-item-qty">{countQuantity(itemsInCart, shopId)}</div>
                     <div onClick={() => {
                         dispatch(removeFromCart(shopId));
                         dispatch(countTotalPrice());

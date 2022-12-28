@@ -2,6 +2,7 @@
 import { useDispatch } from 'react-redux';
 //Utils
 import { Formik, Form, Field } from 'formik';
+import { v4 as genId } from 'uuid';
 import { addToCart, countTotalPrice } from '../../pages/cartPage/cartSlice';
 //Styles
 import './productForm.scss';
@@ -11,30 +12,51 @@ const ProductForm = (props) => {
 
     const dispatch = useDispatch();
 
-    const { id, name, description, attributes, prices, gallery, inStock } = props;
-
-
     const createInitialValues = (data) => {
         const initialValues = {};
         data.map(item => item)
             .forEach(item => {
-                initialValues[item.name] = item.items[0].displayValue
+                if (item.name === 'Color') {
+                    initialValues[item.name] = item.items[0].displayValue
+                } else {
+                    initialValues[item.name] = item.items[0].value
+                }
             })
         return initialValues;
     };
 
+    const objToStringId = (obj) => {
+        let str = '';
+        for (const [p, val] of Object.entries(obj)) {
+            str += `-${p}-${val}`;
+        };
+
+        return str.trim().toLowerCase().replaceAll(/\s/g, '-');
+    };
+
+    const objToArrOfObjs = (obj) => {
+        const arr = [];
+        for (const [key, value] of Object.entries(obj)) {
+            arr.push({ name: key, value });
+        };
+        return arr;
+    };
+
     const onSubmit = (fields) => {
         dispatch(addToCart({
-            shopId: id + JSON.stringify(fields),
+            id: genId(),
+            shopId: id + objToStringId(fields),
             name,
+            brand,
+            quantity: 1,
             prices,
-            attributes,
-            activeAttrs: fields,
+            activeAttrs: objToArrOfObjs(fields),
             gallery,
-            qty: 1,
         }));
         dispatch(countTotalPrice());
     };
+
+    const { id, name, brand, description, attributes, prices, gallery, inStock } = props;
 
     const renderFormFields = (data) => {
 
@@ -46,6 +68,7 @@ const ProductForm = (props) => {
                             <p className='product-form-field-label'>{item.name.toUpperCase()}:</p>
                             <div className='attributes-container'>
                                 {item.items.map((color, i) => {
+                                    console.log(color)
                                     return (
                                         <div
                                             style={{ backgroundColor: color.value }}
@@ -75,7 +98,7 @@ const ProductForm = (props) => {
                                             type="radio"
                                             name={item.name}
                                             id={item.name + attribute.value}
-                                            value={attribute.displayValue} />
+                                            value={attribute.value} />
                                         <label htmlFor={item.name + attribute.value}>{attribute.value}</label>
                                     </div>
                                 )
@@ -98,7 +121,8 @@ const ProductForm = (props) => {
 
     return (
         <div className='product-form'>
-            <h2 className='product-form-name'>{name}</h2>
+            <h2 className='product-form-brand'>{brand}</h2>
+            <h3 className='product-form-name'>{name}</h3>
             {inStock ? null : <h3 style={{ color: "red" }}> Out of stock!</h3>}
             <Formik
                 initialValues={createInitialValues(attributes)}

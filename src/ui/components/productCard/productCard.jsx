@@ -6,7 +6,7 @@ import icon from './../../../assets/icons/toCartIcon.svg'
 
 const ProductCard = (props) => {
 
-    const { name, price, image, inStock } = props;
+    const { name, brand, price, image, inStock } = props;
 
     let classNames = 'product-card';
 
@@ -19,7 +19,7 @@ const ProductCard = (props) => {
             <div className="product-card-descr">
                 <p
                     className="product-card-descr-name"
-                    name={name}>{name}</p>
+                    name={name}>{brand} {name}</p>
                 <p
                     className="product-card-descr-price"
                     price={price}>${price}</p>

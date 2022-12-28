@@ -63,6 +63,8 @@
                 justify-content: space-between;
                 flex-direction: column;
                 gap: 40px;
+                overflow: auto;
+                max-height: 400px;
 
                 &-item {
                     width: 293px;

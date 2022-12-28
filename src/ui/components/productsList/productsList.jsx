@@ -2,13 +2,15 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useQuery } from "@apollo/client";
+import { createSelector } from "@reduxjs/toolkit";
 //Utils
 import { Link } from "react-router-dom";
 import { GET_ALL_PRODUCTS } from "../../../query/products";
 //Actions
-import { productsFetched } from "./productsSlice";
+import { productsFetch } from "./productsSlice";
 //Components
 import ProductCard from "../productCard/productCard";
+import Spinner from "../spinner/Spinner";
 
 //Style
 import './productsList.scss'
@@ -16,19 +18,30 @@ import './productsList.scss'
 const ProductsList = () => {
 
     const dispatch = useDispatch();
+    const filteredCategoriesSelector = createSelector(
+        (state) => state.products.activeCategory,
+        (state) => state.products.products,
+        (filter, products) => {
+            if (filter === 'all') {
+                return products;
+            };
+
+            return products.filter(item => item.category === filter);
+        },
+    );
+    const products = useSelector(filteredCategoriesSelector)
     const { data, loading, error } = useQuery(GET_ALL_PRODUCTS);
-    const { products } = useSelector(state => state.products);
 
     useEffect(() => {
         if (!loading) {
-            dispatch(productsFetched(data));
+            dispatch(productsFetch(data.category.products));
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [data]);
+    }, [loading]);
 
 
     if (loading) {
-        return <h1>Loading...</h1>;
+        return <Spinner />;
     } else if (error) {
         return <h1>Error</h1>
     };
@@ -38,24 +51,26 @@ const ProductsList = () => {
             return <h1>There is no items...</h1>
         };
 
-        return arr.category.products.map(item =>
-            <Link key={item.id}
+        return arr.map(item =>
+            <Link
+                className="products-list-item"
+                key={item.id}
                 to={`./product/${item.id}`} >
                 <ProductCard
                     inStock={item.inStock}
                     id={item.id}
+                    brand={item.brand}
                     name={item.name}
                     price={item.prices[0].amount}
                     image={item.gallery[0]}
                 />
-            </Link>)
+            </Link>
+        );
     };
-
-    const elements = renderProducts(products);
 
     return (
         <div className="products-list">
-            {elements ? elements : <h5>there is no items...</h5>}
+            {renderProducts(products)}
         </div>
     );
 };

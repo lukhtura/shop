@@ -1,11 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
-//Utils
-import { v4 as genId } from 'uuid';
 
 const initialState = {
     itemsInCart: [],
-    qty: 0,
+    quantity: 0,
     totalPrice: 0,
+}
+
+const countTotalQuantity = (arr) => {
+    let res = 0;
+    arr.forEach(item => {
+        res = res + item.quantity
+    })
+    console.log(res)
+    return res;
 }
 
 const cartSlice = createSlice(
@@ -14,13 +21,37 @@ const cartSlice = createSlice(
         initialState,
         reducers: {
             addToCart: (state, action) => {
-                state.itemsInCart.push({ id: genId(), ...action.payload });
-                state.qty += 1;
+                const res = state.itemsInCart.reduce((acc, item) => {
+                    if (item.shopId === action.payload.shopId) {
+                        acc += 1;
+                    }
+                    return acc;
+                }, 0)
+
+                if (res > 0) {
+                    state.itemsInCart.forEach(item => {
+                        if (item.shopId === action.payload.shopId) {
+                            item.quantity += 1;
+                        }
+                    })
+                    console.log('item already in the cart')
+                } else {
+                    state.itemsInCart.push({ ...action.payload });
+                }
+
+                state.quantity = countTotalQuantity(state.itemsInCart);
             },
             removeFromCart: (state, action) => {
-                let index = state.itemsInCart.findIndex(item => item.id === action.payload)
-                state.itemsInCart.splice(index, 1);
-                state.qty -= 1;
+                state.itemsInCart.forEach((item, i) => {
+                    if (item.shopId === action.payload) {
+                        if (item.quantity > 1) {
+                            item.quantity -= 1;
+                        } else {
+                            state.itemsInCart.splice(i, 1)
+                        }
+                    }
+                })
+                state.quantity = countTotalQuantity(state.itemsInCart);
             },
             countTotalPrice: state => {
                 let amount = 0;

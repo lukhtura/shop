@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    productsLoadingStatus: 'idle',
+    loadingStatus: 'idle',
     products: [],
+    categories: [],
+    activeCategory: 'all',
 };
 
 
@@ -10,20 +12,26 @@ const productsSlice = createSlice({
     name: 'products',
     initialState,
     reducers: {
-        productsFetching: state => {
-            state.productsLoadingStatus = 'loading';
-        },
-        productsFetched: (state, action) => {
-            state.productsLoadingStatus = 'idle';
+        productsFetch: (state, action) => {
+            state.loadingStatus = 'idle';
             state.products = action.payload;
         },
-        productsFetchingError: state => {
-            state.productsLoadingStatus = 'error'
+        categoriesFetch: (state, action) => {
+            state.loadingStatus = 'idle';
+            state.categories = action.payload;
         },
+        activeCategoryChange: (state, action) => {
+            state.activeCategory = action.payload;
+        }
     }
 });
 
 const { actions, reducer } = productsSlice;
 
-export const { productsFetching, productsFetched, productsFetchingError, singleProductFetched } = actions;
+export const {
+    productsFetch,
+    categoriesFetch,
+    activeCategoryChange
+} = actions;
+
 export default reducer;

@@ -8,6 +8,7 @@ import ProductForm from '../../components/productForm/productForm';
 import { GET_ONE_PRODUCT_BY_ID } from './../../../query/products';
 //Styles 
 import './productPage.scss';
+import Spinner from '../../components/spinner/Spinner';
 
 const ProductPage = () => {
 
@@ -19,13 +20,14 @@ const ProductPage = () => {
     });
 
     if (loading) {
-        return <h1>Loading...</h1>;
+        return <Spinner />;
     } else if (error) {
         return <h1>Error</h1>
     };
 
     const renderItem = (data) => {
-        const { name, id, inStock, description, attributes, prices, gallery } = data;
+
+        const { name, brand, id, inStock, description, attributes, prices, gallery } = data;
 
         return (
             <>
@@ -34,6 +36,7 @@ const ProductPage = () => {
                     gallery={gallery} />
                 <ProductForm
                     name={name}
+                    brand={brand}
                     id={id}
                     inStock={inStock}
                     description={description}

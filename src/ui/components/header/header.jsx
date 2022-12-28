@@ -1,12 +1,18 @@
 //Core
+import { useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useQuery } from "@apollo/client";
 
 //Actions
-import { useDispatch, useSelector } from "react-redux";
+import { categoriesFetch, activeCategoryChange } from "../productsList/productsSlice";
 import { toggleCartModal, toggleSelector } from "./headerSlice";
 
+//Queries
+import { GET_ALL_CATEGORIES } from "../../../query/products";
+
 //Components
-import Link from "../link/link";
+import Spinner from "../spinner/Spinner";
 
 //Styles
 import "./header.scss";
@@ -18,18 +24,45 @@ import logo from "../../../assets/img/green-logo.svg";
 function Header() {
 
     const dispatch = useDispatch();
+    const { data, loading, error } = useQuery(GET_ALL_CATEGORIES);
     const { cartModalOpened, selectorOpened } = useSelector(state => state.header);
-    const { qty } = useSelector(state => state.cart)
+    const { quantity } = useSelector(state => state.cart);
+    const { categories, activeCategory } = useSelector(state => state.products)
+
+    useEffect(() => {
+        if (!loading && !error) {
+            dispatch(categoriesFetch(data.categories));
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [loading]);
+
+    if (loading) {
+        return <Spinner />;
+    } else if (error) {
+        return <p>Error</p>
+    };
+
+    const renderCategories = (arr) => {
+        return arr.map(item =>
+            <RouterLink className="category-btn" to={'./'} >
+                <div
+                    onClick={() => {
+                        if (activeCategory !== item.name) {
+                            dispatch(activeCategoryChange(item.name));
+                        };
+                    }}
+                    key={item.name} > {item.name.toUpperCase()}
+                </div >
+            </RouterLink>
+        )
+    };
 
     return (
         <header className="header">
             <div className="header__inner">
-                <div className="header__inner-links">
-                    <Link text={"WOMEN"}></Link>
-                    <Link text={"MEN"}></Link>
-                    <Link text={"KIDS"}></Link>
+                <div className="header__inner-categories">
+                    {renderCategories(categories)}
                 </div>
-
                 <RouterLink to={'./'} style={{ display: "flex", alignItems: 'center' }}>
                     <img
                         src={logo}
@@ -37,7 +70,6 @@ function Header() {
                         className="header__inner-logo"
                     />
                 </RouterLink>
-
                 <div className="header__inner-buttons">
                     <div className="currency-selector">
                         <img
@@ -53,7 +85,7 @@ function Header() {
                             src={cartImg}
                             alt="cart"
                         />
-                        {qty > 0 ? <div onClick={() => dispatch(toggleCartModal(!cartModalOpened))} className="cart-button-counter">{qty}</div> : null}
+                        {quantity > 0 ? <div onClick={() => dispatch(toggleCartModal(!cartModalOpened))} className="cart-button-counter">{quantity}</div> : null}
                     </div>
                 </div>
             </div>

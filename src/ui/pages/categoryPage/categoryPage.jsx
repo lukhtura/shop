@@ -1,9 +1,5 @@
-/* eslint-disable no-unused-vars */
 //Core
-import { useState, useEffect } from "react";
-import { useQuery } from "@apollo/client";
-//Utils
-import { GET_ALL_PRODUCTS } from "../../../query/products";
+import { useSelector } from "react-redux";
 //Components
 import ProductsList from "../../components/productsList/productsList";
 //Styles 
@@ -11,26 +7,11 @@ import './categoryPage.css'
 
 const CategoryPage = () => {
 
-    // const [products, setProducts] = useState([]);
-
-    // const data = new DataQueries();
-
-    // useEffect(() => {
-    //     uploadProducts();
-    // });
-
-    // const uploadProducts = () => {
-    //     data.getProducts()
-    //         .then(res => onProductLoaded(res))
-    // };
-
-    // const onProductLoaded = (products) => {
-    //     setProducts(products);
-    // };
+    const categoryName = useSelector(state => state.products.activeCategory)
 
     return (
         <>
-            <h1 className="page-header">Category name</h1>
+            <h1 className="page-header">{categoryName.toUpperCase()}</h1>
             <ProductsList />
         </>
     );

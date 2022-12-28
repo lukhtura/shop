@@ -4,7 +4,6 @@
 }
 
 body {
-    max-width: 1440px;
     margin: 0 auto 80px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

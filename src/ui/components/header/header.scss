@@ -16,21 +16,27 @@
         display: flex;
         justify-content: space-between;
 
-        &-links {
+        &-categories {
             display: flex;
             width: 234px;
             height: 80px;
             justify-content: space-around;
 
-            a {
+            .category-btn {
+                text-decoration: none;
+                color: black;
                 display: flex;
                 align-items: center;
-                height: 80px;
-                text-decoration: none;
-                color: #1d1f22;
                 cursor: pointer;
             }
-            a:hover {
+
+            div {
+                display: flex;
+                height: 80px;
+                align-items: center;
+            }
+
+            div:hover {
                 text-decoration: none;
                 color: #5ece7b;
                 border-bottom: 2px solid #5ece7b;
