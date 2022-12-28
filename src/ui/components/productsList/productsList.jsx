@@ -7,7 +7,7 @@ import { createSelector } from "@reduxjs/toolkit";
 import { Link } from "react-router-dom";
 import { GET_ALL_PRODUCTS } from "../../../query/products";
 //Actions
-import { productsFetch } from "./productsSlice";
+import { productsFetch } from "../../../redux/features/productsSlice";
 //Components
 import ProductCard from "../productCard/productCard";
 import Spinner from "../spinner/Spinner";

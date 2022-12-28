@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 //Utils
 import { Formik, Form, Field } from 'formik';
 import { v4 as genId } from 'uuid';
-import { addToCart, countTotalPrice } from '../../pages/cartPage/cartSlice';
+import { addToCart, countTotalPrice } from '../../../redux/features/cartSlice';
 //Styles
 import './productForm.scss';
 

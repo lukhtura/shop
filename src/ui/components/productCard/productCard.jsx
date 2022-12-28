@@ -2,7 +2,7 @@
 import './productCard.scss'
 
 //Images
-import icon from './../../../assets/icons/toCartIcon.svg'
+import greenCartIcon from './../../../assets/icons/green-cart-icon.svg'
 
 const ProductCard = (props) => {
 
@@ -13,7 +13,7 @@ const ProductCard = (props) => {
     return (
         <div className={inStock ? classNames : classNames + ' out-stock'}>
             <div className="product-card-img-container" >
-                {inStock ? null : <p className='out-of-stock-text' >OUT OF STOCK</p>}
+                {inStock ? null : <p className='out-of-stock-text'>OUT OF STOCK</p>}
                 <img className="product-card-img" src={image} alt="product" />
             </div>
             <div className="product-card-descr">
@@ -24,7 +24,7 @@ const ProductCard = (props) => {
                     className="product-card-descr-price"
                     price={price}>${price}</p>
             </div>
-            {inStock ? <img className="product-card-cart-icon" src={icon} alt="cart" /> : null}
+            {inStock ? <img className="product-card-cart-icon" src={greenCartIcon} alt="cart" /> : null}
         </div>
     )
 };

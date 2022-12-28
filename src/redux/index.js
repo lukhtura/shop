@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import header from './../ui/components/header/headerSlice';
-import cart from './../ui/pages/cartPage/cartSlice';
-import products from '../ui/components/productsList/productsSlice';
+import header from './features/headerSlice';
+import cart from './features/cartSlice';
+import products from './features/productsSlice';
 import slider from '../ui/components/productGallerySlider/productGallerySliderSlice';
 
 export const store = configureStore({

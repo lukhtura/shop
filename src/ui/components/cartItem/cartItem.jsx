@@ -1,7 +1,7 @@
 //Core
 import { useDispatch, useSelector } from 'react-redux';
 //Utils
-import { addToCart, removeFromCart, countTotalPrice } from '../../pages/cartPage/cartSlice';
+import { addToCart, removeFromCart, countTotalPrice } from '../../../redux/features/cartSlice';
 //Styles
 import './cartItem.scss'
 

@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useQuery } from "@apollo/client";
 
 //Actions
-import { categoriesFetch, activeCategoryChange } from "../productsList/productsSlice";
-import { toggleCartModal, toggleSelector } from "./headerSlice";
+import { categoriesFetch, activeCategoryChange } from "../../../redux/features/productsSlice";
+import { toggleCartModal, toggleSelector } from "../../../redux/features/headerSlice";
 
 //Queries
 import { GET_ALL_CATEGORIES } from "../../../query/products";
@@ -44,7 +44,7 @@ function Header() {
 
     const renderCategories = (arr) => {
         return arr.map(item =>
-            <RouterLink className="category-btn" to={'./'} >
+            <RouterLink key={item.name} className="category-btn" to={'./'} >
                 <div
                     onClick={() => {
                         if (activeCategory !== item.name) {
