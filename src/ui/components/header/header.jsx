@@ -73,19 +73,18 @@ function Header() {
                 <div className="header__inner-buttons">
                     <div className="currency-selector">
                         <img
-                            style={{ opacity: 0.3 }}
                             onClick={() => dispatch(toggleSelector(!selectorOpened))}
                             src={currencyImg}
                             alt="dollar"
                         />
                     </div>
-                    <div className="cart-button">
+                    <div className="cart-button"
+                        onClick={() => dispatch(toggleCartModal(!cartModalOpened))}>
                         <img
-                            onClick={() => dispatch(toggleCartModal(!cartModalOpened))}
                             src={cartImg}
                             alt="cart"
                         />
-                        {quantity > 0 ? <div onClick={() => dispatch(toggleCartModal(!cartModalOpened))} className="cart-button-counter">{quantity}</div> : null}
+                        {quantity > 0 ? <div className="cart-button-counter">{quantity}</div> : null}
                     </div>
                 </div>
             </div>

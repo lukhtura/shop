@@ -16,8 +16,8 @@ import ProductPage from "../../pages/pdp/productPage";
 //helpers
 import ScrollToTop from "../../../helpers/scrollToTop";
 
-//Styles;
-import './app.css'
+//Styles
+import './app.css';
 
 
 function App() {
