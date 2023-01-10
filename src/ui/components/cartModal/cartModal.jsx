@@ -1,19 +1,22 @@
 //Core
-import { Link } from "react-router-dom"
-//Actions
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
+//Actions
 import { toggleCartModal } from "../../../redux/features/headerSlice";
 //Components
 import CartList from "../cartList/cartList";
+//Utils
+import { countTotalPrice } from "../../../utils/totalPriceCounter";
 //Style
-import './cartModal.scss'
+import './cartModal.scss';
 import { CSSTransition } from 'react-transition-group';
 
 function CartModal() {
 
     const dispatch = useDispatch();
+    const currencySelected = useSelector(state => state.header.currencySelected);
     const cartModalOpened = useSelector(state => state.header.cartModalOpened);
-    const { quantity, itemsInCart, totalPrice } = useSelector(state => state.cart);
+    const { quantity, itemsInCart } = useSelector(state => state.cart);
 
     return (
         <CSSTransition
@@ -32,7 +35,7 @@ function CartModal() {
                         </div>
                         <div className='total-price'>
                             <p className='total-price-left'>Total</p>
-                            <p className='total-price-right'>${totalPrice}</p>
+                            <p className='total-price-right'>{currencySelected.symbol}{countTotalPrice(itemsInCart, currencySelected)}</p>
                         </div>
                         <div className="modal-btn-container">
                             <Link

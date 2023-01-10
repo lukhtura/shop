@@ -18,11 +18,9 @@ const ProductCard = (props) => {
             </div>
             <div className="product-card-descr">
                 <p
-                    className="product-card-descr-name"
-                    name={name}>{brand} {name}</p>
+                    className="product-card-descr-name">{brand} {name}</p>
                 <p
-                    className="product-card-descr-price"
-                    price={price}>${price}</p>
+                    className="product-card-descr-price">{price.currency.symbol} {price.amount}</p>
             </div>
             {inStock ? <img className="product-card-cart-icon" src={greenCartIcon} alt="cart" /> : null}
         </div>

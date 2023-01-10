@@ -2,19 +2,21 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1050;
     width: 100%;
     height: 100%;
+    z-index: 1000;
 }
 
 .currency-selector {
+    background: white;
+    z-index: 1050;
     position: absolute;
     padding: 10px 0;
     width: 114px;
-    height: 155px;
+    height: 240px;
     top: 65px;
     right: 275px;
-    box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
+    box-shadow: 0px 4px 35px rgb(168 172 176 / 19%);
 
     &-inner {
         display: flex;

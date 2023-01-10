@@ -11,7 +11,6 @@
     @container (max-width: 326px) {
         min-height: 190px;
         padding: 0;
-        border: none;
         margin-bottom: 40px;
     }
 }
@@ -122,7 +121,45 @@
     }
 }
 
-.img-container img {
+.img-container {
+    position: relative;
+    height: 288px;
+    width: 192px;
+    overflow: hidden;
+
+    @container (max-width: 325px) {
+        width: 120px;
+        height: 190px;
+    }
+}
+
+.img-container-flow {
+    display: flex;
+    height: 288px;
+}
+
+.next-arrow,
+.prev-arrow {
+    position: absolute;
+    bottom: 15px;
+    // cursor: pointer;
+    opacity: 0.1;
+
+    @container (max-width: 325px) {
+        display: none;
+    }
+}
+
+.next-arrow {
+    right: 15px;
+}
+
+.prev-arrow {
+    transform: rotate(180deg);
+    right: 45px;
+}
+
+.gallery-item {
     object-fit: contain;
     width: 200px;
     height: 288px;
@@ -140,7 +177,7 @@
     align-items: center;
 
     @container (max-width: 325px) {
-        height: 190px;
+        min-height: 190px;
     }
 
     .change-qty-btn {
@@ -158,6 +195,7 @@
         cursor: pointer;
 
         @container (max-width: 325px) {
+            margin: 5px 0;
             width: 24px;
             height: 24px;
         }

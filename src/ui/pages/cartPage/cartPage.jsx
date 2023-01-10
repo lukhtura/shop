@@ -11,19 +11,14 @@ const CartPage = () => {
 
     const { qty, itemsInCart, totalPrice } = useSelector(state => state.cart);
 
-    const renderCartModule = () => {
-        if (qty > 0) {
-            return <CartTotalModule
-                qty={qty}
-                totalPrice={totalPrice} />
-        }
-    };
-
     return (
         <>
             <h1 className="cart-page-header">CART</h1>
             <CartList data={itemsInCart} />
-            {renderCartModule()}
+            <CartTotalModule
+                qty={qty}
+                totalPrice={totalPrice}
+                itemsInCart={itemsInCart} />
         </>
     );
 

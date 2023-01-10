@@ -1,39 +1,58 @@
 //Core
-import { Component } from "react";
-
+import { useSelector, useDispatch } from 'react-redux';
+import { useQuery } from '@apollo/client';
+//Actions
+import { toggleSelector, changeCurrency } from '../../../redux/features/headerSlice';
+//Queries
+import { GET_ALL_CURRENCIES } from '../../../api/currencies';
+//Components
+import Spinner from '../spinner/Spinner';
+import ErrorMessage from '../errorMessage/errorMessage';
 //Styles
-import './currencySelector.scss'
+import './currencySelector.scss';
 
 
-class CurrencySelector extends Component {
+const CurrencySelector = () => {
 
-    handleToggle = (e) => {
-        const { toggleCurSelect} = this.props;
-        if (e.target.className === 'selector-overflow') {
-            toggleCurSelect()
-        };
+    const dispatch = useDispatch();
+    const selectorOpened = useSelector(state => state.header.selectorOpened);
+    const { data, loading, error } = useQuery(GET_ALL_CURRENCIES);
+
+    const renderCurrencies = (arr) => {
+        return arr.currencies.map(item => {
+            return (
+                <div
+                    key={item.label}
+                    onClick={() => {
+                        dispatch(changeCurrency({ label: item.label, symbol: item.symbol }));
+                        dispatch(toggleSelector(false));
+                    }}
+                    className="currency-selector-inner-item">{item.symbol} {item.label}
+                </div>
+            )
+        })
     }
 
+    if (loading) {
+        return <Spinner />
+    } else if (error) {
+        return <ErrorMessage />
+    }
 
-    render() {
+    let classNames = 'selector-overflow hide';
+    selectorOpened ? classNames = 'selector-overflow' : classNames = 'selector-overflow hide';
 
-        let classNames = 'selector-overflow hide';
-        const { selectorShow } = this.props;
-        selectorShow ? classNames = 'selector-overflow' : classNames = 'selector-overflow hide';
-
-        return (
-            <div className={classNames}
-            onClick={this.handleToggle}>
-                <div className='currency-selector'>
-                    <div className="currency-selector-inner">
-                        <div className="currency-selector-inner-item">$ USD</div>
-                        <div className="currency-selector-inner-item">€ EUR</div>
-                        <div className="currency-selector-inner-item">¥ JPY</div>
-                    </div>
+    return (
+        <div
+            onClick={() => dispatch(toggleSelector(false))}
+            className={classNames}>
+            <div onClick={e => e.stopPropagation()} className='currency-selector'>
+                <div className="currency-selector-inner">
+                    {renderCurrencies(data)}
                 </div>
             </div>
-        )
-    }
-};
+        </div>
+    );
+}
 
 export default CurrencySelector; 
