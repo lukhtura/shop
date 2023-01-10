@@ -1,5 +1,5 @@
 //Components
-import CartItem from './../cartItem/cartItem'
+import CartItem from './../cartItem/cartItem';
 
 const CartList = (props) => {
 

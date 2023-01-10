@@ -9,9 +9,8 @@ const initialState = {
 const countTotalQuantity = (arr) => {
     let res = 0;
     arr.forEach(item => {
-        res = res + item.quantity
-    })
-    console.log(res)
+        res = res + item.quantity;
+    });
     return res;
 }
 
@@ -33,15 +32,14 @@ const cartSlice = createSlice(
                         if (item.shopId === action.payload.shopId) {
                             item.quantity += 1;
                         }
-                    })
-                    console.log('item already in the cart')
+                    });
                 } else {
                     state.itemsInCart.push({ ...action.payload });
                 }
 
                 state.quantity = countTotalQuantity(state.itemsInCart);
 
-                window.localStorage.setItem('CART_ITEMS', JSON.stringify(state))
+                window.localStorage.setItem('CART_ITEMS', JSON.stringify(state));
             },
             removeFromCart: (state, action) => {
                 state.itemsInCart.forEach((item, i) => {
@@ -49,24 +47,17 @@ const cartSlice = createSlice(
                         if (item.quantity > 1) {
                             item.quantity -= 1;
                         } else {
-                            state.itemsInCart.splice(i, 1)
+                            state.itemsInCart.splice(i, 1);
                         }
                     }
                 });
 
                 state.quantity = countTotalQuantity(state.itemsInCart);
 
-                window.localStorage.setItem('CART_ITEMS', JSON.stringify(state))
+                window.localStorage.setItem('CART_ITEMS', JSON.stringify(state));
 
             },
-            countTotalPrice: state => {
-                let amount = 0;
-                state.itemsInCart.forEach(item => {
-                    amount += item.prices[0].amount
-                })
-                state.totalPrice = amount.toFixed(2);
-            },
-            restoreFromLocalStorage: (state, action) => {
+            restoreCartFromLocalStorage: (state, action) => {
                 state.itemsInCart = action.payload.itemsInCart;
                 state.quantity = action.payload.quantity;
                 state.totalPrice = action.payload.totalPrice;
@@ -80,6 +71,5 @@ export default reducer;
 export const {
     addToCart,
     removeFromCart,
-    countTotalPrice,
-    restoreFromLocalStorage
+    restoreCartFromLocalStorage
 } = actions;

@@ -1,9 +1,10 @@
 //Core
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 //Utils
+import { currencyExchanger } from '../../../utils/currencyExchanger';
 import { Formik, Form, Field } from 'formik';
 import { v4 as genId } from 'uuid';
-import { addToCart, countTotalPrice } from '../../../redux/features/cartSlice';
+import { addToCart } from '../../../redux/features/cartSlice';
 //Styles
 import './productForm.scss';
 
@@ -11,6 +12,7 @@ import './productForm.scss';
 const ProductForm = (props) => {
 
     const dispatch = useDispatch();
+    const currencySelected = useSelector(state => state.header.currencySelected);
 
     const createInitialValues = (data) => {
         const initialValues = {};
@@ -53,10 +55,11 @@ const ProductForm = (props) => {
             activeAttrs: objToArrOfObjs(fields),
             gallery,
         }));
-        dispatch(countTotalPrice());
     };
 
     const { id, name, brand, description, attributes, prices, gallery, inStock } = props;
+
+    const selectedCurrencyPrice = currencyExchanger(prices, currencySelected);
 
     const renderFormFields = (data) => {
 
@@ -68,7 +71,6 @@ const ProductForm = (props) => {
                             <p className='product-form-field-label'>{item.name.toUpperCase()}:</p>
                             <div className='attributes-container'>
                                 {item.items.map((color, i) => {
-                                    console.log(color)
                                     return (
                                         <div
                                             style={{ backgroundColor: color.value }}
@@ -132,7 +134,7 @@ const ProductForm = (props) => {
                     {renderFormFields(attributes)}
                     <div className='product-form-item-info-price-container'>
                         <p className='product-form-field-label'>PRICE:</p>
-                        <p className='product-form-price'>{prices[0].currency.symbol}{prices[0].amount}</p>
+                        <p className='product-form-price'>{selectedCurrencyPrice.currency.symbol} {selectedCurrencyPrice.amount}</p>
                     </div>
                     {renderSubmitButton(inStock)}
                 </Form>

@@ -5,7 +5,7 @@ import { useQuery } from '@apollo/client';
 import ProductGallerySlider from '../../components/productGallerySlider/productGallerySlider';
 import ProductForm from '../../components/productForm/productForm';
 //Utils
-import { GET_ONE_PRODUCT_BY_ID } from './../../../query/products';
+import { GET_ONE_PRODUCT_BY_ID } from './../../../api/products';
 //Styles 
 import './productPage.scss';
 import Spinner from '../../components/spinner/Spinner';
@@ -23,7 +23,7 @@ const ProductPage = () => {
         return <Spinner />;
     } else if (error) {
         return <h1>Error</h1>
-    };
+    }
 
     const renderItem = (data) => {
 
@@ -45,7 +45,7 @@ const ProductPage = () => {
                     gallery={gallery} />
             </>
         );
-    };
+    }
 
     const render = renderItem(data.product);
 
@@ -54,6 +54,6 @@ const ProductPage = () => {
             {render}
         </div>
     );
-};
+}
 
 export default ProductPage;

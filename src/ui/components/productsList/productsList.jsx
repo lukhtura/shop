@@ -5,7 +5,9 @@ import { useQuery } from "@apollo/client";
 import { createSelector } from "@reduxjs/toolkit";
 //Utils
 import { Link } from "react-router-dom";
-import { GET_ALL_PRODUCTS } from "../../../query/products";
+import { currencyExchanger } from "../../../utils/currencyExchanger";
+//Queries
+import { GET_ALL_PRODUCTS } from "../../../api/products";
 //Actions
 import { productsFetch } from "../../../redux/features/productsSlice";
 //Components
@@ -29,7 +31,8 @@ const ProductsList = () => {
             return products.filter(item => item.category === filter);
         },
     );
-    const products = useSelector(filteredCategoriesSelector)
+    const currencySelected = useSelector(state => state.header.currencySelected)
+    const products = useSelector(filteredCategoriesSelector);
     const { data, loading, error } = useQuery(GET_ALL_PRODUCTS);
 
     useEffect(() => {
@@ -44,35 +47,37 @@ const ProductsList = () => {
         return <Spinner />;
     } else if (error) {
         return <h1>Error</h1>
-    };
+    }
 
     const renderProducts = (arr) => {
         if (arr.length === 0) {
             return <h1>There is no items...</h1>
-        };
+        }
 
-        return arr.map(item =>
-            <Link
-                className="products-list-item"
-                key={item.id}
-                to={`./product/${item.id}`} >
-                <ProductCard
-                    inStock={item.inStock}
-                    id={item.id}
-                    brand={item.brand}
-                    name={item.name}
-                    price={item.prices[0].amount}
-                    image={item.gallery[0]}
-                />
-            </Link>
-        );
-    };
+        return arr.map(item => {
+            return (
+                <Link
+                    className="products-list-item"
+                    key={item.id}
+                    to={`./product/${item.id}`} >
+                    <ProductCard
+                        inStock={item.inStock}
+                        id={item.id}
+                        brand={item.brand}
+                        name={item.name}
+                        price={currencyExchanger(item.prices, currencySelected)}
+                        image={item.gallery[0]}
+                    />
+                </Link>
+            );
+        });
+    }
 
     return (
         <div className="products-list">
             {renderProducts(products)}
         </div>
     );
-};
+}
 
 export default ProductsList;
