@@ -10,9 +10,11 @@ React, Redux toolkit, ApolloClient;
 
 ##### Installation:
 
-###### Get this server:
+##### Get server and follow the instructions to run it here:
 https://github.com/scandiweb/junior-react-endpoint
 
+
+##### Get the Front-End part:
 Clone the repo
 ```sh
 https://github.com/lukhtura/react-graphql-shop.git
@@ -23,12 +25,12 @@ Install NPM packages
 npm install
 ```
 
-Run development mode:
+Run in development mode:
 ```sh
 npm run start
 ```
 
-Run production mode:
+Run in production mode:
 ```sh
 npm run build start
 ```
