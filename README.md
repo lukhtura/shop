@@ -1,5 +1,5 @@
 # Online shop
-
+![screen](https://github.com/lukhtura/react-graphql-shop/blob/main/other/screen.jpg)
 ### Goal of the project:
 Build a UI of single page application shop with cart, product page and category page.
 
