@@ -1,14 +1,18 @@
 //Core
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
+
 //Components
-import ProductGallerySlider from '../../components/productGallerySlider/productGallerySlider';
-import ProductForm from '../../components/productForm/productForm';
+import ProductGallerySlider from 'src/ui/components/productGallerySlider/productGallerySlider';
+import ProductForm from 'src/ui/components/productForm/productForm';
+import ErrorMessage from 'src/ui/components/errorMessage/errorMessage';
+
 //Utils
-import { GET_ONE_PRODUCT_BY_ID } from './../../../api/products';
+import { GET_ONE_PRODUCT_BY_ID } from 'src/api/products';
+
 //Styles 
-import './productPage.scss';
-import Spinner from '../../components/spinner/Spinner';
+import 'src/ui/pages/productPage/productPage.scss';
+import Spinner from 'src/ui/components/spinner/Spinner';
 
 const ProductPage = () => {
 
@@ -22,8 +26,8 @@ const ProductPage = () => {
     if (loading) {
         return <Spinner />;
     } else if (error) {
-        return <h1>Error</h1>
-    }
+        return <ErrorMessage />
+    };
 
     const renderItem = (data) => {
 
@@ -54,6 +58,6 @@ const ProductPage = () => {
             {render}
         </div>
     );
-}
+};
 
 export default ProductPage;

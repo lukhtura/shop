@@ -1,27 +1,26 @@
 //Core
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-//Utils
-import { showSlide, clearActiveSlide } from './productGallerySliderSlice'
+
+//Actions
+import { showSlide, clearActiveSlide } from 'src/redux/features/productGallerySliderSlice'
+
 //Styles
-import './productGallerySlider.scss';
+import 'src/ui/components/productGallerySlider/productGallerySlider.scss';
 
-
-const ProductGallerySlider = (props) => {
+const ProductGallerySlider = ({ gallery, name }) => {
 
     const dispatch = useDispatch();
-    const { activeSlide } = useSelector(state => state.slider);
+    const activeSlide = useSelector(state => state.slider.activeSlide);
 
     useEffect(() => {
-        return () => dispatch(clearActiveSlide())
+        return () => dispatch(clearActiveSlide());
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
-    const { gallery, name } = props;
+    }, []);
 
     return (
         <>
-            <aside className='product-page-gallery'>
+            <div className='product-page-gallery'>
                 {gallery.map((img, i) => {
                     return (
                         <div
@@ -30,9 +29,9 @@ const ProductGallerySlider = (props) => {
                             className='product-page-gallery-item'>
                             <img className='product-page-gallery-item-img' src={img} alt={name} />
                         </div>
-                    )
+                    );
                 })}
-            </aside>
+            </div>
 
             <div className='product-page-item'>
                 <div className='product-page-item-img'>

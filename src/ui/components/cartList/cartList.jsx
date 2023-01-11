@@ -1,9 +1,7 @@
 //Components
-import CartItem from './../cartItem/cartItem';
+import CartItem from 'src/ui/components/cartItem/cartItem';
 
-const CartList = (props) => {
-
-    const { data } = props;
+const CartList = ({ data }) => {
 
     const renderItems = (data) => {
         return (
@@ -28,8 +26,7 @@ const CartList = (props) => {
         <div>
             {renderItems(data)}
         </div>
-    )
-
+    );
 };
 
 

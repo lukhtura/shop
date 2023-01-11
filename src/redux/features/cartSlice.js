@@ -1,10 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     itemsInCart: [],
     quantity: 0,
-    totalPrice: 0,
-}
+};
 
 const countTotalQuantity = (arr) => {
     let res = 0;
@@ -12,7 +11,7 @@ const countTotalQuantity = (arr) => {
         res = res + item.quantity;
     });
     return res;
-}
+};
 
 const cartSlice = createSlice(
     {
@@ -23,15 +22,15 @@ const cartSlice = createSlice(
                 const res = state.itemsInCart.reduce((acc, item) => {
                     if (item.shopId === action.payload.shopId) {
                         acc += 1;
-                    }
+                    };
                     return acc;
-                }, 0)
+                }, 0);
 
                 if (res > 0) {
                     state.itemsInCart.forEach(item => {
                         if (item.shopId === action.payload.shopId) {
                             item.quantity += 1;
-                        }
+                        };
                     });
                 } else {
                     state.itemsInCart.push({ ...action.payload });
@@ -48,8 +47,8 @@ const cartSlice = createSlice(
                             item.quantity -= 1;
                         } else {
                             state.itemsInCart.splice(i, 1);
-                        }
-                    }
+                        };
+                    };
                 });
 
                 state.quantity = countTotalQuantity(state.itemsInCart);
@@ -60,11 +59,10 @@ const cartSlice = createSlice(
             restoreCartFromLocalStorage: (state, action) => {
                 state.itemsInCart = action.payload.itemsInCart;
                 state.quantity = action.payload.quantity;
-                state.totalPrice = action.payload.totalPrice;
             }
         }
     }
-)
+);
 
 const { actions, reducer } = cartSlice;
 export default reducer;

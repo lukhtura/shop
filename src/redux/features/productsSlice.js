@@ -1,7 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    loadingStatus: 'idle',
     products: [],
     categories: [],
     activeCategory: 'all',
@@ -13,11 +12,9 @@ const productsSlice = createSlice({
     initialState,
     reducers: {
         productsFetch: (state, action) => {
-            state.loadingStatus = 'idle';
             state.products = action.payload;
         },
         categoriesFetch: (state, action) => {
-            state.loadingStatus = 'idle';
             state.categories = action.payload;
         },
         activeCategoryChange: (state, action) => {

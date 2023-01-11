@@ -1,9 +1,9 @@
 //Core
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 //Components
-import ProductsList from "../../components/productsList/productsList";
+import ProductsList from 'src/ui/components/productsList/productsList';
 //Styles 
-import './categoryPage.css'
+import 'src/ui/pages/categoryPage/categoryPage.css'
 
 const CategoryPage = () => {
 
@@ -11,7 +11,7 @@ const CategoryPage = () => {
 
     return (
         <>
-            <h1 className="page-header">{categoryName.toUpperCase()}</h1>
+            <h1 className='page-header'>{categoryName.toUpperCase()}</h1>
             <ProductsList />
         </>
     );

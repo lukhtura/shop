@@ -1,30 +1,29 @@
 //Core
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 //Actions
-import { restoreCartFromLocalStorage } from "../../../redux/features/cartSlice";
-import { changeCurrency } from "../../../redux/features/headerSlice";
+import { restoreCartFromLocalStorage } from 'src/redux/features/cartSlice';
+import { changeCurrency } from 'src/redux/features/headerSlice';
 
 //Components
-import Header from "../header/header";
-import CartModal from "../cartModal/cartModal";
-import CurrencySelector from "../currencySelector/currencySelector";
+import Header from 'src/ui/components/header/header';
+import CartModal from 'src/ui/components/cartModal/cartModal';
+import CurrencySelector from 'src/ui/components/currencySelector/currencySelector';
 
 //Pages
-import CategoryPage from '../../pages/categoryPage/categoryPage';
-import CartPage from './../../pages/cartPage/cartPage';
-import ProductPage from "../../pages/pdp/productPage";
-import Page404 from "../../pages/404/page404";
+import CategoryPage from 'src/ui/pages/categoryPage/categoryPage';
+import CartPage from 'src/ui/pages/cartPage/cartPage';
+import ProductPage from 'src/ui/pages/productPage/productPage';
+import Page404 from 'src/ui/pages/404/page404';
 
-//helpers
-import ErrorBoundary from "../../../utils/errorBoundary";
-import ScrollToTop from "../../../utils/scrollToTop";
+//Utils
+import ErrorBoundary from 'src/utils/errorBoundary';
+import ScrollToTop from 'src/utils/scrollToTop';
 
 //Styles
-import './app.css';
-
+import 'src/ui/components/app/app.scss';
 
 function App() {
 
@@ -35,11 +34,11 @@ function App() {
         const currencySelectedFromLocalStorage = window.localStorage.getItem('CURRENCY_SELECTED');
         if (cartItemsFromLocalStorage !== null) {
             dispatch(restoreCartFromLocalStorage(JSON.parse(cartItemsFromLocalStorage)));
-        }
+        };
 
         if (currencySelectedFromLocalStorage !== null) {
             dispatch(changeCurrency(JSON.parse(currencySelectedFromLocalStorage)));
-        }
+        };
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -48,7 +47,7 @@ function App() {
     return (
         <ErrorBoundary>
             <Router>
-                <div className="app">
+                <div className='app'>
                     <Header />
                     <CurrencySelector />
                     <CartModal />
@@ -64,6 +63,6 @@ function App() {
             </Router>
         </ErrorBoundary>
     );
-}
+};
 
 export default App;

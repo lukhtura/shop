@@ -1,12 +1,10 @@
 //Styles
-import './productCard.scss'
+import 'src/ui/components/productCard/productCard.scss'
 
 //Images
-import greenCartIcon from './../../../assets/icons/green-cart-icon.svg'
+import greenCartIcon from 'src/assets/icons/green-cart-icon.svg'
 
-const ProductCard = (props) => {
-
-    const { name, brand, price, image, inStock } = props;
+const ProductCard = ({ name, brand, price, image, inStock }) => {
 
     let classNames = 'product-card';
 

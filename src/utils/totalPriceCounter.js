@@ -16,4 +16,4 @@ export const countTotalPrice = (data, currencyState) => {
     });
 
     return totalPrice.toFixed(2);
-}
+};

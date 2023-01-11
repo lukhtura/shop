@@ -1,13 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     cartModalOpened: false,
-    selectorOpened: false,
+    currencySelectorOpened: false,
     currencySelected: {
         label: 'USD',
         symbol: '$'
     }
-}
+};
 
 const headerSlice = createSlice({
     name: 'header',
@@ -16,8 +16,8 @@ const headerSlice = createSlice({
         toggleCartModal: (state, action) => {
             state.cartModalOpened = action.payload;
         },
-        toggleSelector: (state, action) => {
-            state.selectorOpened = action.payload;
+        toggleCurrencySelector: (state, action) => {
+            state.currencySelectorOpened = action.payload;
         },
         changeCurrency: (state, action) => {
             state.currencySelected = action.payload;
@@ -28,5 +28,5 @@ const headerSlice = createSlice({
 
 const { actions, reducer } = headerSlice;
 
-export const { toggleCartModal, toggleSelector, changeCurrency } = actions;
+export const { toggleCartModal, toggleCurrencySelector, changeCurrency } = actions;
 export default reducer;
