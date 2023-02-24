@@ -10,12 +10,15 @@ import { currencyExchanger } from "src/utils/currencyExchanger";
 //Styles
 import "src/ui/components/cartItem/cartItem.scss";
 import galleryButton from "src/assets/img/galleryArrow.svg";
+import { useStyles } from "./styles";
 
 const CartItem = (props) => {
 
+    /* STATE */
     const dispatch = useDispatch();
     const itemsInCart = useSelector(state => state.cart.itemsInCart);
     const currencySelected = useSelector(state => state.header.currencySelected);
+    /* STATE */
 
 
     const countCartItemsQuantity = (data, id) => {
