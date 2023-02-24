@@ -1,9 +1,22 @@
 .products-list {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 40px;
     flex-wrap: wrap;
 
     &-item {
         text-decoration: none;
+    }
+}
+
+@media (max-width: 1455px) {
+    .products-list {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 1455px) {
+    .products-list {
+        gap: 10px;
     }
 }

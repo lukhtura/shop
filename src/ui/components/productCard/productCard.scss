@@ -5,6 +5,7 @@
     height: 444px;
     position: relative;
     cursor: pointer;
+    transition: 0.3s;
 
     &:hover {
         box-shadow: 0 4px 35px 0 rgba(168, 172, 176, 0.19);
@@ -60,6 +61,7 @@
         bottom: 72px;
         right: 31px;
         opacity: 0;
+        transition: 0.3s;
     }
 }
 

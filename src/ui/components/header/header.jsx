@@ -1,25 +1,25 @@
 //Core
-import { useEffect } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { useQuery } from '@apollo/client';
+import { useEffect } from "react";
+import { Link as RouterLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useQuery } from "@apollo/client";
 
 //Actions
-import { categoriesFetch, activeCategoryChange } from 'src/redux/features/productsSlice';
-import { toggleCartModal, toggleCurrencySelector } from 'src/redux/features/headerSlice';
+import { categoriesFetch, activeCategoryChange } from "src/redux/features/productsSlice";
+import { toggleCartModal, toggleCurrencySelector } from "src/redux/features/headerSlice";
 
 //API
-import { GET_ALL_CATEGORIES } from 'src/api/products';
+import { GET_ALL_CATEGORIES } from "src/api/products";
 
 //Components
-import Spinner from 'src/ui/components/spinner/Spinner';
-import ErrorMessage from 'src/ui/components/errorMessage/errorMessage';
+import Spinner from "src/ui/components/spinner/Spinner";
+import ErrorMessage from "src/ui/components/errorMessage/errorMessage";
 
 //Styles
-import 'src/ui/components/header/header.scss';
-import cartImg from 'src/assets/icons/cart-icon.svg';
-import logo from 'src/assets/img/green-logo.svg';
-import currencySelectorArrow from 'src/assets/icons/selector-arrow.svg';
+import "src/ui/components/header/header.scss";
+import cartImg from "src/assets/icons/cart-icon.svg";
+import logo from "src/assets/img/green-logo.svg";
+import currencySelectorArrow from "src/assets/icons/selector-arrow.svg";
 
 function Header() {
 
@@ -42,10 +42,10 @@ function Header() {
         return <ErrorMessage />
     };
 
-    const renderCategories = (arr) => {
+    const renderCategoryButtons = (arr) => {
         return arr.map(item =>
-            <RouterLink key={item.name} className='category-btn' to={'./'} >
-                <div
+            <RouterLink key={item.name} className="category-btn" to={"./"} >
+                <div className="category-btn-container"
                     onClick={() => {
                         if (activeCategory !== item.name) {
                             dispatch(activeCategoryChange(item.name));
@@ -58,37 +58,37 @@ function Header() {
     };
 
     return (
-        <header className='header'>
-            <div className='header__inner'>
-                <div className='header__inner-categories'>
-                    {renderCategories(categories)}
+        <header className="header">
+            <div className="header__inner">
+                <div className="header__inner-categories">
+                    {renderCategoryButtons(categories)}
                 </div>
-                <RouterLink to={'./'} style={{ display: 'flex', alignItems: 'center' }}>
+                <RouterLink to={"./"} style={{ display: "flex", alignItems: "center" }}>
                     <img
                         src={logo}
-                        alt='logotype'
-                        className='header__inner-logo'
+                        alt="logotype"
+                        className="header__inner-logo"
                     />
                 </RouterLink>
-                <div className='header__inner-buttons'>
-                    <div onClick={() => dispatch(toggleCurrencySelector(!currencySelectorOpened))} className='currency-selector-button'>
+                <div className="header__inner-buttons">
+                    <div onClick={() => dispatch(toggleCurrencySelector(!currencySelectorOpened))} className="currency-selector-button">
                         <div>
                             {currencySelected.symbol}
                         </div>
-                        <div>
+                        <div className={currencySelectorOpened ? "currency-selector-arrow-rotate" : "currency-selector-arrow"} >
                             <img
                                 src={currencySelectorArrow}
                                 alt="selector"
-                                style={{ width: '10px' }} />
+                                style={{ width: "10px" }} />
                         </div>
                     </div>
-                    <div className='cart-button'
+                    <div className="cart-button"
                         onClick={() => dispatch(toggleCartModal(!cartModalOpened))}>
                         <img
                             src={cartImg}
-                            alt='cart'
+                            alt="cart"
                         />
-                        {quantity > 0 ? <div className='cart-button-counter'>{quantity}</div> : null}
+                        {quantity > 0 ? <div className="cart-button-counter">{quantity}</div> : null}
                     </div>
                 </div>
             </div>

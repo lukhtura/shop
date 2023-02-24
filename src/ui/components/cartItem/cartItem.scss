@@ -20,12 +20,6 @@
         font-size: 30px;
         line-height: 27px;
 
-        @media (max-width: 326px) {
-            font-weight: 300;
-            font-size: 16px;
-            line-height: 160%;
-        }
-
         @container (max-width: 325px) {
             font-weight: 300;
             font-size: 16px;
@@ -202,6 +196,7 @@
         align-items: center;
         user-select: none;
         cursor: pointer;
+        transition: 0.3s;
 
         @container (max-width: 325px) {
             margin: 5px 0;

@@ -55,6 +55,7 @@
         border: none;
         height: 50px;
         cursor: pointer;
+        transition: 0.3s;
 
         &:hover {
             background: #439058;
@@ -113,6 +114,7 @@
 .form_radio {
     width: 63px;
     border: 1px solid black;
+    transition: 0.3s;
 
     @container (max-width: 325px) {
         width: 24px;

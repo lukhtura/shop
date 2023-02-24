@@ -1,36 +1,47 @@
 //Core
-import { useSelector, useDispatch } from 'react-redux';
-import { useQuery } from '@apollo/client';
+import { useSelector, useDispatch } from "react-redux";
+import { useQuery } from "@apollo/client";
+
 //Actions
-import { toggleCurrencySelector, changeCurrency } from 'src/redux/features/headerSlice';
+import { toggleCurrencySelector, changeCurrency } from "src/redux/features/headerSlice";
+
 //API
-import { GET_ALL_CURRENCIES } from 'src/api/currencies';
+import { GET_ALL_CURRENCIES } from "src/api/currencies";
+
 //Components
-import Spinner from 'src/ui/components/spinner/Spinner';
-import ErrorMessage from 'src/ui/components/errorMessage/errorMessage';
+import Spinner from "src/ui/components/spinner/Spinner";
+import ErrorMessage from "src/ui/components/errorMessage/errorMessage";
+
 //Styles
-import 'src/ui/components/currencySelector/currencySelector.scss';
+import { useStyles } from "./styles";
 
 const CurrencySelector = () => {
 
+    /* STATE */
     const dispatch = useDispatch();
     const currencySelectorOpened = useSelector(state => state.header.currencySelectorOpened);
-    const { data, loading, error } = useQuery(GET_ALL_CURRENCIES);
+    /* STATE */
 
-    const renderCurrencies = (arr) => {
-        return arr.currencies.map(item => {
-            return (
-                <div
-                    key={item.label}
-                    onClick={() => {
-                        dispatch(changeCurrency({ label: item.label, symbol: item.symbol }));
-                        dispatch(toggleCurrencySelector(false));
-                    }}
-                    className='currency-selector-inner-item'>{item.symbol} {item.label}
-                </div>
-            );
-        });
-    };
+    /* GET DATA */
+    const { data, loading, error } = useQuery(GET_ALL_CURRENCIES);
+    /* GET DATA */
+
+    /* STYLES */
+    const classes = useStyles();
+    /* STYLES */
+
+    const renderCurrencies = (arr) => arr.currencies.map(item => (
+        <div
+            className={classes.item}
+            key={item.label}
+            onClick={() => {
+                dispatch(changeCurrency({ label: item.label, symbol: item.symbol }));
+                dispatch(toggleCurrencySelector(false));
+            }}
+        >
+            {item.symbol} {item.label}
+        </div>
+    ));
 
     if (loading) {
         return <Spinner />
@@ -38,20 +49,16 @@ const CurrencySelector = () => {
         return <ErrorMessage />
     };
 
-    let classNames = 'selector-overflow hide';
-    currencySelectorOpened ? classNames = 'selector-overflow' : classNames = 'selector-overflow hide';
-
     return (
         <div
-            onClick={() => dispatch(toggleCurrencySelector(false))}
-            className={classNames}>
-            <div onClick={e => e.stopPropagation()} className='currency-selector'>
-                <div className='currency-selector-inner'>
-                    {renderCurrencies(data)}
-                </div>
+            className={currencySelectorOpened ? classes.selector + ' ' + classes.open : classes.selector}
+            onClick={e => e.stopPropagation()}
+        >
+            <div className={classes.inner}>
+                {renderCurrencies(data)}
             </div>
-        </div>
+        </div >
     );
 };
 
-export default CurrencySelector; 
+export default CurrencySelector;

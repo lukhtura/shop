@@ -1,7 +1,7 @@
 .header {
     width: 100%;
     background: #fff;
-    z-index: 100;
+    z-index: 120;
     position: fixed;
     top: 0;
     left: 0;
@@ -60,6 +60,17 @@
             .currency-selector-button {
                 display: flex;
                 gap: 5px;
+
+                .currency-selector-arrow {
+                    display: flex;
+                    transition: 0.3s;
+                }
+
+                .currency-selector-arrow-rotate {
+                    display: flex;
+                    transform: rotate(-180deg);
+                    transition: 0.3s;
+                }
             }
 
             .cart-button {
