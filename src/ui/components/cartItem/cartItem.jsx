@@ -20,6 +20,8 @@ const CartItem = (props) => {
     const currencySelected = useSelector(state => state.header.currencySelected);
     /* STATE */
 
+    const classes = useStyles();
+
 
     const countCartItemsQuantity = (data, id) => {
         let res = 0;
@@ -37,6 +39,7 @@ const CartItem = (props) => {
     const selectedCurrencyPrice = currencyExchanger(prices, currencySelected);
 
     const renderActiveAttrs = (attrs) => {
+
         return attrs.map((item, i) => {
             if (item.name === "Color") {
                 return (
@@ -67,14 +70,25 @@ const CartItem = (props) => {
 
 
     return (
-        <div className="cart-item">
+
+        <div className={classes.cartItem}>
+
+            {/* ITEM INFO */}
             <div className="cart-item_inner-left">
+
                 <h2 className="cart-item_brand">{brand}</h2>
                 <h3 className="cart-item_name">{name}</h3>
                 <p className="cart-item_price">{selectedCurrencyPrice.currency.symbol} {selectedCurrencyPrice.amount}</p>
                 {renderActiveAttrs(activeAttrs)}
+
             </div>
+
+            {/* GALLERY AND QUANTITY COUNTER */}
+
             <div className="cart-item_inner-right">
+
+
+                {/* ITEM QUANTITY COUNTER */}
                 <div className="qty-container">
                     <div
                         onClick={() => {
@@ -89,6 +103,9 @@ const CartItem = (props) => {
                         type="button"
                         className="change-qty-btn">-</div>
                 </div>
+
+                {/* ITEM GALLERY */}
+
                 <div className="cart-gallery">
                     <div className="cart-gallery_flow">
                         {renderGallerySlider(gallery)}
@@ -105,6 +122,7 @@ const CartItem = (props) => {
                     </div>
                 </div>
             </div>
+
         </div>
     );
 };

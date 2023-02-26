@@ -20,15 +20,12 @@ const CurrencySelector = () => {
     /* STATE */
     const dispatch = useDispatch();
     const currencySelectorOpened = useSelector(state => state.header.currencySelectorOpened);
-    /* STATE */
 
     /* GET DATA */
     const { data, loading, error } = useQuery(GET_ALL_CURRENCIES);
-    /* GET DATA */
 
     /* STYLES */
     const classes = useStyles();
-    /* STYLES */
 
     const renderCurrencies = (arr) => arr.currencies.map(item => (
         <div
