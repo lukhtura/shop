@@ -1,5 +1,5 @@
 //Components
-import CartItem from 'src/ui/components/cartItem/cartItem';
+import CartItem from "src/ui/components/cartItem/cartItem";
 
 const CartList = ({ data }) => {
 

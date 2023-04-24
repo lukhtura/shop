@@ -8,7 +8,7 @@ import { addToCart, removeFromCart } from "src/redux/features/cartSlice";
 import { currencyExchanger } from "src/utils/currencyExchanger";
 
 //Styles
-import "src/ui/components/cartItem/cartItem.scss";
+// import "src/ui/components/cartItem/cartItem.scss";
 import galleryButton from "src/assets/img/galleryArrow.svg";
 import { useStyles } from "./styles";
 
@@ -43,12 +43,12 @@ const CartItem = (props) => {
         return attrs.map((item, i) => {
             if (item.name === "Color") {
                 return (
-                    <div className="cart-item_attribute" key={i}>
-                        <p className="cart-item_attribute-name">
+                    <div className={classes.attribute} key={i}>
+                        <p className={classes.attrName}>
                             {item.name.toUpperCase()}:<br />
                             <div
                                 style={{ backgroundColor: item.value, display: "inline-block" }}
-                                className="cart-item_attribute-color" key={i}>
+                                className={classes.attrColor} key={i}>
                             </div>
                         </p>
                     </div>
@@ -57,15 +57,15 @@ const CartItem = (props) => {
 
             return (
                 <div key={i}>
-                    <p className="cart-item_attribute-name">{item.name.toUpperCase()}:</p>
-                    <p className="cart-item_attribute-value">{item.value}</p>
+                    <p className={classes.attrName}>{item.name.toUpperCase()}:</p>
+                    <p className={classes.attrValue}>{item.value}</p>
                 </div>
             );
         });
     };
 
     const renderGallerySlider = (data) => {
-        return data.map((item, i) => <img key={item} className="gallery-item" src={gallery[i]} alt="alt" />);
+        return data.map((item, i) => <img key={item} className={classes.galleryItem} src={gallery[i]} alt="alt" />);
     };
 
 
@@ -74,49 +74,48 @@ const CartItem = (props) => {
         <div className={classes.cartItem}>
 
             {/* ITEM INFO */}
-            <div className="cart-item_inner-left">
-
-                <h2 className="cart-item_brand">{brand}</h2>
-                <h3 className="cart-item_name">{name}</h3>
-                <p className="cart-item_price">{selectedCurrencyPrice.currency.symbol} {selectedCurrencyPrice.amount}</p>
+            <div>
+                <h2 className={classes.brand}>{brand}</h2>
+                <h3 className={classes.name}>{name}</h3>
+                <p className={classes.price}>{selectedCurrencyPrice.currency.symbol} {selectedCurrencyPrice.amount}</p>
                 {renderActiveAttrs(activeAttrs)}
 
             </div>
 
             {/* GALLERY AND QUANTITY COUNTER */}
 
-            <div className="cart-item_inner-right">
+            <div className={classes.cartItemInnerRight}>
 
 
                 {/* ITEM QUANTITY COUNTER */}
-                <div className="qty-container">
+                <div className={classes.counterContainer}>
                     <div
                         onClick={() => {
                             dispatch(addToCart(props));
                         }}
                         type="button"
-                        className="change-qty-btn">+</div>
-                    <div className="cart-item_qty">{countCartItemsQuantity(itemsInCart, shopId)}</div>
+                        className={classes.counterButton}>+</div>
+                    <div className={classes.counterNumber}>{countCartItemsQuantity(itemsInCart, shopId)}</div>
                     <div onClick={() => {
                         dispatch(removeFromCart(shopId));
                     }}
                         type="button"
-                        className="change-qty-btn">-</div>
+                        className={classes.counterButton}>-</div>
                 </div>
 
                 {/* ITEM GALLERY */}
 
-                <div className="cart-gallery">
-                    <div className="cart-gallery_flow">
+                <div className={classes.gallery}>
+                    <div className={classes.galleryFlow}>
                         {renderGallerySlider(gallery)}
                     </div>
                     <div>
                         <img
-                            className="next-arrow"
+                            className={classes.nextBtn}
                             src={galleryButton}
                             alt="next" />
                         <img
-                            className="prev-arrow"
+                            className={classes.prevBtn}
                             src={galleryButton}
                             alt="previous" />
                     </div>

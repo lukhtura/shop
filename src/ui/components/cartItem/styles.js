@@ -1,7 +1,5 @@
 import { createUseStyles } from "react-jss";
 
-
-
 export const useStyles = createUseStyles(
     {
         cartItem: {
@@ -13,6 +11,11 @@ export const useStyles = createUseStyles(
             justifyContent: "space-between",
             borderTop: "1px solid #e5e5e5",
             borderBottom: "1px solid #e5e5e5",
+        },
+        cartItemInnerRight: {
+            width: "270px",
+            gap: "24px",
+            display: "flex",
         },
         brand: {
             margin: "0 0 16px",
@@ -58,11 +61,6 @@ export const useStyles = createUseStyles(
             height: "16px",
             marginTop: "5px",
         },
-        galleryContainer: {
-            width: "270px",
-            gap: "24px",
-            display: "flex",
-        },
         counterContainer: {
             display: "flex",
             flexDirection: "column",
@@ -91,6 +89,34 @@ export const useStyles = createUseStyles(
                 backgroundColor: "black",
                 color: "white",
             }
+        },
+        gallery: {
+            position: "relative",
+            height: "288px",
+            width: "192px",
+            overflow: "hidden",
+        },
+        galleryFlow: {
+            display: "flex",
+            height: "288px",
+        },
+        nextBtn: {
+            position: "absolute",
+            bottom: "15px",
+            opacity: "0.1",
+            right: "15px",
+        },
+        prevBtn: {
+            position: "absolute",
+            bottom: "15px",
+            opacity: "0.1",
+            transform: "rotate(180deg)",
+            right: "45px",
+        },
+        galleryItem: {
+            objectFit: "contain",
+            width: "200px",
+            height: "288px",
         },
     }
 )

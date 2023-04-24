@@ -1,20 +1,20 @@
 //Core
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 
 //Actions
-import { addToCart } from 'src/redux/features/cartSlice';
+import { addToCart } from "src/redux/features/cartSlice";
 
 //Utils
-import { currencyExchanger } from 'src/utils/currencyExchanger';
-import { objectToStringID } from 'src/utils/objectToStringID';
-import { objectToArrayOfObjects } from 'src/utils/objectToArrayOfObjects';
+import { currencyExchanger } from "src/utils/currencyExchanger";
+import { objectToStringID } from "src/utils/objectToStringID";
+import { objectToArrayOfObjects } from "src/utils/objectToArrayOfObjects";
 
 //Helpers
-import { Formik, Form, Field } from 'formik';
-import { v4 as genId } from 'uuid';
+import { Formik, Form, Field } from "formik";
+import { v4 as genId } from "uuid";
 
 //Styles
-import 'src/ui/components/productForm/productForm.scss';
+import "src/ui/components/productForm/productForm.scss";
 
 const ProductForm = ({ id, name, brand, description, attributes, prices, gallery, inStock }) => {
 
@@ -26,7 +26,7 @@ const ProductForm = ({ id, name, brand, description, attributes, prices, gallery
         const initialValues = {};
         data.map(item => item)
             .forEach(item => {
-                if (item.name === 'Color') {
+                if (item.name === "Color") {
                     initialValues[item.name] = item.items[0].displayValue;
                 } else {
                     initialValues[item.name] = item.items[0].value;
@@ -52,19 +52,19 @@ const ProductForm = ({ id, name, brand, description, attributes, prices, gallery
 
         return (
             data.map((item, i) => {
-                if (item.name === 'Color') {
+                if (item.name === "Color") {
                     return (
                         <div key={i}>
-                            <p className='product-form-field-label'>{item.name.toUpperCase()}:</p>
-                            <div className='attributes-container'>
+                            <p className="product-form-field-label">{item.name.toUpperCase()}:</p>
+                            <div className="attributes-container">
                                 {item.items.map((color, i) => {
                                     return (
                                         <div
                                             style={{ backgroundColor: color.value }}
-                                            className='form_radio-color color-btn' key={i}>
+                                            className="form_radio-color color-btn" key={i}>
                                             <Field
                                                 type="radio"
-                                                name='Color'
+                                                name="Color"
                                                 id={item.name + color.value}
                                                 value={color.displayValue} />
                                             <label htmlFor={item.name + color.value}></label>
@@ -78,8 +78,8 @@ const ProductForm = ({ id, name, brand, description, attributes, prices, gallery
 
                 return (
                     <div key={i}>
-                        <p className='product-form-field-label'>{item.name.toUpperCase()}:</p>
-                        <div className='attributes-container'>
+                        <p className="product-form-field-label">{item.name.toUpperCase()}:</p>
+                        <div className="attributes-container">
                             {item.items.map((attribute, i) => {
                                 return (
                                     <div key={i} className="form_radio">
@@ -102,15 +102,15 @@ const ProductForm = ({ id, name, brand, description, attributes, prices, gallery
     const renderSubmitButton = (status) => {
         return (
             status
-                ? <button className='add-button' type='submit'>ADD TO CART</button>
-                : <button disabled className='add-button disabled' type='submit'>OUT OF STOCK</button>
+                ? <button className="add-button" type="submit">ADD TO CART</button>
+                : <button disabled className="add-button disabled" type="submit">OUT OF STOCK</button>
         );
     };
 
     return (
-        <div className='product-form'>
-            <h2 className='product-form-brand'>{brand}</h2>
-            <h3 className='product-form-name'>{name}</h3>
+        <div className="product-form">
+            <h2 className="product-form-brand">{brand}</h2>
+            <h3 className="product-form-name">{name}</h3>
             {inStock ? null : <h3 style={{ color: "red" }}> Out of stock!</h3>}
             <Formik
                 initialValues={createFormInitialValues(attributes)}
@@ -118,14 +118,14 @@ const ProductForm = ({ id, name, brand, description, attributes, prices, gallery
             >
                 <Form>
                     {renderFormFields(attributes)}
-                    <div className='product-form-item-info-price-container'>
-                        <p className='product-form-field-label'>PRICE:</p>
-                        <p className='product-form-price'>{selectedCurrencyPrice.currency.symbol} {selectedCurrencyPrice.amount}</p>
+                    <div className="product-form-item-info-price-container">
+                        <p className="product-form-field-label">PRICE:</p>
+                        <p className="product-form-price">{selectedCurrencyPrice.currency.symbol} {selectedCurrencyPrice.amount}</p>
                     </div>
                     {renderSubmitButton(inStock)}
                 </Form>
             </Formik>
-            {description[0] === '<' || description[1] === '<'
+            {description[0] === "<" || description[1] === "<"
                 ? <div dangerouslySetInnerHTML={{ __html: description }}></div>
                 : <p>{description}</p>}
         </div>

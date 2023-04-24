@@ -1,27 +1,43 @@
 //Styles
-import 'src/ui/components/productCard/productCard.scss'
+import { useStyles } from "./styles";
 
 //Images
-import greenCartIcon from 'src/assets/icons/green-cart-icon.svg'
+import greenCartIcon from "src/assets/icons/green-cart-icon.svg"
 
 const ProductCard = ({ name, brand, price, image, inStock }) => {
 
-    let classNames = 'product-card';
+    /* STYLES */
+    const classes = useStyles();
+    /* STYLES */
+
 
     return (
-        <div className={inStock ? classNames : classNames + ' out-stock'}>
-            <div className="product-card-img-container" >
-                {inStock ? null : <p className='out-of-stock-text'>OUT OF STOCK</p>}
-                <img className="product-card-img" src={image} alt="product" />
+
+        <div className={inStock
+            ? classes.card
+            : `${classes.card}  ${classes.outStock}`}>
+
+            {/* IMAGE */}
+            <div className={classes.imgContainer} >
+                {inStock ? null : <p className={classes.outStockText}>OUT OF STOCK</p>}
+                <img className={classes.img} src={image} alt="product" />
             </div>
-            <div className="product-card-descr">
-                <p
-                    className="product-card-descr-name">{brand} {name}</p>
-                <p
-                    className="product-card-descr-price">{price.currency.symbol} {price.amount}</p>
+
+            {/* DESCRIPTION */}
+            <div className={classes.descriptionContainer}>
+                <p className={`${classes.name} ${classes.descriptionText}`}>{brand} {name}</p>
+                <p className={`${classes.price} ${classes.descriptionText}`}>{price.currency.symbol} {price.amount}</p>
             </div>
-            {inStock ? <img className="product-card-cart-icon" src={greenCartIcon} alt="cart" /> : null}
+
+            {/* CART ICON */}
+            {
+                inStock
+                    ? <img className={classes.cartIcon} src={greenCartIcon} alt="cart" />
+                    : null
+            }
+
         </div>
+
     )
 };
 

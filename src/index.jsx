@@ -7,17 +7,17 @@ import { Provider } from 'react-redux';
 import { store } from 'src/redux'
 
 const client = new ApolloClient({
-    uri: 'http://localhost:4000/',
-    cache: new InMemoryCache(),
+  uri: 'http://localhost:4000/',
+  cache: new InMemoryCache(),
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <ApolloProvider client={client}>
-        <Provider store={store}>
-            <React.StrictMode>
-                <App />
-            </React.StrictMode>
-        </Provider>
-    </ApolloProvider>
+  <ApolloProvider client={client}>
+    <Provider store={store}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </Provider>
+  </ApolloProvider>
 );
