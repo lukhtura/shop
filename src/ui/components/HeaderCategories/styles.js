@@ -3,11 +3,17 @@ import { createUseStyles } from "react-jss";
 export const useStyles = createUseStyles({
   categoriesContainer: {
     display: "flex",
-    width: "234px",
-    height: "80px",
-    justifyContent: "space-around"
+    justifyContent: "space-between",
+    gap: "16px"
   },
-  category: {
+  categoryButton: {
+    textDecoration: "none",
+    color: "black",
+    display: "flex",
+    alignItems: "center",
+    cursor: "pointer"
+  },
+  categoryButtonInner: {
     display: "flex",
     height: "80px",
     alignItems: "center",
@@ -18,11 +24,9 @@ export const useStyles = createUseStyles({
       borderBottom: "2px solid #5ece7b"
     }
   },
-  categoryInner: {
+  activeCategory: {
     textDecoration: "none",
-    color: "black",
-    display: "flex",
-    alignItems: "center",
-    cursor: "pointer"
+    color: "#5ece7b",
+    borderBottom: "2px solid #5ece7b"
   },
 });

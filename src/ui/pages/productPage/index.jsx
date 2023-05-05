@@ -7,28 +7,37 @@ import { useQuery } from "@apollo/client";
 import ProductPageGallery from "src/ui/components/ProductPageGallery";
 import ProductForm from "src/ui/components/ProductForm";
 import ErrorMessage from "src/ui/components/ErrorMessage";
+import Spinner from "src/ui/components/Spinner";
 
 //Utils
-import { GET_ONE_PRODUCT_BY_ID } from "src/api/products";
+import { GET_SINGLE_PRODUCT_BY_ID } from "src/api/products";
 
 //Styles 
-import "src/ui/pages/productPage/productPage.scss";
-import Spinner from "src/ui/components/Spinner";
+import { useStyles } from "./styles";
+
+
 
 function ProductPage() {
 
   const { productId } = useParams();
-  const { data, loading, error } = useQuery(GET_ONE_PRODUCT_BY_ID, {
+
+  /* API */
+  const { data, loading, error } = useQuery(GET_SINGLE_PRODUCT_BY_ID, {
     variables: {
       id: productId
     }
   });
+  /* API */
 
-  // if (loading) {
-  //   return <Spinner />;
-  // } else if (error) {
-  //   return <ErrorMessage />
-  // }
+  /* STYLES */
+  const classes = useStyles();
+  /* STYLES */
+
+  if (loading) {
+    return <Spinner />;
+  } else if (error) {
+    return <ErrorMessage />
+  }
 
   const renderProduct = (data) => {
 
@@ -55,7 +64,7 @@ function ProductPage() {
   const render = renderProduct(data.product);
 
   return (
-    <div className="product-page-container">
+    <div className={classes.container}>
       {render}
     </div>
   );

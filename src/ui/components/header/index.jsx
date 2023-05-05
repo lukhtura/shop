@@ -1,4 +1,5 @@
 //Core
+import { useSelector } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
 
 //Components
@@ -14,9 +15,13 @@ import logo from "src/assets/img/green-logo.svg";
 
 function Header() {
 
+  const filterContainerWidth = useSelector(state => state.header.filterContainerWidth);
+
   /* STYLES */
   const classes = useStyles();
   /* STYLES */
+
+  console.log()
 
   return (
     <header className={classes.header}>
@@ -31,7 +36,9 @@ function Header() {
           />
         </RouterLink>
 
-        <div className={classes.buttonsContainer}>
+        <div
+          className={classes.buttonsContainer}
+          style={{ width: filterContainerWidth }}>
           <CurrencySelectorHeaderButton />
           <CartModalHeaderButton />
         </div>

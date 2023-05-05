@@ -4,6 +4,7 @@ import { createUseStyles } from "react-jss";
 export const useStyles = createUseStyles({
   header: {
     width: "100%",
+    padding: "0 20px",
     background: "#fff",
     zIndex: "120",
     position: "fixed",
@@ -25,10 +26,9 @@ export const useStyles = createUseStyles({
     alignItems: "center"
   },
   buttonsContainer: {
-    width: "234px",
-    height: "80px",
     display: "flex",
-    justifyContent: "space-around",
+    justifyContent: "flex-end",
     alignItems: "center",
+    gap: "24px"
   },
 });

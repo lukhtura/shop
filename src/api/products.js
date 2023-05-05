@@ -29,7 +29,7 @@ export const GET_ALL_PRODUCTS = gql`
         }
     }`;
 
-export const GET_ONE_PRODUCT_BY_ID = gql`
+export const GET_SINGLE_PRODUCT_BY_ID = gql`
     query product($id: String!) {
         product (id: $id) {
             id,

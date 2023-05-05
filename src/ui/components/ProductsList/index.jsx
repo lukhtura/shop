@@ -21,6 +21,8 @@ import ProductCard from "src/ui/components/ProductCard";
 //Style
 import { useStyles } from "./styles";
 
+
+
 function ProductsList() {
 
   /* STATE */
