@@ -4,7 +4,7 @@ import { Link as RouterLink } from "react-router-dom";
 
 //Components
 import HeaderCategories from "src/ui/components/HeaderCategories";
-import CurrencySelectorHeaderButton from "src/ui/components/CurrencySelectorHeaderButton";
+import DropdownCurrencySelector from "src/ui/components/DropdownCurrencySelector";
 import CartModalHeaderButton from "src/ui/components/CartModalHeaderButton";
 
 //Styles
@@ -15,13 +15,15 @@ import logo from "src/assets/img/green-logo.svg";
 
 function Header() {
 
+  /* STATE */
   const filterContainerWidth = useSelector(state => state.header.filterContainerWidth);
+  /* STATE */
 
   /* STYLES */
   const classes = useStyles();
   /* STYLES */
 
-  console.log()
+
 
   return (
     <header className={classes.header}>
@@ -39,7 +41,7 @@ function Header() {
         <div
           className={classes.buttonsContainer}
           style={{ width: filterContainerWidth }}>
-          <CurrencySelectorHeaderButton />
+          <DropdownCurrencySelector />
           <CartModalHeaderButton />
         </div>
       </div>

@@ -2,16 +2,13 @@ import { createUseStyles } from "react-jss";
 
 export const useStyles = createUseStyles({
   selector: {
-    zIndex: "110",
+    display: "none",
     background: "white",
-    position: "fixed",
+    position: "absolute",
+    top: "54px",
+    left: "-20px",
     padding: "10px 0",
-    width: "114px",
-    height: "240px",
-    top: "-160px",
-    right: "323px",
     boxShadow: "0px 4px 35px rgb(168 172 176 / 19%)",
-    transition: "all 0.3s ease-in-out"
   },
   inner: {
     display: "flex",
@@ -31,7 +28,7 @@ export const useStyles = createUseStyles({
       background: "#eeeeee"
     }
   },
-  open: {
-    transform: "translateY(235px)"
+  show: {
+    display: "block"
   }
 });

@@ -9,7 +9,6 @@ import { toggleCurrencySelector } from "src/redux/slices/headerSlice";
 //Components
 import Header from "src/ui/components/Header";
 import CartModal from "src/ui/components/CartModal";
-import CurrencySelector from "src/ui/components/CurrencySelector";
 
 //Utils
 import ScrollToTop from "src/utils/scrollToTop";
@@ -49,7 +48,6 @@ function Layout() {
 
         {/* HEADER */}
         <Header />
-        <CurrencySelector />
         <CartModal />
         {/* HEADER */}
 

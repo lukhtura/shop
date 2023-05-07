@@ -11,12 +11,12 @@ export const useStyles = createUseStyles({
   },
   currencyArrow: {
     display: "flex",
-    transition: "0.3s"
+    transition: "0.1s"
   },
-  currencyArrowRotated: {
+  currencyArrowOpen: {
     display: "flex",
-    transition: "0.3s",
-    transform: "rotate(-180deg)"
+    transition: "0.1s",
+    transform: "translateY(10px)"
   },
   currencyArrowImg: {
     width: "10px"

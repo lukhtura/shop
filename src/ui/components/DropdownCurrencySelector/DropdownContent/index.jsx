@@ -17,7 +17,7 @@ import ErrorMessage from "src/ui/components/ErrorMessage";
 //Styles
 import { useStyles } from "./styles";
 
-function CurrencySelector() {
+function DropdownContent() {
 
   /* STATE */
   const dispatch = useDispatch();
@@ -48,7 +48,7 @@ function CurrencySelector() {
   if (!loading) {
     return (
       <div
-        className={currencySelectorOpen ? classes.selector + " " + classes.open : classes.selector}
+        className={currencySelectorOpen ? `${classes.selector} ${classes.show}` : classes.selector}
         onClick={e => e.stopPropagation()}
       >
         <div className={classes.inner}>
@@ -59,4 +59,4 @@ function CurrencySelector() {
   }
 }
 
-export default CurrencySelector;
+export default DropdownContent;

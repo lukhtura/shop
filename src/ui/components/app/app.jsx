@@ -1,6 +1,6 @@
 //Core
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 //Actions
@@ -8,7 +8,7 @@ import { restoreCartFromLocalStorage } from "src/redux/slices/cartSlice";
 import { changeCurrency } from "src/redux/slices/headerSlice";
 
 //Components
-import Layout from "src/ui/components/Layout/Layout";
+import Layout from "src/ui/components/Layout";
 import ErrorBoundary from "src/ui/components/ErrorBoundary";
 
 //Engine

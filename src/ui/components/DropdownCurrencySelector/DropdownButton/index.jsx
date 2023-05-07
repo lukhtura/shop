@@ -10,7 +10,7 @@ import currencySelectorArrow from "src/assets/icons/selector-arrow.svg";
 
 
 
-function CurrencySelectorHeaderButton() {
+function DropdownButton() {
 
   /* STATE */
   const dispatch = useDispatch();
@@ -31,7 +31,7 @@ function CurrencySelectorHeaderButton() {
 
       {/* OPEN CLOSE ARROW */}
       <div className={currencySelectorOpen
-        ? classes.currencyArrowRotated
+        ? classes.currencyArrowOpen
         : classes.currencyArrow} >
         <img
           src={currencySelectorArrow}
@@ -42,4 +42,4 @@ function CurrencySelectorHeaderButton() {
   );
 }
 
-export default CurrencySelectorHeaderButton;
+export default DropdownButton;
