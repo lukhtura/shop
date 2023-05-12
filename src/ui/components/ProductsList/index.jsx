@@ -53,8 +53,13 @@ function ProductsList() {
   useEffect(() => {
     if (!loading) {
       dispatch(productsFetch(data.category.products));
+
     }
   }, [loading]);
+
+
+  /* SORT PRODUCTS INSTOCK */
+  const sortedProductsInStockGoesFisrt = [...products].sort((a, b) => a.inStock && !b.inStock ? -1 : 0);
 
   return (
     <div className={classes.container}>
@@ -62,7 +67,7 @@ function ProductsList() {
 
         ? <h2>There is no items...</h2>
 
-        : products.map(item => {
+        : sortedProductsInStockGoesFisrt.map(item => {
           return (
             <Link
               className={classes.product}

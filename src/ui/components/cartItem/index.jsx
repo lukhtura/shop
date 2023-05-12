@@ -46,10 +46,10 @@ function CartItem(props) {
           <div className={classes.attribute} key={i}>
             <p className={classes.attrName}>
               {item.name.toUpperCase()}<br />
-              <div
+              <span
                 style={{ backgroundColor: item.value, display: "inline-block" }}
                 className={classes.attrColor} key={i}>
-              </div>
+              </span>
             </p>
           </div>
         );

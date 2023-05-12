@@ -1,8 +1,5 @@
 //Core
-import { useDispatch, useSelector } from "react-redux";
-
-//Actions
-import { toggleCurrencySelector } from "src/redux/slices/headerSlice";
+import { useSelector } from "react-redux";
 
 //Styles
 import { useStyles } from "./styles";
@@ -13,8 +10,7 @@ import currencySelectorArrow from "src/assets/icons/selector-arrow.svg";
 function DropdownButton() {
 
   /* STATE */
-  const dispatch = useDispatch();
-  const { currencySelectorOpen, currencySelected } = useSelector(state => state.header);
+  const { isCurrencySelectorOpen, currencySelected } = useSelector(state => state.header);
   /* STATE */
 
   /* STYLES */
@@ -22,7 +18,7 @@ function DropdownButton() {
   /* STYLES */
 
   return (
-    <div onClick={() => dispatch(toggleCurrencySelector(!currencySelectorOpen))} className={`${classes.currencySelectorBtn}`}>
+    <div className={`${classes.currencySelectorBtn}`}>
 
       {/* CURRENCY SYMBOL */}
       <div>
@@ -30,7 +26,7 @@ function DropdownButton() {
       </div>
 
       {/* OPEN CLOSE ARROW */}
-      <div className={currencySelectorOpen
+      <div className={isCurrencySelectorOpen
         ? classes.currencyArrowOpen
         : classes.currencyArrow} >
         <img

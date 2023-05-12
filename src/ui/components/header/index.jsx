@@ -5,11 +5,12 @@ import { Link as RouterLink } from "react-router-dom";
 //Components
 import HeaderCategories from "src/ui/components/HeaderCategories";
 import DropdownCurrencySelector from "src/ui/components/DropdownCurrencySelector";
-import CartModalHeaderButton from "src/ui/components/CartModalHeaderButton";
+import CartModal from "src/ui/components/CartModal/";
 
 //Styles
 import { useStyles } from "./styles";
 import logo from "src/assets/img/green-logo.svg";
+
 
 
 
@@ -42,7 +43,7 @@ function Header() {
           className={classes.buttonsContainer}
           style={{ width: filterContainerWidth }}>
           <DropdownCurrencySelector />
-          <CartModalHeaderButton />
+          <CartModal />
         </div>
       </div>
     </header>

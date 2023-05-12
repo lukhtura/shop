@@ -2,25 +2,23 @@ import { createUseStyles } from "react-jss";
 
 export const useStyles = createUseStyles({
   modalOverflow: {
-    transition: "all 300ms",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
     position: "fixed",
     top: "0",
     left: "0",
-    zIndex: "100",
-    width: "100%",
-    height: "100%",
-    overflow: "hidden",
-    backgroundColor: "rgba(57, 55, 72, 0.22)",
+    right: "0",
+    bottom: "0",
+    zIndex: "1000",
+    backgroundColor: "rgba(0, 0, 0, 0.7)",
   },
-  modal: {
+  modalContent: {
+    position: "relative",
     zIndex: "1000",
     padding: "5px 16px",
-    marginRight: "75px",
-    marginTop: "80px",
-    minHeight: "300px",
-    width: "325px",
-    position: "absolute",
-    right: "75px",
+    // minHeight: "300px",
+    maxWidth: "325px",
     backgroundColor: "white",
   },
   header: {
@@ -78,7 +76,22 @@ export const useStyles = createUseStyles({
       pointerEvents: "none"
     }
   },
-  displayNone: {
-    display: "none",
+  closeButton: {
+    width: "10px",
+    position: "absolute",
+    top: "10px",
+    right: "10px",
+    cursor: "pointer",
+
+    "& img": {
+      width: "10px",
+
+      "&:hover": {
+        width: "11px"
+      }
+    }
+  },
+  emptyMessage: {
+    padding: "10px"
   }
 });

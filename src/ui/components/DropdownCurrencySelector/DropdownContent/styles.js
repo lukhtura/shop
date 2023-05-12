@@ -2,10 +2,9 @@ import { createUseStyles } from "react-jss";
 
 export const useStyles = createUseStyles({
   selector: {
-    display: "none",
     background: "white",
     position: "absolute",
-    top: "54px",
+    top: "30px",
     left: "-20px",
     padding: "10px 0",
     boxShadow: "0px 4px 35px rgb(168 172 176 / 19%)",
@@ -28,7 +27,4 @@ export const useStyles = createUseStyles({
       background: "#eeeeee"
     }
   },
-  show: {
-    display: "block"
-  }
 });

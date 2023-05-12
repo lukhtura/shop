@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 //Actions
 import { restoreCartFromLocalStorage } from "src/redux/slices/cartSlice";
-import { changeCurrency } from "src/redux/slices/headerSlice";
+import { setCurrencySelected } from "src/redux/slices/headerSlice";
 
 //Components
 import Layout from "src/ui/components/Layout";
@@ -31,7 +31,7 @@ function App() {
 
     const currencySelectedFromLocalStorage = window.localStorage.getItem("CURRENCY_SELECTED");
     if (currencySelectedFromLocalStorage !== null) {
-      dispatch(changeCurrency(JSON.parse(currencySelectedFromLocalStorage)));
+      dispatch(setCurrencySelected(JSON.parse(currencySelectedFromLocalStorage)));
     }
   }, []);
   /* SAVE AND RESTORE LOCAL STORAGE */

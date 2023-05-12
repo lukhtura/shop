@@ -3,16 +3,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { useQuery } from "@apollo/client";
 
 //Actions
-import { toggleCurrencySelector, changeCurrency } from "src/redux/slices/headerSlice";
+import { setIsCurrencySelectorOpen, setCurrencySelected } from "src/redux/slices/headerSlice";
 
 //API
 import { GET_ALL_CURRENCIES } from "src/api/currencies";
-
-//Components
-// eslint-disable-next-line no-unused-vars
-import Spinner from "src/ui/components/Spinner";
-// eslint-disable-next-line no-unused-vars
-import ErrorMessage from "src/ui/components/ErrorMessage";
 
 //Styles
 import { useStyles } from "./styles";
@@ -21,7 +15,7 @@ function DropdownContent() {
 
   /* STATE */
   const dispatch = useDispatch();
-  const currencySelectorOpen = useSelector(state => state.header.currencySelectorOpen);
+  const isCurrencySelectorOpen = useSelector(state => state.header.isCurrencySelectorOpen);
   /* STATE */
 
   /* API*/
@@ -37,26 +31,26 @@ function DropdownContent() {
       className={classes.item}
       key={item.label}
       onClick={() => {
-        dispatch(changeCurrency({ label: item.label, symbol: item.symbol }));
-        dispatch(toggleCurrencySelector(false));
+        dispatch(setCurrencySelected({ label: item.label, symbol: item.symbol }));
+        dispatch(setIsCurrencySelectorOpen(false));
       }}
     >
       {item.symbol} {item.label}
     </div>
   ));
 
-  if (!loading) {
-    return (
-      <div
-        className={currencySelectorOpen ? `${classes.selector} ${classes.show}` : classes.selector}
-        onClick={e => e.stopPropagation()}
-      >
-        <div className={classes.inner}>
-          {renderCurrencies(data)}
-        </div>
-      </div >
-    );
-  }
+
+
+  if (!loading && isCurrencySelectorOpen) return (
+    <div
+      className={classes.selector}
+      onClick={e => e.stopPropagation()}
+    >
+      <div className={classes.inner}>
+        {renderCurrencies(data)}
+      </div>
+    </div >
+  );
 }
 
 export default DropdownContent;
