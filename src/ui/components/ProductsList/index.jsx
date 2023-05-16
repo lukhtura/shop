@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useQuery } from "@apollo/client";
 import { createSelector } from "@reduxjs/toolkit";
-import { Link } from "react-router-dom";
 
 //Utils
 import { currencyExchanger } from "src/utils/currencyExchanger";
@@ -58,32 +57,27 @@ function ProductsList() {
   }, [loading]);
 
 
-  /* SORT PRODUCTS INSTOCK */
+  /* SORT PRODUCTS INSTOCK FIRST */
   const sortedProductsInStockGoesFisrt = [...products].sort((a, b) => a.inStock && !b.inStock ? -1 : 0);
 
   return (
     <div className={classes.container}>
       {products.length === 0
 
-        ? <h2>There is no items...</h2>
+        ? <h2>There is no products...</h2>
 
-        : sortedProductsInStockGoesFisrt.map(item => {
+        : sortedProductsInStockGoesFisrt.map(({ id, inStock, brand, name, prices, gallery, category }) => {
           return (
-            <Link
-              className={classes.product}
-              key={item.id}
-              to={`./product/${item.id}`} >
-
-              <ProductCard
-                inStock={item.inStock}
-                id={item.id}
-                brand={item.brand}
-                name={item.name}
-                price={currencyExchanger(item.prices, currencySelected)}
-                image={item.gallery[0]}
-              />
-
-            </Link>
+            <ProductCard
+              category={category}
+              key={id}
+              inStock={inStock}
+              id={id}
+              brand={brand}
+              name={name}
+              price={currencyExchanger(prices, currencySelected)}
+              image={gallery[0]}
+            />
           );
         })}
     </div>

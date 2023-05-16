@@ -7,7 +7,7 @@ import { useStyles } from "./styles";
 
 
 
-function Main() {
+function MainPage() {
 
   /* STATE */
   const categoryName = useSelector(state => state.products.activeCategory);
@@ -25,4 +25,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default MainPage;

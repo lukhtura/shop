@@ -2,7 +2,7 @@
 import { paths } from "src/engine/config/paths";
 
 //PAGES
-import CategoryPage from "src/ui/pages/Main";
+import MainPage from "src/ui/pages/MainPage";
 import CartPage from "src/ui/pages/CartPage";
 import ProductPage from "src/ui/pages/ProductPage";
 import Page404 from "src/ui/pages/Page404";
@@ -10,7 +10,7 @@ import Page404 from "src/ui/pages/Page404";
 export const pages = [
   {
     path: paths.main,
-    element: <CategoryPage />
+    element: <MainPage />
   },
   {
     path: paths.cart,

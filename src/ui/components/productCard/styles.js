@@ -2,6 +2,9 @@ import { createUseStyles } from "react-jss";
 
 
 export const useStyles = createUseStyles({
+  linkWrapper: {
+    textDecoration: "none"
+  },
   card: {
     margin: "60px 0 0",
     padding: "16px",
