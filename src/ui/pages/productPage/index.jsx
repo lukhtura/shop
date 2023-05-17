@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 //Core
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
@@ -42,6 +41,7 @@ function ProductPage() {
   const renderProduct = (data) => {
 
     const { name, brand, id, inStock, description, attributes, prices, gallery } = data;
+    console.log(attributes)
 
     return (
       <>
@@ -61,11 +61,11 @@ function ProductPage() {
     );
   }
 
-  const render = renderProduct(data.product);
+  const view = renderProduct(data.product);
 
   return (
     <div className={classes.container}>
-      {render}
+      {view}
     </div>
   );
 }

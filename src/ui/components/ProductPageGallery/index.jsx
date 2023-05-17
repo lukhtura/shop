@@ -21,7 +21,7 @@ function ProductPageGallery({ gallery, name }) {
 
   useEffect(() => {
     return () => dispatch(clearActiveSlide());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

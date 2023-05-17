@@ -6,8 +6,5 @@ export const useStyles = createUseStyles({
     gridTemplateColumns: "1fr 1fr 1fr",
     gap: "40px",
     flexWrap: "wrap"
-  },
-  product: {
-    textDecoration: "none"
   }
 });

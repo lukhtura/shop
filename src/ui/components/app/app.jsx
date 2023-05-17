@@ -33,7 +33,7 @@ function App() {
     if (currencySelectedFromLocalStorage !== null) {
       dispatch(setCurrencySelected(JSON.parse(currencySelectedFromLocalStorage)));
     }
-  }, []);
+  }, [dispatch]);
   /* SAVE AND RESTORE LOCAL STORAGE */
 
   return (
