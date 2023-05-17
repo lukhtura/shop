@@ -43,7 +43,7 @@ function ProductsList() {
   /* STATE */
 
   /* API */
-  const { data, loading } = useQuery(GET_ALL_PRODUCTS);
+  const { data, loading, error } = useQuery(GET_ALL_PRODUCTS);
   /* API */
 
   /* STYLES */

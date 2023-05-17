@@ -10,7 +10,7 @@ import ErrorMessage from "src/ui/components/ErrorMessage";
 import Spinner from "src/ui/components/Spinner";
 
 //Utils
-import { GET_SINGLE_PRODUCT_BY_ID } from "src/api/products";
+import { GET_PRODUCT_BY_ID } from "src/api/products";
 
 //Styles 
 import { useStyles } from "./styles";
@@ -22,7 +22,7 @@ function ProductPage() {
   const { productId } = useParams();
 
   /* API */
-  const { data, loading, error } = useQuery(GET_SINGLE_PRODUCT_BY_ID, {
+  const { data, loading, error } = useQuery(GET_PRODUCT_BY_ID, {
     variables: {
       id: productId
     }

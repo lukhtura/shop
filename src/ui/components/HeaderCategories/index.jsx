@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
 //API
-import { GET_ALL_CATEGORIES } from "src/api/products";
+import { GET_ALL_CATEGORIES } from "src/api/categories";
 
 //Actions
 import { categoriesFetch, activeCategoryChange } from "src/redux/slices/productsSlice";
