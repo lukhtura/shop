@@ -1,1 +1,0 @@
-import{j as o,L as i}from"./index-7f0b1f25.js";function t(){return o.jsx(i,{style:{color:"#439058",display:"block",fontWeight:"bold",fontSize:24,marginTop:30},to:"/",children:"Back to main page"})}export{t as M};

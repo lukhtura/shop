@@ -1,5 +1,5 @@
 //Components
-import MainPageLink from "src/ui/components/MainPageLink";
+import MainPageLink from "ui/components/MainPageLink";
 
 //Styles
 import { useStyles } from "./styles";
@@ -8,9 +8,9 @@ import { useStyles } from "./styles";
 
 function Page404() {
 
-  /* STYLES */
+  /**/
   const classes = useStyles();
-  /* STYLES */
+  /**/
 
   return (
     <div className={classes.container}>

@@ -1,15 +1,17 @@
 //Core
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
+import useMediaQuery from "engine/hooks/useMediaQuery";
 
 //Actions
-import { setIsCurrencySelectorOpen } from "src/redux/slices/headerSlice";
+import { setIsCurrencySelectorOpen } from "engine/redux/slices/headerSlice";
 
 //Components
-import Header from "src/ui/components/Header";
+import Header from "ui/scenes/header/HeaderComponent";
+import HeaderCategoriesDropdownContent from "ui/scenes/header/HeaderDropdownCategories/HeaderCategoriesDropdownContent";
 
 //Utils
-import ScrollToTop from "src/utils/scrollToTop";
+import ScrollToTop from "utils/scrollToTop";
 
 //Styles
 import { useStyles } from "./styles";
@@ -18,14 +20,12 @@ import { useStyles } from "./styles";
 
 function Layout() {
 
-  /* STATE */
   const dispatch = useDispatch();
   const { isCurrencySelectorOpen } = useSelector(state => state.header);
-  /* STATE */
 
-  /* STYLES */
+  const isMobile = useMediaQuery('(max-width: 960px)');
   const classes = useStyles();
-  /* STYLES */
+
 
   return (
     <div >
@@ -35,6 +35,7 @@ function Layout() {
 
         {/* HEADER */}
         <Header />
+        {isMobile ? <HeaderCategoriesDropdownContent /> : null}
         {/* HEADER */}
 
         <ScrollToTop>

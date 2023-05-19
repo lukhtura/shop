@@ -3,13 +3,13 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
 //Components
-import ProductPageGallery from "src/ui/components/ProductPageGallery";
-import ProductForm from "src/ui/components/ProductForm";
-import ErrorMessage from "src/ui/components/ErrorMessage";
-import Spinner from "src/ui/components/Spinner";
+import ProductPageGallery from "ui/scenes/product/ProductPageGallery";
+import ProductForm from "ui/scenes/product/ProductForm";
+import ErrorMessage from "ui/components/ErrorMessage";
+import Spinner from "ui/components/Spinner";
 
 //Utils
-import { GET_PRODUCT_BY_ID } from "src/api/products";
+import { GET_PRODUCT_BY_ID } from "api/products";
 
 //Styles 
 import { useStyles } from "./styles";
@@ -20,17 +20,13 @@ function ProductPage() {
 
   const { productId } = useParams();
 
-  /* API */
   const { data, loading, error } = useQuery(GET_PRODUCT_BY_ID, {
     variables: {
       id: productId
     }
   });
-  /* API */
 
-  /* STYLES */
   const classes = useStyles();
-  /* STYLES */
 
   if (loading) {
     return <Spinner />;

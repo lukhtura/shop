@@ -1,13 +1,16 @@
+//Core
+import { lazy } from "react";
+
 // Engine
-import { paths } from "src/engine/config/paths";
+import { paths } from "engine/config/paths";
 
-//PAGES
-import MainPage from "src/ui/pages/MainPage";
-import CartPage from "src/ui/pages/CartPage";
-import ProductPage from "src/ui/pages/ProductPage";
-import Page404 from "src/ui/pages/Page404";
+//Pages
+const MainPage = lazy(() => import("ui/pages/MainPage"));
+const CartPage = lazy(() => import("ui/pages/CartPage"));
+const ProductPage = lazy(() => import("ui/pages/ProductPage"));
+const Page404 = lazy(() => import("ui/pages/Page404"));
 
-export const pages = [
+export const routes = [
   {
     path: paths.main,
     element: <MainPage />

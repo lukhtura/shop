@@ -1,6 +1,6 @@
 import { createUseStyles } from "react-jss";
 
-export const useStyles = createUseStyles({
+export const useStyles = createUseStyles((theme) => ({
   header: {
     margin: "160px 0 55px",
     fontWeight: "700",
@@ -16,7 +16,7 @@ export const useStyles = createUseStyles({
     flexDirection: "column"
   },
   orderBtn: {
-    background: "#5ece7b",
+    background: theme.colors.primary,
     color: "white",
     border: "none",
     height: "45px",
@@ -24,7 +24,7 @@ export const useStyles = createUseStyles({
     transition: "0.3s",
 
     "&:hover": {
-      "background": "#439058"
+      background: theme.colors.primaryHover
     }
   },
-});
+}));

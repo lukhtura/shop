@@ -1,6 +1,6 @@
 import { createUseStyles } from "react-jss";
 
-export const useStyles = createUseStyles({
+export const useStyles = createUseStyles((theme) => ({
   container: {
     marginTop: "160px",
     display: "flex",
@@ -21,7 +21,7 @@ export const useStyles = createUseStyles({
     fontSize: "37px",
     width: "45px",
     height: "45px",
-    background: "white",
+    background: theme.colors.background,
     border: "1px solid black",
     cursor: "pointer",
     fontWeight: "100",
@@ -30,4 +30,4 @@ export const useStyles = createUseStyles({
     fontWeight: "500",
     fontSize: "24px",
   }
-});
+}));

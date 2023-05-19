@@ -1,1 +1,0 @@
-import{j as e}from"./index-7f0b1f25.js";import{M as t}from"./index-89a07ad0.js";function s(){return e.jsxs("div",{style:{textAlign:"center"},children:[e.jsx("p",{style:{fontWeight:"bold",fontSize:24,marginTop:100},children:"Page doesn't exist"}),e.jsx(t,{})]})}export{s as default};

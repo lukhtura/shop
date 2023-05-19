@@ -1,6 +1,23 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "src",
+    "paths": {
+      "api/*": [
+        "api/*"
+      ],
+      "assets/*": [
+        "/assets/*"
+      ],
+      "engine/*": [
+        "/engine/*"
+      ],
+      "ui/*": [
+        "/ui/*"
+      ],
+      "utils/*": [
+        "/utils/*"
+      ],
+    }
   },
   "include": [
     "src"

@@ -2,6 +2,6 @@
 export const paths = Object.freeze({
   main: "/",
   cart: "/cart",
-  product: "/:category/:productId",
+  product: "/:productId",
   page404: "*"
 });

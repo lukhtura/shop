@@ -1,6 +1,6 @@
 //Style
 import { useStyles } from "./styles";
-import spinner from "src/assets/spinner.svg";
+import spinner from "assets/spinner.svg";
 
 function Spinner() {
   const classes = useStyles();

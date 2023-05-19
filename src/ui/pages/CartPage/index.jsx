@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 
 //Components
-import CartList from "src/ui/components/CartList";
-import CartPageTotalModule from "src/ui/components/CartPageTotalModule";
-import SubmitButton from "src/ui/components/SubmitButton";
-import MainPageLink from "src/ui/components/MainPageLink";
+import CartList from "ui/scenes/cart/CartList";
+import CartPageTotalModule from "ui/scenes/cart/CartPageTotalModule";
+import SubmitButton from "ui/components/SubmitButton";
+import MainPageLink from "ui/components/MainPageLink";
 
 //Styles
 import { useStyles } from "./styles";
@@ -13,13 +13,13 @@ import { useStyles } from "./styles";
 
 function CartPage() {
 
-  /* STATE */
+  /*  */
   const { itemsInCart } = useSelector(state => state.cart);
-  /* STATE */
+  /*  */
 
-  /* STYLES */
+  /**/
   const classes = useStyles();
-  /* STYLES */
+  /**/
 
   const showComponent = itemsInCart.length !== 0;
 

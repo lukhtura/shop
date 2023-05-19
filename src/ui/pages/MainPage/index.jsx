@@ -1,7 +1,7 @@
 //Core
 import { useSelector } from "react-redux";
 //Components
-import ProductsList from "src/ui/components/ProductsList";
+import ProductsList from "ui/scenes/product/ProductsList";
 //Styles 
 import { useStyles } from "./styles";
 
@@ -9,13 +9,13 @@ import { useStyles } from "./styles";
 
 function MainPage() {
 
-  /* STATE */
-  const categoryName = useSelector(state => state.products.activeCategory);
-  /* STATE */
+  /*  */
+  const categoryName = useSelector(state => state.categories.activeCategory);
+  /*  */
 
-  /* STYLES */
+  /**/
   const classes = useStyles();
-  /* STYLES */
+  /**/
 
   return (
     <>
