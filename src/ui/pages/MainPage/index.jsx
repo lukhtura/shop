@@ -19,7 +19,7 @@ function MainPage() {
 
   return (
     <>
-      <h1 className={classes.header}>{categoryName.toUpperCase()}</h1>
+      <p className={classes.header}>{categoryName.toUpperCase()}</p>
       <ProductsList />
     </>
   );

@@ -1,14 +1,15 @@
 //Core
 import { useRef, useLayoutEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
+import useMediaQuery from "engine/hooks/useMediaQuery";
+import { Link, useLocation } from "react-router-dom";
 
 //API
 import { GET_ALL_CATEGORIES } from "api/categories";
 
 //Actions
-import { activeCategoryChange } from "engine/redux/slices/categoriesSlice";
+import { setActiveCategory } from "engine/redux/slices/categoriesSlice";
 import { setFilterContainerWidth } from "engine/redux/slices/headerSlice";
 
 //Styles
@@ -23,16 +24,21 @@ function HeaderCategories() {
 
   const { data, loading, error } = useQuery(GET_ALL_CATEGORIES);
 
+  const containerRef = useRef();
+
+  const isMobile = useMediaQuery('(max-width: 960px)');
+
   const classes = useStyles();
 
-  const containerRef = useRef();
+  const location = useLocation();
 
 
   useLayoutEffect(() => {
-    if (!loading && !error) {
+    if (!loading && !error && !isMobile) {
       dispatch(setFilterContainerWidth(`${containerRef.current.offsetWidth}px`));
+      console.log(location.pathname)
     }
-  }, [dispatch, loading, error]);
+  }, [dispatch, loading, error, isMobile, location]);
 
 
   if (!loading && !error) return (
@@ -40,24 +46,48 @@ function HeaderCategories() {
       className={classes.categoriesContainer}
       ref={containerRef}>
       {data.categories.map(({ name }) => {
-        return (
-          <Link key={name} className={classes.categoryButton} to={`./`} >
-            <div
-              className={
-                /* ADD ACTIVE CLASS FOR BUTTON */
-                activeCategory === name
-                  ? `${classes.categoryButtonInner} ${classes.activeCategory}`
-                  : classes.categoryButtonInner
-              }
-              onClick={() => {
-                if (activeCategory !== name) {
-                  dispatch(activeCategoryChange(name));
+        if (location.pathname === "/") {
+          return (
+            <div key={name} className={classes.categoryButton} >
+              <div
+                className={
+                  /* ADD ACTIVE CLASS FOR BUTTON */
+                  activeCategory === name
+                    ? `${classes.categoryButtonInner} ${classes.activeCategory}`
+                    : classes.categoryButtonInner
                 }
-              }}
-              key={name} >{name.toUpperCase()}
+                onClick={() => {
+                  if (activeCategory !== name) {
+                    dispatch(setActiveCategory(name));
+                  }
+                }}
+                key={name} >{name.toUpperCase()}
+              </div>
             </div>
-          </Link>
-        );
+          );
+        } else {
+          return (
+            <Link
+              key={name}
+              className={classes.categoryButton}
+              to={"/"} >
+              <div
+                className={
+                  /* ADD ACTIVE CLASS FOR BUTTON */
+                  activeCategory === name
+                    ? `${classes.categoryButtonInner} ${classes.activeCategory}`
+                    : classes.categoryButtonInner
+                }
+                onClick={() => {
+                  if (activeCategory !== name) {
+                    dispatch(setActiveCategory(name));
+                  }
+                }}
+                key={name} >{name.toUpperCase()}
+              </div>
+            </Link>
+          );
+        }
       })}
     </div>
   );

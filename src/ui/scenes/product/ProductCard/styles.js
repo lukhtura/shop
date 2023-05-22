@@ -15,7 +15,8 @@ export const useStyles = createUseStyles((theme) => ({
     transition: "0.3s",
 
     "&:hover": {
-      boxShadow: "0 4px 35px 0 rgba(168, 172, 176, 0.19)",
+      // boxShadow: "0 4px 35px 0 rgba(168, 172, 176, 0.19)",
+      boxShadow: "0 13px 35px 9px rgba(168, 172, 176, 0.19)",
     },
 
     /* CART ICON VISIBLE */
@@ -70,5 +71,26 @@ export const useStyles = createUseStyles((theme) => ({
     right: "31px",
     opacity: "0",
     transition: "0.3s",
-  }
+  },
+
+
+  [`@media(max-width: ${theme.breakpoints.xl})`]: {
+    card: {
+      padding: "10px",
+      width: "386px",
+      height: "444px",
+      position: "relative",
+      cursor: "pointer",
+      transition: "0.3s",
+
+      "&:hover": {
+        boxShadow: "0 4px 35px 0 rgba(168, 172, 176, 0.19)",
+      },
+
+      /* CART ICON VISIBLE */
+      "&:hover $cartIcon": {
+        opacity: "1",
+      }
+    },
+  },
 }));

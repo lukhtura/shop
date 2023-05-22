@@ -28,21 +28,20 @@ function Layout() {
 
 
   return (
-    <div >
+    <>
+      {/* HEADER */}
+      < Header />
+      {isMobile ? <HeaderCategoriesDropdownContent /> : null
+      }
+      {/* HEADER */}
       <div
-        className={classes.layout}
+        className={classes.content}
         onClick={() => { if (isCurrencySelectorOpen) dispatch(setIsCurrencySelectorOpen(false)) }}>
-
-        {/* HEADER */}
-        <Header />
-        {isMobile ? <HeaderCategoriesDropdownContent /> : null}
-        {/* HEADER */}
-
         <ScrollToTop>
           <Outlet />
         </ScrollToTop>
       </div>
-    </div>
+    </>
   );
 }
 

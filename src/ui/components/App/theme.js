@@ -12,5 +12,9 @@ export const theme = {
     md: "960px",
     lg: "1280px",
     xl: "1520px",
+  },
+  zIndex: {
+    header: 120,
+    dropdown: 110
   }
 };

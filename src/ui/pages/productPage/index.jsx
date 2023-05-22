@@ -1,6 +1,8 @@
 //Core
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
+import { useDispatch } from "react-redux";
 
 //Components
 import ProductPageGallery from "ui/scenes/product/ProductPageGallery";
@@ -8,15 +10,22 @@ import ProductForm from "ui/scenes/product/ProductForm";
 import ErrorMessage from "ui/components/ErrorMessage";
 import Spinner from "ui/components/Spinner";
 
-//Utils
+//Api
 import { GET_PRODUCT_BY_ID } from "api/products";
+
+//Actions
+import { setActiveCategory } from "engine/redux/slices/categoriesSlice";
 
 //Styles 
 import { useStyles } from "./styles";
 
 
 
+
+
 function ProductPage() {
+
+  const dispatch = useDispatch();
 
   const { productId } = useParams();
 
@@ -28,6 +37,10 @@ function ProductPage() {
 
   const classes = useStyles();
 
+  useEffect(() => {
+    dispatch(setActiveCategory(data?.product.category))
+  }, [data])
+
   if (loading) {
     return <Spinner />;
   } else if (error) {
@@ -35,24 +48,20 @@ function ProductPage() {
   }
 
   const renderProduct = (data) => {
-
-    const { name, brand, id, inStock, description, attributes, prices, gallery } = data;
-    console.log(attributes)
-
     return (
       <>
         <ProductPageGallery
-          name={name}
-          gallery={gallery} />
+          name={data.name}
+          gallery={data.gallery} />
         <ProductForm
-          name={name}
-          brand={brand}
-          id={id}
-          inStock={inStock}
-          description={description}
-          attributes={attributes}
-          prices={prices}
-          gallery={gallery} />
+          name={data.name}
+          brand={data.brand}
+          id={data.id}
+          inStock={data.inStock}
+          description={data.description}
+          attributes={data.attributes}
+          prices={data.prices}
+          gallery={data.gallery} />
       </>
     );
   }
