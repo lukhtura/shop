@@ -17,8 +17,7 @@ export const useStyles = createUseStyles((theme) => ({
     position: "relative",
     zIndex: "1000",
     padding: "5px 16px",
-    // minHeight: "300px",
-    maxWidth: "325px",
+    maxWidth: "550px",
     backgroundColor: "white",
   },
   header: {

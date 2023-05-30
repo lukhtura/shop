@@ -6,7 +6,7 @@ import { useQuery } from "@apollo/client";
 import { currencyExchanger } from "utils/currencyExchanger";
 
 //Api
-import { GET_ALL_PRODUCTS } from "api/products";
+import { GET_ALL_PRODUCTS } from "api/queries/products";
 
 //Components
 import ProductCard from "ui/scenes/product/ProductCard";

@@ -2,6 +2,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form } from "formik";
 import { v4 as genId } from "uuid";
+import { useState } from "react";
 
 //Actions
 import { addToCart } from "engine/redux/slices/cartSlice";
@@ -22,17 +23,16 @@ import { useStyles } from "./styles";
 
 function ProductForm({ id, name, brand, description, attributes, prices, gallery, inStock }) {
 
-  /*  */
+
   const dispatch = useDispatch();
   const currencySelected = useSelector(state => state.header.currencySelected);
   const selectedCurrencyPrice = currencyExchanger(prices, currencySelected);
-  /*  */
+  const [isShowAddMessage, setIsShowAddMessage] = useState(false);
 
-  /**/
   const classes = useStyles();
-  /**/
 
-  const createFormInitialValues = (data) => {
+
+  function createFormInitialValues(data) {
     const initialValues = {}
     data.map(item => item)
       .forEach(item => {
@@ -45,7 +45,7 @@ function ProductForm({ id, name, brand, description, attributes, prices, gallery
     return initialValues;
   }
 
-  const onSubmit = (fields) => {
+  function onSubmit(fields) {
     dispatch(addToCart({
       id: genId(),
       shopId: id + objectToStringID(fields),
@@ -57,6 +57,13 @@ function ProductForm({ id, name, brand, description, attributes, prices, gallery
       gallery,
     }));
   }
+
+  function showAddMessage() {
+    setTimeout(() => setIsShowAddMessage(true), 100)
+    setTimeout(() => setIsShowAddMessage(false), 1500)
+  }
+
+
 
   return (
     <div className={classes.container}>
@@ -80,12 +87,16 @@ function ProductForm({ id, name, brand, description, attributes, prices, gallery
 
           {/* ADD TO CART BUTTON */}
           <SubmitButton
-            label={inStock ? "ADD TO CART" : "OUT OF STOCK"}
-            disabled={!inStock}
-            className={classes.addToCartBtn} />
+            onClick={showAddMessage}
+            disabled={isShowAddMessage || !inStock}
+            className={classes.addToCartBtn}>
+            {inStock ? "ADD TO CART" : "OUT OF STOCK"}
+          </SubmitButton>
 
         </Form>
       </Formik>
+
+      {isShowAddMessage ? <p className={classes.message}>Product added!</p> : null}
 
       {/* NORMALIZE DESCRIPTION */}
       {description[0] === "<" || description[1] === "<"

@@ -47,4 +47,9 @@ export const useStyles = createUseStyles((theme) => ({
       pointerEvents: "none"
     }
   },
+  message: {
+    color: theme.colors.primary,
+    fontSize: "20px",
+    fontWeight: 500
+  }
 }));

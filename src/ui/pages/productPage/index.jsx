@@ -11,7 +11,7 @@ import ErrorMessage from "ui/components/ErrorMessage";
 import Spinner from "ui/components/Spinner";
 
 //Api
-import { GET_PRODUCT_BY_ID } from "api/products";
+import { GET_PRODUCT_BY_ID } from "api/queries/products";
 
 //Actions
 import { setActiveCategory } from "engine/redux/slices/categoriesSlice";

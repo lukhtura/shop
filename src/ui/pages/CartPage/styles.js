@@ -16,6 +16,7 @@ export const useStyles = createUseStyles((theme) => ({
     flexDirection: "column"
   },
   orderBtn: {
+    position: "relative",
     background: theme.colors.primary,
     color: "white",
     border: "none",

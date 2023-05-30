@@ -10,6 +10,7 @@ import { setCurrencySelected } from "engine/redux/slices/headerSlice";
 //Components
 import Layout from "ui/components/Layout";
 import ErrorBoundary from "ui/components/ErrorBoundary";
+import Spinner from "ui/components/Spinner";
 
 //Engine
 import { routes } from "engine/config/routes";
@@ -42,7 +43,7 @@ function App() {
     <ErrorBoundary>
       <ThemeProvider theme={theme}>
         <Router>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Spinner />}>
             <Routes>
               <Route path="/" element={<Layout />}>
                 {routes.map(({ path, element }) =>

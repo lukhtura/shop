@@ -1,9 +1,10 @@
-function SubmitButton({ label, disabled, className }) {
+function SubmitButton({ disabled, className, onClick, children }) {
   return <button
+    onClick={onClick}
     className={className}
     type="submit"
     disabled={disabled}>
-    {label}
+    {children}
   </button>
 }
 

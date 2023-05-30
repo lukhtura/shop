@@ -6,7 +6,7 @@ import useMediaQuery from "engine/hooks/useMediaQuery";
 import { Link, useLocation } from "react-router-dom";
 
 //API
-import { GET_ALL_CATEGORIES } from "api/categories";
+import { GET_ALL_CATEGORIES } from "api/queries/categories";
 
 //Actions
 import { setActiveCategory } from "engine/redux/slices/categoriesSlice";
@@ -36,7 +36,6 @@ function HeaderCategories() {
   useLayoutEffect(() => {
     if (!loading && !error && !isMobile) {
       dispatch(setFilterContainerWidth(`${containerRef.current.offsetWidth}px`));
-      console.log(location.pathname)
     }
   }, [dispatch, loading, error, isMobile, location]);
 

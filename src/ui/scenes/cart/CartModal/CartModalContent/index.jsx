@@ -22,16 +22,12 @@ import closeIcon from "assets/icons/close.png"
 
 function CartModalContent() {
 
-  /*  */
   const dispatch = useDispatch();
   const currencySelected = useSelector(state => state.header.currencySelected);
   const isCartModalOpen = useSelector(state => state.header.isCartModalOpen);
   const { quantity, itemsInCart } = useSelector(state => state.cart);
-  /*  */
 
-  /**/
   const classes = useStyles();
-  /**/
 
   useEffect(() => {
     /* CLOSE MODAL ON ESC BUTTON */
@@ -47,6 +43,13 @@ function CartModalContent() {
       window.removeEventListener("keydown", handleEscape);
     };
   }, [dispatch]);
+
+  function CloseEmptyCartModalAuto() {
+    setTimeout(() => {
+      dispatch(setIsCartModalOpen(false));
+    }, 2000);
+    return <div className={classes.emptyMessage}>Your cart is empty</div>
+  }
 
   if (!isCartModalOpen) return null;
 
@@ -65,8 +68,8 @@ function CartModalContent() {
         </div>
 
         {
-          itemsInCart.length < 1
-            ? (<div className={classes.emptyMessage}>Your cart is empty</div>)
+          quantity === 0
+            ? CloseEmptyCartModalAuto()
             : (<div>
               <h3 className={classes.header}>My Bag<span className={classes.itemsQuantity}>, {quantity} items</span></h3>
               <div className={classes.cartListContainer}>
@@ -90,8 +93,9 @@ function CartModalContent() {
                 {/* CHECK OUT BUTTON */}
                 <SubmitButton
                   className={`${classes.button} ${classes.checkoutBtn}`}
-                  label={"CHECK OUT"}
-                  disabled={quantity === 0} />
+                  disabled={quantity === 0}>
+                  CHECK OUT
+                </SubmitButton>
               </div>
             </div>)}
 

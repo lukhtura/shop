@@ -6,7 +6,7 @@ import { useQuery } from "@apollo/client";
 import { setIsCurrencySelectorOpen, setCurrencySelected } from "engine/redux/slices/headerSlice";
 
 //API
-import { GET_ALL_CURRENCIES } from "api/currencies";
+import { GET_ALL_CURRENCIES } from "api/queries/currencies";
 
 //Styles
 import { useStyles } from "./styles";
@@ -16,7 +16,7 @@ function DropdownContent() {
   const dispatch = useDispatch();
   const isCurrencySelectorOpen = useSelector(state => state.header.isCurrencySelectorOpen);
 
-  const { data, loading } = useQuery(GET_ALL_CURRENCIES);
+  const { data, loading, error } = useQuery(GET_ALL_CURRENCIES);
 
   const classes = useStyles();
 
@@ -33,7 +33,9 @@ function DropdownContent() {
     </div>
   ));
 
-  if (!loading && isCurrencySelectorOpen) return (
+
+
+  if (!loading && !error && isCurrencySelectorOpen) return (
     <div
       className={classes.selector}
       onClick={e => e.stopPropagation()}
