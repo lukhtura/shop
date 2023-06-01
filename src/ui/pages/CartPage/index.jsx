@@ -6,13 +6,11 @@ import { useState } from "react";
 import { useMutation } from '@apollo/client';
 import { SEND_ORDER } from "api/mutations/order";
 
-//Actions
-// import { removeFromCart } from "engine/redux/slices/cartSlice";
-
 //Components
 import CartList from "ui/scenes/cart/CartList";
 import CartPageTotalModule from "ui/scenes/cart/CartPageTotalModule";
 import SubmitButton from "ui/components/SubmitButton";
+import RemoveItemsButton from "ui/scenes/cart/RemoveItemsButton/RemoveItemsButton";
 import MainPageLink from "ui/components/MainPageLink";
 import Spinner from "ui/components/Spinner";
 
@@ -26,7 +24,6 @@ import { useStyles } from "./styles";
 
 function CartPage() {
 
-  // const dispatch = useDispatch();
   const itemsInCart = useSelector(state => state.cart.itemsInCart);
   const currencySelected = useSelector(state => state.header.currencySelected)
 
@@ -81,7 +78,12 @@ function CartPage() {
   return (
     <>
       {/* HEADER */}
-      <h1 className={classes.header}>CART</h1>
+      <div className={classes.headerContainer}>
+        <h1 className={classes.header}>CART</h1>
+        {isCartEmpty
+          ? null
+          : <RemoveItemsButton />}
+      </div>
       {/* CART LIST */}
       <CartList data={itemsInCart} />
       {/* TOTAL MODULE */}

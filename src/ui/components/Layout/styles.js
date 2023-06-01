@@ -18,5 +18,11 @@ export const useStyles = createUseStyles((theme) => ({
     content: {
       padding: "0 100px",
     }
+  },
+
+  [`@media(max-width: ${theme.breakpoints.xs})`]: {
+    content: {
+      padding: "0 20px",
+    }
   }
 }));

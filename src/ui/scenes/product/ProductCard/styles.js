@@ -93,4 +93,10 @@ export const useStyles = createUseStyles((theme) => ({
       }
     },
   },
+
+  [`@media(max-width: ${theme.breakpoints.xs})`]: {
+    card: {
+      margin: 0,
+    },
+  },
 }));

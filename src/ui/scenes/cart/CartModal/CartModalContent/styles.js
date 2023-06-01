@@ -16,12 +16,14 @@ export const useStyles = createUseStyles((theme) => ({
   modalContent: {
     position: "relative",
     zIndex: "1000",
-    padding: "5px 16px",
+    padding: "5px 30px",
     maxWidth: "550px",
     backgroundColor: "white",
   },
-  header: {
-    margin: "32px 0",
+  headerContainer: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center"
   },
   itemsQuantity: {
     fontWeight: "500",
@@ -76,17 +78,19 @@ export const useStyles = createUseStyles((theme) => ({
     }
   },
   closeButton: {
-    width: "10px",
+    width: "13px",
     position: "absolute",
     top: "10px",
     right: "10px",
     cursor: "pointer",
+    transition: "0.3s",
 
     "& img": {
-      width: "10px",
+      transition: "0.3s",
+      width: "13px",
 
       "&:hover": {
-        width: "11px"
+        transform: "rotateZ(90deg)"
       }
     }
   },

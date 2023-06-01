@@ -1,8 +1,13 @@
 import { createUseStyles } from "react-jss";
 
 export const useStyles = createUseStyles((theme) => ({
+  headerContainer: {
+    margin: "80px 0 55px",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center"
+  },
   header: {
-    margin: "160px 0 55px",
     fontWeight: "700",
     fontSize: "32px",
     lineHeight: "40px"

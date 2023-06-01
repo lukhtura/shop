@@ -41,6 +41,13 @@ const cartSlice = createSlice(
         window.localStorage.setItem("CART_ITEMS", JSON.stringify(state));
       },
       removeFromCart: (state, action) => {
+
+        if (action.payload === "all") {
+          state.itemsInCart = [];
+          state.quantity = 0;
+          window.localStorage.setItem("CART_ITEMS", JSON.stringify(state));
+        }
+
         state.itemsInCart.forEach((item, i) => {
           if (item.shopId === action.payload) {
             if (item.quantity > 1) {

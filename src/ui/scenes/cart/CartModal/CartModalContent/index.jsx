@@ -10,6 +10,7 @@ import { setIsCartModalOpen } from "engine/redux/slices/headerSlice";
 //Components
 import CartList from "ui/scenes/cart/CartList";
 import SubmitButton from "ui/components/SubmitButton";
+import RemoveItemsButton from "../../RemoveItemsButton/RemoveItemsButton";
 
 //Utils
 import { countTotalPrice } from "utils/totalPriceCounter";
@@ -70,34 +71,39 @@ function CartModalContent() {
         {
           quantity === 0
             ? CloseEmptyCartModalAuto()
-            : (<div>
-              <h3 className={classes.header}>My Bag<span className={classes.itemsQuantity}>, {quantity} items</span></h3>
-              <div className={classes.cartListContainer}>
-                <CartList data={itemsInCart} />
-              </div>
+            : (
+              <>
+                <div className={classes.headerContainer}>
+                  <h3 className={classes.header}>My Bag<span className={classes.itemsQuantity}>, {quantity} items</span></h3>
+                  <RemoveItemsButton />
+                </div>
+                <div className={classes.cartListContainer}>
+                  <CartList data={itemsInCart} />
+                </div>
 
-              {/* PRICE */}
-              <div className={classes.totalPriceContainer}>
-                <p className={classes.totalPriceText}>Total</p>
-                <p className={classes.totalPriceText}>{currencySelected.symbol}{countTotalPrice(itemsInCart, currencySelected)}</p>
-              </div>
+                {/* PRICE */}
+                <div className={classes.totalPriceContainer}>
+                  <p className={classes.totalPriceText}>Total</p>
+                  <p className={classes.totalPriceText}>{currencySelected.symbol}{countTotalPrice(itemsInCart, currencySelected)}</p>
+                </div>
 
-              <div className={classes.buttonContainer}>
-                {/* GO TO CART BUTTON */}
-                <Link
-                  to={"/cart"}
-                  onClick={() => { dispatch(setIsCartModalOpen(!isCartModalOpen)) }}>
-                  <button className={`${classes.button} ${classes.viewBtn}`}>VIEW BAG</button>
-                </Link>
+                <div className={classes.buttonContainer}>
+                  {/* GO TO CART BUTTON */}
+                  <Link
+                    to={"/cart"}
+                    onClick={() => { dispatch(setIsCartModalOpen(!isCartModalOpen)) }}>
+                    <button className={`${classes.button} ${classes.viewBtn}`}>VIEW BAG</button>
+                  </Link>
 
-                {/* CHECK OUT BUTTON */}
-                <SubmitButton
-                  className={`${classes.button} ${classes.checkoutBtn}`}
-                  disabled={quantity === 0}>
-                  CHECK OUT
-                </SubmitButton>
-              </div>
-            </div>)}
+                  {/* CHECK OUT BUTTON */}
+                  <SubmitButton
+                    className={`${classes.button} ${classes.checkoutBtn}`}
+                    disabled={quantity === 0}>
+                    CHECK OUT
+                  </SubmitButton>
+                </div>
+              </>
+            )}
 
 
 
