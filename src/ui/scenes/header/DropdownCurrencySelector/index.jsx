@@ -18,14 +18,14 @@ function DropdownCurrencySelector() {
   const dispatch = useDispatch();
 
   /**/
-  const classes = useStyles();
+  const classNames = useStyles();
   /**/
 
   return (
     <div
       onMouseEnter={() => dispatch(setIsCurrencySelectorOpen(true))}
       onMouseLeave={() => dispatch(setIsCurrencySelectorOpen(false))}
-      className={classes.container}>
+      className={classNames.container}>
       <DropdownButton />
       <DropdownContent />
     </div>

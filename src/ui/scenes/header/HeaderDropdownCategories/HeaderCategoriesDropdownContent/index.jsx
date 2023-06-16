@@ -18,13 +18,13 @@ function HeaderCategoriesDropdownContent() {
   const dispatch = useDispatch();
   const { headerHeight, isCategoriesDropdownmenuOpen } = useSelector(state => state.header)
 
-  const classes = useStyles();
+  const classNames = useStyles();
 
   const containerRef = useRef();
 
   if (isCategoriesDropdownmenuOpen) return (
     <div
-      className={classes.wrapper}
+      className={classNames.wrapper}
       onMouseEnter={() => dispatch(setIsCategoriesDropdownmenuOpen(true))}
       onMouseLeave={() => dispatch(setIsCategoriesDropdownmenuOpen(false))}
       ref={containerRef}

@@ -9,16 +9,12 @@ import currencySelectorArrow from "assets/icons/selector-arrow.svg";
 
 function DropdownButton() {
 
-  /*  */
   const { isCurrencySelectorOpen, currencySelected } = useSelector(state => state.header);
-  /*  */
 
-  /**/
-  const classes = useStyles();
-  /**/
+  const classNames = useStyles();
 
   return (
-    <div className={`${classes.currencySelectorBtn}`}>
+    <div className={`${classNames.currencySelectorBtn}`}>
 
       {/* CURRENCY SYMBOL */}
       <div>
@@ -27,12 +23,12 @@ function DropdownButton() {
 
       {/* OPEN CLOSE ARROW */}
       <div className={isCurrencySelectorOpen
-        ? classes.currencyArrowOpen
-        : classes.currencyArrow} >
+        ? classNames.currencyArrowOpen
+        : classNames.currencyArrow} >
         <img
           src={currencySelectorArrow}
           alt="selector"
-          className={classes.currencyArrowImg} />
+          className={classNames.currencyArrowImg} />
       </div>
     </div>
   );

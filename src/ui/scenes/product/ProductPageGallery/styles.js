@@ -2,7 +2,10 @@ import { createUseStyles } from "react-jss";
 
 export const useStyles = createUseStyles({
   gallery: {
-    marginRight: "40px"
+    width: "25%",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-end"
   },
   galleryItem: {
     marginBottom: "40px",
@@ -12,7 +15,10 @@ export const useStyles = createUseStyles({
     transition: "0.1s",
 
     "&:hover": {
-      border: "3px solid #439058"
+      "& img": {
+        width: "90px",
+        height: "90px",
+      }
     }
   },
   galleryItemImg: {
@@ -21,13 +27,11 @@ export const useStyles = createUseStyles({
     height: "80px"
   },
   activeImgContainer: {
-    display: "flex",
-    justifyContent: "space-between",
-    gap: "100px"
+    width: "49%",
   },
   activeImg: {
-    width: "610px",
-    height: "510px",
+    width: "100%",
+    height: "70vh",
     objectFit: "contain",
   }
 });

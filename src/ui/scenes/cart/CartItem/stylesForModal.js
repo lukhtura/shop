@@ -1,13 +1,8 @@
 import { createUseStyles } from "react-jss";
 
-export const useStyles = createUseStyles(theme => ({
-  cartContext: {
-    brand: {
-      color: "red"
-    },
-  },
+export const useStylesForModal = createUseStyles(theme => ({
   cartItem: {
-    width: "100%",
+    maxWidth: "100%",
     minHeight: "336px",
     margin: "0 auto",
     padding: "24px 0",

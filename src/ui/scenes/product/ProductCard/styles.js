@@ -1,21 +1,28 @@
 import { createUseStyles } from "react-jss";
 
 
-export const useStyles = createUseStyles((theme) => ({
+export const useStyles = createUseStyles(theme => ({
+  skeleton: {
+    width: "100%",
+    height: "100%"
+  },
   linkWrapper: {
-    textDecoration: "none"
+    textDecoration: "none",
   },
   card: {
-    margin: "60px 0 0",
     padding: "16px",
-    width: "386px",
+    maxWidth: "386px",
     height: "444px",
     position: "relative",
     cursor: "pointer",
     transition: "0.3s",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "center",
+    userSelect: "none",
 
     "&:hover": {
-      // boxShadow: "0 4px 35px 0 rgba(168, 172, 176, 0.19)",
       boxShadow: "0 13px 35px 9px rgba(168, 172, 176, 0.19)",
     },
 
@@ -74,25 +81,25 @@ export const useStyles = createUseStyles((theme) => ({
   },
 
 
-  [`@media(max-width: ${theme.breakpoints.xl})`]: {
-    card: {
-      padding: "10px",
-      width: "386px",
-      height: "444px",
-      position: "relative",
-      cursor: "pointer",
-      transition: "0.3s",
+  // [`@media(max-width: ${theme.breakpoints.xl})`]: {
+  //   card: {
+  //     padding: "10px",
+  //     width: "386px",
+  //     height: "444px",
+  //     position: "relative",
+  //     cursor: "pointer",
+  //     transition: "0.3s",
 
-      "&:hover": {
-        boxShadow: "0 4px 35px 0 rgba(168, 172, 176, 0.19)",
-      },
+  //     "&:hover": {
+  //       boxShadow: "0 4px 35px 0 rgba(168, 172, 176, 0.19)",
+  //     },
 
-      /* CART ICON VISIBLE */
-      "&:hover $cartIcon": {
-        opacity: "1",
-      }
-    },
-  },
+  //     /* CART ICON VISIBLE */
+  //     "&:hover $cartIcon": {
+  //       opacity: "1",
+  //     }
+  //   },
+  // },
 
   [`@media(max-width: ${theme.breakpoints.xs})`]: {
     card: {

@@ -1,8 +1,8 @@
 import { createUseStyles } from "react-jss";
 
-export const useStyles = createUseStyles((theme) => ({
+export const useStyles = createUseStyles(theme => ({
   headerContainer: {
-    margin: "80px 0 55px",
+    margin: "50px 0 15px",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center"
@@ -13,8 +13,8 @@ export const useStyles = createUseStyles((theme) => ({
     lineHeight: "40px"
   },
   totalModule: {
-    margin: "32px 0 100px",
-    width: "280px",
+    margin: "60px 0 0 auto",
+    width: "270px",
     height: "160px",
     display: "flex",
     justifyContent: "space-between",
@@ -22,15 +22,10 @@ export const useStyles = createUseStyles((theme) => ({
   },
   orderBtn: {
     position: "relative",
-    background: theme.colors.primary,
-    color: "white",
-    border: "none",
     height: "45px",
-    cursor: "pointer",
-    transition: "0.3s",
-
-    "&:hover": {
-      background: theme.colors.primaryHover
-    }
   },
+  removeBtn: {
+    height: "25px",
+    padding: "0 5px"
+  }
 }));

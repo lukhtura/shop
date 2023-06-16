@@ -1,12 +1,13 @@
 //Components
 import CartItem from "ui/scenes/cart/CartItem";
 
-function CartList({ data }) {
+function CartList({ data, context }) {
 
   if (data.length > 0) return (
     <>
       {data.map((item) => {
         return <CartItem
+          context={context}
           key={item.id}
           shopId={item.shopId}
           name={item.name}

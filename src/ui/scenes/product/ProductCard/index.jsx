@@ -9,42 +9,39 @@ import greenCartIcon from "assets/icons/green-cart-icon.svg";
 
 
 
-function ProductCard({ name, brand, price, image, inStock, id, category }) {
+function ProductCard({ name, brand, price, image, inStock, id }) {
 
-  /**/
-  const classes = useStyles();
-  /**/
+  const classNames = useStyles();
 
   return (
     <Link
-      className={classes.linkWrapper}
+      className={classNames.linkWrapper}
       key={id}
       to={`./${id}`} >
-
       <div className={inStock
-        ? classes.card
-        : `${classes.card}  ${classes.outStock}`}>
+        ? classNames.card
+        : `${classNames.card}  ${classNames.outStock}`}>
+
 
         {/* IMAGE */}
-        <div className={classes.imgContainer} >
-          {inStock ? null : <p className={classes.outStockText}>OUT OF STOCK</p>}
-          <img className={classes.img} src={image} alt="product" />
+        <div className={classNames.imgContainer} >
+          {inStock ? null : <p className={classNames.outStockText}>OUT OF STOCK</p>}
+          <img className={classNames.img} src={image} alt="product" loading="lazy" />
         </div>
 
         {/* DESCRIPTION */}
-        <div className={classes.descriptionContainer}>
-          <p className={`${classes.name} ${classes.descriptionText}`}>{brand} {name}</p>
-          <p className={`${classes.price} ${classes.descriptionText}`}>{price.currency.symbol} {price.amount}</p>
+        <div className={classNames.descriptionContainer}>
+          <p className={`${classNames.name} ${classNames.descriptionText}`}>{brand} {name}</p>
+          <p className={`${classNames.price} ${classNames.descriptionText}`}>{price.currency.symbol} {price.amount}</p>
         </div>
 
         {/* CART ICON */}
         {
           inStock
-            ? <img className={classes.cartIcon} src={greenCartIcon} alt="cart" />
+            ? <img className={classNames.cartIcon} src={greenCartIcon} alt="cart" />
             : null
         }
-      </div>
-
+      </div >
     </Link>
   );
 }

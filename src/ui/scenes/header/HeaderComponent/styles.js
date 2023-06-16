@@ -1,7 +1,7 @@
 import { createUseStyles } from "react-jss";
 
 
-export const useStyles = createUseStyles((theme) => ({
+export const useStyles = createUseStyles(theme => ({
   header: {
     width: "100%",
     padding: "0 20px",

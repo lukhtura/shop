@@ -1,6 +1,6 @@
 import { createUseStyles } from "react-jss";
 
-export const useStyles = createUseStyles((theme) => ({
+export const useStyles = createUseStyles(theme => ({
   modalOverflow: {
     display: "flex",
     justifyContent: "center",
@@ -10,34 +10,37 @@ export const useStyles = createUseStyles((theme) => ({
     left: "0",
     right: "0",
     bottom: "0",
-    zIndex: "1000",
+    zIndex: theme.zIndex.modal,
     backgroundColor: "rgba(0, 0, 0, 0.7)",
   },
   modalContent: {
     position: "relative",
-    zIndex: "1000",
-    padding: "5px 30px",
-    maxWidth: "550px",
+    zIndex: theme.zIndex.modal,
+    padding: "5px 15px",
+    minWidth: "550px",
+    maxWidth: "600px",
     backgroundColor: "white",
   },
   headerContainer: {
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "center"
+    alignItems: "center",
+    padding: "22px 0"
   },
   itemsQuantity: {
     fontWeight: "500",
     fontSize: "16px"
   },
   cartListContainer: {
+    width: "100%",
+    maxHeight: "50vh",
     display: "flex",
     justifyContent: "space-between",
     flexDirection: "column",
-    gap: "40px",
     overflow: "auto",
-    maxHeight: "400px",
   },
   totalPriceContainer: {
+    marginTop: "10px",
     display: "flex",
     justifyContent: "space-between",
   },
@@ -46,7 +49,7 @@ export const useStyles = createUseStyles((theme) => ({
     fontWeight: "700",
   },
   buttonContainer: {
-    margin: "32px 0",
+    margin: "15px 0",
     display: "flex",
     justifyContent: "space-between",
     minWidth: "293px",
@@ -59,40 +62,19 @@ export const useStyles = createUseStyles((theme) => ({
     cursor: "pointer",
   },
   viewBtn: {
+    transition: "0.3s",
     background: theme.colors.background,
     border: `1px solid ${theme.colors.text}`,
-  },
-  checkoutBtn: {
-    background: theme.colors.primary,
-    color: "white",
-    border: "none",
-    transition: "0.3s",
 
     "&:hover": {
-      background: theme.colors.primaryHover,
-    },
-
-    "&:disabled": {
-      background: "#d1ded4",
-      pointerEvents: "none"
+      backgroundColor: "black",
+      color: "white"
     }
   },
-  closeButton: {
-    width: "13px",
-    position: "absolute",
-    top: "10px",
-    right: "10px",
-    cursor: "pointer",
-    transition: "0.3s",
-
-    "& img": {
-      transition: "0.3s",
-      width: "13px",
-
-      "&:hover": {
-        transform: "rotateZ(90deg)"
-      }
-    }
+  removeBtn: {
+    marginRight: "20px",
+    height: "25px",
+    padding: "0 5px"
   },
   emptyMessage: {
     padding: "10px"

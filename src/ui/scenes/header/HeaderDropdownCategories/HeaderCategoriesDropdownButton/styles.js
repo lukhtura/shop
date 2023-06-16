@@ -1,6 +1,6 @@
 import { createUseStyles } from "react-jss";
 
-export const useStyles = createUseStyles((theme) => ({
+export const useStyles = createUseStyles(theme => ({
   container: {
     display: "flex",
     alignItems: "center",

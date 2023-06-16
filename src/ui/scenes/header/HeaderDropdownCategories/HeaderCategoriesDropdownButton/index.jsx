@@ -18,7 +18,7 @@ function HeaderCategoriesDropdownButton() {
 
   const dispatch = useDispatch();
 
-  const classes = useStyles();
+  const classNames = useStyles();
 
   const containerRef = useRef();
 
@@ -39,7 +39,7 @@ function HeaderCategoriesDropdownButton() {
         dispatch(setIsCategoriesDropdownmenuOpen(false))
       }}
       ref={containerRef}
-      className={classes.container}>
+      className={classNames.container}>
       <svg
         style={{ enableBackground: "new 0 0 32 32", cursor: "pointer" }}
         fill={onHover ? theme.colors.primary : "black"}

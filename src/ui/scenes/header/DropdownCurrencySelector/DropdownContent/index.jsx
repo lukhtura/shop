@@ -11,6 +11,8 @@ import { GET_ALL_CURRENCIES } from "api/queries/currencies";
 //Styles
 import { useStyles } from "./styles";
 
+
+
 function DropdownContent() {
 
   const dispatch = useDispatch();
@@ -18,11 +20,11 @@ function DropdownContent() {
 
   const { data, loading, error } = useQuery(GET_ALL_CURRENCIES);
 
-  const classes = useStyles();
+  const classNames = useStyles();
 
   const renderCurrencies = (arr) => arr.currencies.map(item => (
     <div
-      className={classes.item}
+      className={classNames.item}
       key={item.label}
       onClick={() => {
         dispatch(setCurrencySelected({ label: item.label, symbol: item.symbol }));
@@ -37,10 +39,10 @@ function DropdownContent() {
 
   if (!loading && !error && isCurrencySelectorOpen) return (
     <div
-      className={classes.selector}
+      className={classNames.selector}
       onClick={e => e.stopPropagation()}
     >
-      <div className={classes.inner}>
+      <div className={classNames.inner}>
         {renderCurrencies(data)}
       </div>
     </div >

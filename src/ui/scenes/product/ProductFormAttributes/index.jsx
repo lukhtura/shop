@@ -9,7 +9,7 @@ import { useStyles } from "./styles";
 function ProductFormAttributes({ data }) {
 
   /**/
-  const classes = useStyles();
+  const classNames = useStyles();
   /**/
 
   return (
@@ -18,13 +18,13 @@ function ProductFormAttributes({ data }) {
       if (attributeObject.name === "Color") {
         return (
           <div key={i}>
-            <p className={classes.label}>{attributeObject.name.toUpperCase()}</p>
-            <div className={classes.attributesContainer}>
+            <p className={classNames.label}>{attributeObject.name.toUpperCase()}</p>
+            <div className={classNames.attributesContainer}>
               {attributeObject.items.map((color, i) => {
                 return (
                   <div
                     style={{ backgroundColor: color.value }}
-                    className={classes.colorPicker} key={i}>
+                    className={classNames.colorPicker} key={i}>
                     <Field
                       type="radio"
                       name="Color"
@@ -42,12 +42,12 @@ function ProductFormAttributes({ data }) {
       /* REST ATTRIBUTES LIKE CAPACITY, SIZE ETC. */
       return (
         <div key={i}>
-          <p className={classes.label}>{attributeObject.name.toUpperCase()}</p>
-          <div className={classes.attributesContainer}>
+          <p className={classNames.label}>{attributeObject.name.toUpperCase()}</p>
+          <div className={classNames.attributesContainer}>
 
             {attributeObject.items.map((attribute, i) => {
               return (
-                <div key={i} className={classes.attributesPicker}>
+                <div key={i} className={classNames.attributesPicker}>
                   <Field
                     type="radio"
                     name={attributeObject.name}

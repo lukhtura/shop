@@ -22,7 +22,6 @@ import { useStyles } from "./styles";
 
 
 
-
 function ProductPage() {
 
   const dispatch = useDispatch();
@@ -35,7 +34,7 @@ function ProductPage() {
     }
   });
 
-  const classes = useStyles();
+  const classNames = useStyles();
 
   useEffect(() => {
     dispatch(setActiveCategory(data?.product.category))
@@ -69,7 +68,7 @@ function ProductPage() {
   const view = renderProduct(data.product);
 
   return (
-    <div className={classes.container}>
+    <div className={classNames.container}>
       {view}
     </div>
   );

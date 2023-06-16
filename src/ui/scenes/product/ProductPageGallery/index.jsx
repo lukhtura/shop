@@ -1,47 +1,45 @@
 //Core
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 
-//Actions
-import { showSlide, clearActiveSlide } from "engine/redux/slices/productGallerySliderSlice"
 
 //Styles
 import { useStyles } from "./styles";
 
 function ProductPageGallery({ gallery, name }) {
 
-  /*  */
-  const dispatch = useDispatch();
-  const activeSlide = useSelector(state => state.slider.activeSlide);
-  /*  */
+  const [activeSlide, setActiveSlide] = useState("");
 
-  /**/
-  const classes = useStyles();
-  /**/
+  const classNames = useStyles();
 
-  useEffect(() => {
-    return () => dispatch(clearActiveSlide());
-  }, [dispatch]);
+
 
   return (
     <>
       {/* IMAGE PICKER */}
-      <div className={classes.gallery}>
+      <div className={classNames.gallery}>
         {gallery.map((img, i) => {
           return (
             <div
-              onClick={() => dispatch(showSlide(img))}
+              onClick={() => setActiveSlide(img)}
               key={i}
-              className={classes.galleryItem}>
-              <img className={classes.galleryItemImg} src={img} alt={name} />
+              className={classNames.galleryItem}>
+              <img
+                className={classNames.galleryItemImg}
+                src={img}
+                alt={name}
+                loading="lazy" />
             </div>
           );
         })}
       </div>
 
       {/* ACTIVE IMAGE */}
-      <div className={classes.activeImgContainer}>
-        <img className={classes.activeImg} src={activeSlide || gallery[0]} alt={name} />
+      <div className={classNames.activeImgContainer}>
+        <img
+          className={classNames.activeImg}
+          src={activeSlide || gallery[0]}
+          alt={name}
+          loading="lazy" />
       </div>
     </>
   );

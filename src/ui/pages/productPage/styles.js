@@ -1,9 +1,11 @@
 import { createUseStyles } from "react-jss";
 
-export const useStyles = createUseStyles((theme) => ({
+export const useStyles = createUseStyles(theme => ({
   container: {
-    marginTop: "160px",
+    marginTop: "120px",
     display: "flex",
+    justifyContent: "center",
+    gap: "14px"
   },
   rightSide: {
     width: "270px",

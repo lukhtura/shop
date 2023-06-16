@@ -1,28 +1,27 @@
 import { createUseStyles } from "react-jss";
 
 
-export const useStyles = createUseStyles((theme) => ({
+export const useStyles = createUseStyles(theme => ({
   content: {
-    padding: "0 100px",
     maxWidth: "1440px",
-    margin: "0 auto",
+    margin: "80px auto 0",
   },
 
-  [`@media(max-width: ${theme.breakpoints.xl})`]: {
-    content: {
-      padding: "0 50px",
-    }
-  },
+  // [`@media(max-width: ${theme.breakpoints.xl})`]: {
+  //   content: {
+  //     padding: "0 50px",
+  //   }
+  // },
 
-  [`@media(max-width: ${theme.breakpoints.lg})`]: {
-    content: {
-      padding: "0 100px",
-    }
-  },
+  // [`@media(max-width: ${theme.breakpoints.lg})`]: {
+  //   content: {
+  //     padding: "0 100px",
+  //   }
+  // },
 
-  [`@media(max-width: ${theme.breakpoints.xs})`]: {
-    content: {
-      padding: "0 20px",
-    }
-  }
+  // [`@media(max-width: ${theme.breakpoints.xs})`]: {
+  //   content: {
+  //     padding: "0 20px",
+  //   }
+  // }
 }));

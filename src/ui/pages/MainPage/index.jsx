@@ -1,28 +1,11 @@
-//Core
-import { useSelector } from "react-redux";
 //Components
-import ProductsList from "ui/scenes/product/ProductsList";
-//Styles 
-import { useStyles } from "./styles";
+import ProductsGrid from "ui/scenes/product/ProductsGrid";
 
 
 
 function MainPage() {
+  return <ProductsGrid />
 
-  /*  */
-  const categoryName = useSelector(state => state.categories.activeCategory);
-  /*  */
-
-  /**/
-  const classes = useStyles();
-  /**/
-
-  return (
-    <>
-      <p className={classes.header}>{categoryName.toUpperCase()}</p>
-      <ProductsList />
-    </>
-  );
 }
 
 export default MainPage;

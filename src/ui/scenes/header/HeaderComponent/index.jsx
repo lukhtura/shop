@@ -19,13 +19,12 @@ import logo from "assets/img/green-logo.svg";
 
 
 
-
 function Header() {
 
   const dispatch = useDispatch();
   const filterContainerWidth = useSelector(state => state.header.filterContainerWidth);
 
-  const classes = useStyles();
+  const classNames = useStyles();
 
   const headerRef = useRef();
 
@@ -38,14 +37,14 @@ function Header() {
   return (
     <header
       ref={headerRef}
-      className={classes.header}>
-      <div className={classes.inner}>
+      className={classNames.header}>
+      <div className={classNames.inner}>
 
         {isMobile ? <HeaderCategoriesDropdownButton /> : <HeaderCategories />}
 
 
         {/* LOGO */}
-        <RouterLink to={"./"} className={classes.logo}>
+        <RouterLink to={"./"} className={classNames.logo}>
           <img
             src={logo}
             alt="logotype"
@@ -54,7 +53,7 @@ function Header() {
         {/* LOGO */}
 
         <div
-          className={classes.buttonsContainer}
+          className={classNames.buttonsContainer}
           style={{ width: filterContainerWidth }}>
           <DropdownCurrencySelector />
           <CartModal />

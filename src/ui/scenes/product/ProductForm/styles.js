@@ -1,9 +1,15 @@
 import { createUseStyles } from "react-jss";
 
 
-export const useStyles = createUseStyles((theme) => ({
+
+export const useStyles = createUseStyles(theme => ({
+  "@keyframes blink": {
+    '0%': { opacity: 0 },
+    '50%': { opacity: 1 },
+    '100%': { opacity: 0 },
+  },
   container: {
-    width: "295px"
+    width: "25%",
   },
   brand: {
     margin: "0 0 16px",
@@ -21,35 +27,29 @@ export const useStyles = createUseStyles((theme) => ({
     fontWeight: "700",
     fontSize: "18px",
     lineHeight: "18px",
-    margin: "0 0 10px",
   },
   priceNumber: {
-    margin: "20px 0",
+    marginBottom: "15px",
     fontWeight: "700",
     fontSize: "24px",
     lineHeight: "24px"
   },
   addToCartBtn: {
     width: "100%",
-    background: theme.colors.primary,
-    color: "white",
-    border: "none",
     height: "50px",
-    cursor: "pointer",
-    transition: "0.3s",
-
-    "&:hover": {
-      background: theme.colors.primaryHover
-    },
-
-    "&:disabled": {
-      background: "#d1ded4",
-      pointerEvents: "none"
-    }
   },
-  message: {
+  addMessage: {
     color: theme.colors.primary,
     fontSize: "20px",
-    fontWeight: 500
-  }
+    fontWeight: 500,
+    marginBottom: "15px"
+  },
+  description: {
+    marginTop: "20px"
+  },
+  outOfStockBlink: {
+    color: theme.colors.danger,
+    marginBottom: "10px",
+    animation: "$blink 1.5s infinite",
+  },
 }));

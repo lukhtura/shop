@@ -14,15 +14,11 @@ import { useStyles } from "./styles";
 
 function CartItem(props) {
 
-  /*  */
   const dispatch = useDispatch();
   const itemsInCart = useSelector(state => state.cart.itemsInCart);
   const currencySelected = useSelector(state => state.header.currencySelected);
-  /*  */
 
-  /*  */
-  const classes = useStyles();
-  /*  */
+  const classNames = useStyles();
 
   const countCartItemsQuantity = (data, id) => {
     let res = 0;
@@ -43,12 +39,12 @@ function CartItem(props) {
     return attrs.map((item, i) => {
       if (item.name === "Color") {
         return (
-          <div className={classes.attribute} key={i}>
-            <p className={classes.attrName}>
+          <div className={classNames.attribute} key={i}>
+            <p className={classNames.attrName}>
               {item.name.toUpperCase()}<br />
               <span
                 style={{ backgroundColor: item.value, display: "inline-block" }}
-                className={classes.attrColor} key={i}>
+                className={classNames.attrColor} key={i}>
               </span>
             </p>
           </div>
@@ -56,9 +52,9 @@ function CartItem(props) {
       }
 
       return (
-        <div key={i}>
-          <p className={classes.attrName}>{item.name.toUpperCase()}</p>
-          <p className={classes.attrValue}>{item.value}</p>
+        <div key={i} className={classNames.attribute}>
+          <p className={classNames.attrName}>{item.name.toUpperCase()}</p>
+          <p className={classNames.attrValue}>{item.value}</p>
         </div>
       );
     });
@@ -66,33 +62,33 @@ function CartItem(props) {
 
   return (
 
-    <div className={classes.cartItem}>
+    <div className={classNames.cartItem}>
 
       {/* ITEM INFO */}
       <div>
-        <h2 className={classes.brand}>{brand}</h2>
-        <h3 className={classes.name}>{name}</h3>
-        <p className={classes.price}>{selectedCurrencyPrice.currency.symbol} {selectedCurrencyPrice.amount}</p>
+        <h2 className={classNames.brand}>{brand}</h2>
+        <h3 className={classNames.name}>{name}</h3>
+        <p className={classNames.price}>{selectedCurrencyPrice.currency.symbol} {selectedCurrencyPrice.amount}</p>
         {renderActiveAttrs(activeAttrs)}
       </div>
 
       {/* IMAGE AND QUANTITY COUNTER */}
-      <div className={classes.cartItemInnerRight}>
+      <div className={classNames.cartItemInnerRight}>
 
         {/* ITEM QUANTITY COUNTER */}
-        <div className={classes.counterContainer}>
+        <div className={classNames.counterContainer}>
           <div
             onClick={() => { dispatch(addToCart(props)) }}
             type="button"
-            className={classes.counterButton}>+</div>
-          <div className={classes.counterNumber}>{countCartItemsQuantity(itemsInCart, shopId)}</div>
+            className={classNames.counterButton}>+</div>
+          <div className={classNames.counterNumber}>{countCartItemsQuantity(itemsInCart, shopId)}</div>
           <div onClick={() => { dispatch(removeFromCart(shopId)) }}
             type="button"
-            className={classes.counterButton}>-</div>
+            className={classNames.counterButton}>-</div>
         </div>
 
         {/* ITEM IMAGE */}
-        <img src={gallery[0]} alt={name} className={classes.image} />
+        <img src={gallery[0]} alt={name} className={classNames.image} />
       </div>
 
     </div>

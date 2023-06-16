@@ -1,6 +1,6 @@
 import { createUseStyles } from "react-jss";
 
-export const useStyles = createUseStyles((theme) => ({
+export const useStyles = createUseStyles(theme => ({
   categoriesContainer: {
     display: "flex",
     justifyContent: "space-between",
@@ -30,16 +30,8 @@ export const useStyles = createUseStyles((theme) => ({
     borderBottom: `2px solid ${theme.colors.primary}`
   },
 
-
-  [`@media(max-width: ${theme.breakpoints.xl})`]: {
-    categoriesContainer: {
-      marginLeft: "20px",
-    },
-  },
-
   [`@media(max-width: ${theme.breakpoints.md})`]: {
     categoriesContainer: {
-      marginLeft: 0,
       gap: 0,
       flexDirection: "column",
       padding: "10px 0",

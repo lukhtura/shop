@@ -9,6 +9,8 @@ import { setIsCurrencySelectorOpen } from "engine/redux/slices/headerSlice";
 //Components
 import Header from "ui/scenes/header/HeaderComponent";
 import HeaderCategoriesDropdownContent from "ui/scenes/header/HeaderDropdownCategories/HeaderCategoriesDropdownContent";
+import ConfirmationOrderModal from "ui/scenes/cart/ConfirmationOrderModal";
+import OrderMessage from "ui/components/OrderMessage";
 
 //Utils
 import ScrollToTop from "utils/scrollToTop";
@@ -24,7 +26,7 @@ function Layout() {
   const { isCurrencySelectorOpen } = useSelector(state => state.header);
 
   const isMobile = useMediaQuery('(max-width: 960px)');
-  const classes = useStyles();
+  const classNames = useStyles();
 
 
   return (
@@ -34,12 +36,14 @@ function Layout() {
       {isMobile ? <HeaderCategoriesDropdownContent /> : null
       }
       {/* HEADER */}
+      <OrderMessage />
       <div
-        className={classes.content}
+        className={classNames.content}
         onClick={() => { if (isCurrencySelectorOpen) dispatch(setIsCurrencySelectorOpen(false)) }}>
         <ScrollToTop>
           <Outlet />
         </ScrollToTop>
+        <ConfirmationOrderModal />
       </div>
     </>
   );

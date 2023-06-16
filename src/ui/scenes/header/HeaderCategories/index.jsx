@@ -28,7 +28,7 @@ function HeaderCategories() {
 
   const isMobile = useMediaQuery('(max-width: 960px)');
 
-  const classes = useStyles();
+  const classNames = useStyles();
 
   const location = useLocation();
 
@@ -42,18 +42,18 @@ function HeaderCategories() {
 
   if (!loading && !error) return (
     <div
-      className={classes.categoriesContainer}
+      className={classNames.categoriesContainer}
       ref={containerRef}>
       {data.categories.map(({ name }) => {
         if (location.pathname === "/") {
           return (
-            <div key={name} className={classes.categoryButton} >
+            <div key={name} className={classNames.categoryButton} >
               <div
                 className={
                   /* ADD ACTIVE CLASS FOR BUTTON */
                   activeCategory === name
-                    ? `${classes.categoryButtonInner} ${classes.activeCategory}`
-                    : classes.categoryButtonInner
+                    ? `${classNames.categoryButtonInner} ${classNames.activeCategory}`
+                    : classNames.categoryButtonInner
                 }
                 onClick={() => {
                   if (activeCategory !== name) {
@@ -68,14 +68,14 @@ function HeaderCategories() {
           return (
             <Link
               key={name}
-              className={classes.categoryButton}
+              className={classNames.categoryButton}
               to={"/"} >
               <div
                 className={
                   /* ADD ACTIVE CLASS FOR BUTTON */
                   activeCategory === name
-                    ? `${classes.categoryButtonInner} ${classes.activeCategory}`
-                    : classes.categoryButtonInner
+                    ? `${classNames.categoryButtonInner} ${classNames.activeCategory}`
+                    : classNames.categoryButtonInner
                 }
                 onClick={() => {
                   if (activeCategory !== name) {

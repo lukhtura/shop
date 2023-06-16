@@ -2,7 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   itemsInCart: [],
-  quantity: 0
+  quantity: 0,
+  isConfirmationOrderModalOpen: false,
+  orderStatus: "idle"
 }
 
 const countTotalQuantity = (arr) => {
@@ -66,6 +68,12 @@ const cartSlice = createSlice(
       restoreCartFromLocalStorage: (state, action) => {
         state.itemsInCart = action.payload.itemsInCart;
         state.quantity = action.payload.quantity;
+      },
+      setIsConfirmationOrderModalOpen: (state, action) => {
+        state.isConfirmationOrderModalOpen = action.payload;
+      },
+      setOrderStatus: (state, action) => {
+        state.orderStatus = action.payload;
       }
     }
   }
@@ -76,5 +84,7 @@ export default reducer;
 export const {
   addToCart,
   removeFromCart,
-  restoreCartFromLocalStorage
+  restoreCartFromLocalStorage,
+  setIsConfirmationOrderModalOpen,
+  setOrderStatus
 } = actions;

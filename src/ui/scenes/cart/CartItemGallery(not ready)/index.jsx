@@ -6,25 +6,25 @@ import galleryButton from "assets/img/galleryArrow.svg";
 
 function CartItemGallery({ images }) {
 
-  const classes = useStyles();
+  const classNames = useStyles();
 
 
   const renderGallerySlider = (data) => {
-    return data.map((item, i) => <img key={item} className={classes.galleryItem} src={gallery[i]} alt="alt" />);
+    return data.map((item, i) => <img key={item} className={classNames.galleryItem} src={gallery[i]} alt="alt" />);
   }
 
   return (
-    <div className={classes.container}>
-      <div className={classes.galleryFlow}>
+    <div className={classNames.container}>
+      <div className={classNames.galleryFlow}>
         {renderGallerySlider(images)}
       </div>
       <div>
         <img
-          className={classes.nextBtn}
+          className={classNames.nextBtn}
           src={galleryButton}
           alt="next" />
         <img
-          className={classes.prevBtn}
+          className={classNames.prevBtn}
           src={galleryButton}
           alt="previous" />
       </div>

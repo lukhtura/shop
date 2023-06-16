@@ -5,6 +5,7 @@ export const theme = {
     background: "#FFFFFF",
     primaryHover: "#439058",
     dropdownHover: "#EEEEEE",
+    danger: "#FF0000"
   },
   breakpoints: {
     xs: "480px",
@@ -14,6 +15,7 @@ export const theme = {
     xl: "1520px",
   },
   zIndex: {
+    modal: 1000,
     header: 120,
     dropdown: 110
   }

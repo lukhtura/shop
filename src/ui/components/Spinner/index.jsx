@@ -3,10 +3,10 @@ import { useStyles } from "./styles";
 
 function Spinner({ fill = "#5ECE7B", width = "100px" }) {
 
-  const classes = useStyles();
+  const classNames = useStyles();
 
   return (
-    <svg className={classes.spinner} style={{ width: width }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+    <svg className={classNames.spinner} style={{ width: width }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
       <g transform="translate(80,50)">
         <g transform="rotate(0)">
           <circle cx="0" cy="0" r="7" fill={fill} fillOpacity="1">

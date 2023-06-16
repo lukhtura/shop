@@ -6,18 +6,19 @@ import { useEffect } from "react";
 
 //Actions
 import { setIsCartModalOpen } from "engine/redux/slices/headerSlice";
+import { removeFromCart, setIsConfirmationOrderModalOpen } from "engine/redux/slices/cartSlice";
 
 //Components
 import CartList from "ui/scenes/cart/CartList";
 import SubmitButton from "ui/components/SubmitButton";
-import RemoveItemsButton from "../../RemoveItemsButton/RemoveItemsButton";
+import DeclineButton from "ui/components/DeclineButton";
+import CloseButton from "ui/components/CloseButton/CloseButton";
 
 //Utils
 import { countTotalPrice } from "utils/totalPriceCounter";
 
 //Style
 import { useStyles } from "./styles";
-import closeIcon from "assets/icons/close.png"
 
 
 
@@ -28,11 +29,11 @@ function CartModalContent() {
   const isCartModalOpen = useSelector(state => state.header.isCartModalOpen);
   const { quantity, itemsInCart } = useSelector(state => state.cart);
 
-  const classes = useStyles();
+  const classNames = useStyles();
 
   useEffect(() => {
     /* CLOSE MODAL ON ESC BUTTON */
-    const handleEscape = (event) => {
+    function handleEscape(event) {
       if (event.key === "Escape") {
         dispatch(setIsCartModalOpen(false));
       }
@@ -45,11 +46,19 @@ function CartModalContent() {
     };
   }, [dispatch]);
 
-  function CloseEmptyCartModalAuto() {
-    setTimeout(() => {
+  function showCartModalEmptyMessageWithTimeout(delay) {
+    const message = <p className={classNames.emptyMessage}>Your cart is empty</p>;
+
+    const timerID = setTimeout(() => {
       dispatch(setIsCartModalOpen(false));
-    }, 2000);
-    return <div className={classes.emptyMessage}>Your cart is empty</div>
+      clearTimeout(timerID);
+    }, delay);
+
+    return message;
+  }
+
+  function showConfirmationOrderModal() {
+    dispatch(setIsConfirmationOrderModalOpen(true));
   }
 
   if (!isCartModalOpen) return null;
@@ -57,56 +66,55 @@ function CartModalContent() {
   return ReactDOM.createPortal(
     <div
       onClick={() => dispatch(setIsCartModalOpen(!isCartModalOpen))}
-      className={classes.modalOverflow} >
+      className={classNames.modalOverflow} >
 
-      <div onClick={e => e.stopPropagation()} className={classes.modalContent}>
+      <div onClick={e => e.stopPropagation()} className={classNames.modalContent}>
 
-        {/* CLOSE BUTTON */}
-        <div
-          className={classes.closeButton}
-          onClick={() => dispatch(setIsCartModalOpen(false))}>
-          <img src={closeIcon} alt="close" />
-        </div>
+        <CloseButton onClick={() => dispatch(setIsCartModalOpen(false))} />
 
         {
           quantity === 0
-            ? CloseEmptyCartModalAuto()
+            ? showCartModalEmptyMessageWithTimeout(2500)
             : (
               <>
-                <div className={classes.headerContainer}>
-                  <h3 className={classes.header}>My Bag<span className={classes.itemsQuantity}>, {quantity} items</span></h3>
-                  <RemoveItemsButton />
+                <div className={classNames.headerContainer}>
+                  <h3 className={classNames.header}>My Bag<span className={classNames.itemsQuantity}>, {quantity} {quantity === 1 ? "item" : "items"}</span></h3>
+
+                  <DeclineButton
+                    onClick={() => dispatch(removeFromCart("all"))}
+                    className={classNames.removeBtn}>
+                    Remove all
+                  </DeclineButton>
                 </div>
-                <div className={classes.cartListContainer}>
+
+                <div className={classNames.cartListContainer}>
                   <CartList data={itemsInCart} />
                 </div>
 
                 {/* PRICE */}
-                <div className={classes.totalPriceContainer}>
-                  <p className={classes.totalPriceText}>Total</p>
-                  <p className={classes.totalPriceText}>{currencySelected.symbol}{countTotalPrice(itemsInCart, currencySelected)}</p>
+                <div className={classNames.totalPriceContainer}>
+                  <p className={classNames.totalPriceText}>Total</p>
+                  <p className={classNames.totalPriceText}>{currencySelected.symbol}{countTotalPrice(itemsInCart, currencySelected)}</p>
                 </div>
 
-                <div className={classes.buttonContainer}>
+                <div className={classNames.buttonContainer}>
                   {/* GO TO CART BUTTON */}
                   <Link
                     to={"/cart"}
-                    onClick={() => { dispatch(setIsCartModalOpen(!isCartModalOpen)) }}>
-                    <button className={`${classes.button} ${classes.viewBtn}`}>VIEW BAG</button>
+                    onClick={() => dispatch(setIsCartModalOpen(false))}>
+                    <button className={`${classNames.button} ${classNames.viewBtn}`}>VIEW BAG</button>
                   </Link>
 
                   {/* CHECK OUT BUTTON */}
                   <SubmitButton
-                    className={`${classes.button} ${classes.checkoutBtn}`}
+                    onClick={showConfirmationOrderModal}
+                    className={`${classNames.button} ${classNames.checkoutBtn}`}
                     disabled={quantity === 0}>
                     CHECK OUT
                   </SubmitButton>
                 </div>
               </>
             )}
-
-
-
       </div>
     </div >,
     document.getElementById("modal")

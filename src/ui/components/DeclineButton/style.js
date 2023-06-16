@@ -1,9 +1,8 @@
 import { createUseStyles } from "react-jss";
 
-export const useStyles = createUseStyles({
+export const useStyles = createUseStyles(theme => ({
   removeBtn: {
-    height: "25px",
-    backgroundColor: "red",
+    backgroundColor: theme.colors.danger,
     border: "none",
     cursor: "pointer",
     color: "white",
@@ -12,4 +11,4 @@ export const useStyles = createUseStyles({
       backgroundColor: "#ff4c4c",
     },
   },
-});
+}));

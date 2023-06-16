@@ -9,12 +9,12 @@ import { useStyles } from "./styles";
 function Page404() {
 
   /**/
-  const classes = useStyles();
+  const classNames = useStyles();
   /**/
 
   return (
-    <div className={classes.container}>
-      <p className={classes.message}>Page doesn't exist</p>
+    <div className={classNames.container}>
+      <p className={classNames.message}>Page doesn't exist</p>
       <MainPageLink />
     </div>
   );

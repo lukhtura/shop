@@ -17,7 +17,7 @@ function CartPageTotalModule() {
   /*  */
 
   /**/
-  const classes = useStyles();
+  const classNames = useStyles();
   /**/
 
   /* TAXES */
@@ -31,11 +31,11 @@ function CartPageTotalModule() {
   return (
     <>
       {/* TAXES */}
-      <p className={classes.permanentText}>Tax {taxesProcent}%: <span className={classes.dynamicText}>{currencySelected.symbol}{countTaxes(taxesProcent, countTotalPrice(itemsInCart, currencySelected))}</span></p>
+      <p className={classNames.permanentText}>Tax {taxesProcent}%: <span className={classNames.dynamicText}>{currencySelected.symbol}{countTaxes(taxesProcent, countTotalPrice(itemsInCart, currencySelected))}</span></p>
       {/* QUANTITY */}
-      <p className={classes.permanentText}>Quantity: <span className={classes.dynamicText}>{quantity}</span></p>
+      <p className={classNames.permanentText}>Quantity: <span className={classNames.dynamicText}>{quantity}</span></p>
       {/* TOTAL PRICE */}
-      <p className={classes.permanentText}>Total: <span className={classes.dynamicText}>{currencySelected.symbol}{countTotalPrice(itemsInCart, currencySelected)}</span></p>
+      <p className={classNames.permanentText}>Total: <span className={classNames.dynamicText}>{currencySelected.symbol}{countTotalPrice(itemsInCart, currencySelected)}</span></p>
     </>
   );
 }
