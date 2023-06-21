@@ -6,8 +6,10 @@ import { Provider } from "react-redux";
 import { store } from "engine/redux";
 import "./index.css";
 
+const baseUrl = import.meta.env.VITE_BASE_URL;
+
 const client = new ApolloClient({
-  uri: "http://localhost:4000/",
+  uri: baseUrl,
   cache: new InMemoryCache(),
 });
 
