@@ -1,0 +1,1 @@
+import{c as t,j as e}from"./index-4a06ca2e.js";import{M as a}from"./index-578bb00e.js";const n=t({container:{textAlign:"center"},message:{fontWeight:"bold",fontSize:"24px",marginTop:"100px"}});function r(){const s=n();return e.jsxs("div",{className:s.container,children:[e.jsx("p",{className:s.message,children:"Page doesn't exist"}),e.jsx(a,{})]})}export{r as default};

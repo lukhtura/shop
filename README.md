@@ -43,7 +43,8 @@ npm run start
 
 Run in production mode:
 ```sh
-npm run build start
+npm run build
+npm run preview
 ```
 
 ### For any questions:

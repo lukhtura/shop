@@ -14,5 +14,6 @@ export default defineConfig({
       ui: "/src/ui",
       utils: "/src/utils",
     }
-  }
+  },
+  base: "https://lukhtura.github.io/shop/"
 });
