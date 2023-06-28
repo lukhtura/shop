@@ -29,7 +29,7 @@ https://github.com/scandiweb/junior-react-endpoint
 ##### Get the Front-End part:
 Clone the repo
 ```sh
-https://github.com/lukhtura/react-graphql-shop.git
+https://github.com/lukhtura/shop.git
 ```
 
 Install NPM packages
@@ -45,6 +45,7 @@ npm run start
 Run in production mode:
 ```sh
 npm run build
+npm run preview
 ```
 
 ### For any questions:
