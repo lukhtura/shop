@@ -1,15 +1,11 @@
 import { createUseStyles } from "react-jss";
 
-export const useStyles = createUseStyles(theme => ({
+const useHeaderCategoriesDropdownButtonStyles = createUseStyles(theme => ({
   container: {
     display: "flex",
     alignItems: "center",
-  },
-
-  [`@media(max-width: ${theme.breakpoints.xl})`]: {
-    container: {
-      marginLeft: "20px",
-      cursor: "pointer",
-    },
+    cursor: "pointer",
   },
 }));
+
+export default useHeaderCategoriesDropdownButtonStyles;

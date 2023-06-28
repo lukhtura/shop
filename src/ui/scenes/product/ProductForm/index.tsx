@@ -1,11 +1,14 @@
 //Core
-import { useDispatch, useSelector } from "react-redux";
+import { useAppDispatch, useAppSelector } from "engine/redux/hooks";
 import { Formik, Form } from "formik";
 import { v4 as genId } from "uuid";
 import { useState } from "react";
 
 //Actions
 import { addToCart } from "engine/redux/slices/cartSlice";
+
+//Types
+import { Attribute, Product } from "engine/types/products";
 
 //Utils
 import { currencyExchanger } from "utils/currencyExchanger";
@@ -17,34 +20,44 @@ import ProductFormAttributes from "ui/scenes/product/ProductFormAttributes";
 import SubmitButton from "ui/components/SubmitButton";
 
 //Styles
-import { useStyles } from "./styles";
+import useProductFormStyles from "ui/scenes/product/ProductForm/styles";
+
+type ProductFormProps = Omit<Product, "category">;
+
+interface FormValues {
+  [key: string]: string;
+}
 
 
 
-function ProductForm({ id, name, brand, description, attributes, prices, gallery, inStock }) {
+const ProductForm: React.FC<ProductFormProps> = ({ id, name, brand, description, attributes, prices, gallery, inStock }) => {
 
-
-  const dispatch = useDispatch();
-  const currencySelected = useSelector(state => state.header.currencySelected);
+  const dispatch = useAppDispatch();
+  const currencySelected = useAppSelector(state => state.header.currencySelected);
   const selectedCurrencyPrice = currencyExchanger(prices, currencySelected);
   const [isAddMessage, setIsAddMessage] = useState(false);
 
-  const classNames = useStyles();
+  const classNames = useProductFormStyles();
 
-  function createFormInitialValues(data) {
-    const initialValues = {};
-    data.map(item => item)
-      .forEach(item => {
-        if (item.name === "Color") {
-          initialValues[item.name] = item.items[0].displayValue;
-        } else {
-          initialValues[item.name] = item.items[0].value;
-        }
-      });
+  function createFormValues(data: Attribute[]): FormValues {
+
+    const initialValues: FormValues = {};
+
+    if (data) {
+      data.map(item => item)
+        .forEach(item => {
+          if (item.name === "Color") {
+            initialValues[item.name] = item.items[0].displayValue
+          } else {
+            initialValues[item.name] = item.items[0].value
+          }
+        });
+    }
+
     return initialValues;
   }
 
-  function onSubmit(fields) {
+  function onSubmit(fields: FormValues): void {
     if (inStock) {
       dispatch(addToCart({
         id: genId(),
@@ -53,13 +66,14 @@ function ProductForm({ id, name, brand, description, attributes, prices, gallery
         brand,
         quantity: 1,
         prices,
-        activeAttrs: objectToArrayOfObjects(fields),
+        activeAttributes: objectToArrayOfObjects(fields),
         gallery,
+        attributes
       }));
     }
   }
 
-  function showAndHideAddMessage() {
+  function showAndHideAddMessage(): void {
     const showMessageTimer = setTimeout(() => {
       setIsAddMessage(true);
       clearTimeout(showMessageTimer);
@@ -82,7 +96,7 @@ function ProductForm({ id, name, brand, description, attributes, prices, gallery
       {inStock ? null : <h3 className={classNames.outOfStockBlink}> Out of stock!</h3>}
 
       <Formik
-        initialValues={createFormInitialValues(attributes)}
+        initialValues={createFormValues(attributes)}
         onSubmit={onSubmit}
       >
         <Form>

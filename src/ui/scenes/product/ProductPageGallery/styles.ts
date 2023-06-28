@@ -1,6 +1,6 @@
 import { createUseStyles } from "react-jss";
 
-export const useStyles = createUseStyles({
+const useProductPageGalleryStyles = createUseStyles({
   gallery: {
     width: "25%",
     display: "flex",
@@ -35,3 +35,5 @@ export const useStyles = createUseStyles({
     objectFit: "contain",
   }
 });
+
+export default useProductPageGalleryStyles;

@@ -1,6 +1,6 @@
 import { createUseStyles } from "react-jss";
 
-export const useStyles = createUseStyles(theme => ({
+const useHeaderCategoriesDropdownContentStyles = createUseStyles(theme => ({
   wrapper: {
     zIndex: theme.zIndex.dropdown,
     position: "fixed",
@@ -9,3 +9,5 @@ export const useStyles = createUseStyles(theme => ({
     transition: "0.3s"
   },
 }));
+
+export default useHeaderCategoriesDropdownContentStyles;

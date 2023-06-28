@@ -19,12 +19,18 @@ import Spinner from "ui/components/Spinner";
 import useProductsGridStyles from "ui/scenes/product/ProductsGrid/styles";
 
 
+interface ProductsData {
+  category: {
+    products: Product[]
+  }
+}
+
 
 const ProductsGrid: React.FC = () => {
 
   const { currencySelected, activeCategory } = useAppSelector(state => state.header);
 
-  const { data, loading, error } = useQuery(GET_ALL_PRODUCTS);
+  const { data: { category: { products } } = { category: { products: [] } }, loading, error } = useQuery<ProductsData>(GET_ALL_PRODUCTS);
 
   const classNames = useProductsGridStyles();
 
@@ -32,19 +38,19 @@ const ProductsGrid: React.FC = () => {
     return [...products].sort((a, b) => a.inStock && !b.inStock ? -1 : 0);
   }
 
-  function filterByActiveCategory(products: Product[]) {
+  function filterByActiveCategory(products: Product[]): Product[] {
     return [...products].filter(product => (activeCategory === "all" ? product : product.category === activeCategory));
   }
 
-  if (!loading && !error && data) {
+  if (!loading && !error && products) {
 
-    const filtredAndSortedProducts: Product[] = filterByActiveCategory(sortProductsByInStock(data.category.products));
+    const filtredAndSortedProducts: Product[] = filterByActiveCategory(sortProductsByInStock(products));
 
     return (
       <div className={classNames.container}>
         <p className={classNames.headerText}>{activeCategory.toUpperCase()}</p>
         <div className={classNames.productsGrid}>
-          {data.category.products.length === 0
+          {products.length === 0
 
             ? <h2>There is no products...</h2>
 

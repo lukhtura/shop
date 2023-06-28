@@ -1,39 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
 
-
-
-type CurrencySymbol = "$" | "£" | "A$" | "¥" | "₽";
-type CurrencyLabel = "USD" | "GBP" | "AUD" | "JPY" | "RUB";
-
-interface CurrencySelected {
-  label: CurrencyLabel,
-  symbol: CurrencySymbol
-}
+import { Currency } from "engine/types/products";
 
 interface HeaderState {
   isCartModalOpen: boolean;
   isCurrencySelectorOpen: boolean;
-  isCategoriesDropdownmenuOpen: boolean;
+  isCategoriesDropdownMenuOpen: boolean;
   currencySelected: {
-    label: CurrencyLabel;
-    symbol: CurrencySymbol;
+    label: string;
+    symbol: string;
   };
   activeCategory: string;
-  filterContainerWidth: string;
+  categoryContainerWidth: string;
   headerHeight: string;
 }
 
 const initialState: HeaderState = {
   isCartModalOpen: false,
   isCurrencySelectorOpen: false,
-  isCategoriesDropdownmenuOpen: false,
+  isCategoriesDropdownMenuOpen: false,
   currencySelected: {
     label: "USD",
     symbol: "$"
   },
   activeCategory: "all",
-  filterContainerWidth: "0px",
+  categoryContainerWidth: "0px",
   headerHeight: "80px"
 }
 
@@ -47,18 +39,18 @@ const headerSlice = createSlice({
     setIsCurrencySelectorOpen: (state, action: PayloadAction<boolean>) => {
       state.isCurrencySelectorOpen = action.payload;
     },
-    setIsCategoriesDropdownmenuOpen: (state, action: PayloadAction<boolean>) => {
-      state.isCategoriesDropdownmenuOpen = action.payload;
+    setIsCategoriesDropdownMenuOpen: (state, action: PayloadAction<boolean>) => {
+      state.isCategoriesDropdownMenuOpen = action.payload;
     },
-    setCurrencySelected: (state, action: PayloadAction<CurrencySelected>) => {
+    setCurrencySelected: (state, action: PayloadAction<Currency>) => {
       state.currencySelected = action.payload;
       window.localStorage.setItem("CURRENCY_SELECTED", JSON.stringify(state.currencySelected));
     },
     setActiveCategory: (state, action: PayloadAction<string>) => {
       state.activeCategory = action.payload;
     },
-    setFilterContainerWidth: (state, action: PayloadAction<string>) => {
-      state.filterContainerWidth = action.payload;
+    setCategoryContainerWidth: (state, action: PayloadAction<string>) => {
+      state.categoryContainerWidth = action.payload;
     },
     setHeaderHeight: (state, action: PayloadAction<string>) => {
       state.headerHeight = action.payload;
@@ -71,9 +63,9 @@ const { actions, reducer } = headerSlice;
 export const {
   setIsCartModalOpen,
   setIsCurrencySelectorOpen,
-  setIsCategoriesDropdownmenuOpen,
+  setIsCategoriesDropdownMenuOpen,
   setCurrencySelected,
-  setFilterContainerWidth,
+  setCategoryContainerWidth,
   setHeaderHeight,
   setActiveCategory } = actions;
 

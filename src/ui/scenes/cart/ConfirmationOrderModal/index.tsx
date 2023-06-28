@@ -17,13 +17,12 @@ import Spinner from "ui/components/Spinner";
 import useConfirmationOrderModalStyles from "ui/scenes/cart/ConfirmationOrderModal/styles";
 
 
-
 const ConfirmationOrderModal: React.FC = () => {
 
   const dispatch = useAppDispatch();
   const isConfirmationOrderModalOpen = useAppSelector(state => state.cart.isConfirmationOrderModalOpen);
 
-  const [submitOrder, data, loading, error] = useSendOrder();
+  const { submitOrder, data, loading, error } = useSendOrder();
   const processOrder = useProcessOrder();
 
   const classNames = useConfirmationOrderModalStyles();
@@ -44,11 +43,11 @@ const ConfirmationOrderModal: React.FC = () => {
     return () => {
       window.removeEventListener("keydown", handleEscapeKeyListener);
     };
-  }, [dispatch]);
+  }, []);
 
 
   useEffect(() => {
-    processOrder(data, loading, error);
+    processOrder({ data, loading, error });
   }, [data, loading, error]);
 
 
@@ -78,7 +77,7 @@ const ConfirmationOrderModal: React.FC = () => {
                   NO
                 </DeclineButton>
                 <SubmitButton
-                  onClick={() => submitOrder("someBuyerID")}
+                  onClick={() => submitOrder("BuyerID")}
                   disabled={loading}
                   className={classNames.btn}
                 >

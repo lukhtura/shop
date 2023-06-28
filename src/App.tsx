@@ -17,7 +17,7 @@ import { routes } from "engine/config/routes";
 
 //Styles
 import { ThemeProvider } from "react-jss";
-import { theme } from "theme";
+import theme from "theme";
 
 const App: React.FC = () => {
 

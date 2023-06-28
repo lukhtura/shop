@@ -1,7 +1,10 @@
 //PATHS FOR ROUTES
 
 interface Paths {
-  [key: string]: string;
+  main: "/",
+  cart: "/cart",
+  product: "/:productId",
+  page404: "*"
 }
 
 export const paths: Paths = Object.freeze({

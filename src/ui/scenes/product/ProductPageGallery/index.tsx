@@ -1,22 +1,30 @@
 //Core
 import { useState } from "react";
 
+//Types
+import { Product } from "engine/types/products";
 
 //Styles
-import { useStyles } from "./styles";
+import useProductPageGalleryStyles from "ui/scenes/product/ProductPageGallery/styles";
 
-function ProductPageGallery({ gallery, name }) {
+
+interface ProductPageGalleryProps {
+  gallery: Product["gallery"];
+  name: Product["name"]
+}
+
+
+const ProductPageGallery: React.FC<ProductPageGalleryProps> = ({ gallery, name }) => {
 
   const [activeSlide, setActiveSlide] = useState("");
 
-  const classNames = useStyles();
-
-
+  const classNames = useProductPageGalleryStyles();
 
   return (
     <>
       {/* IMAGE PICKER */}
       <div className={classNames.gallery}>
+
         {gallery.map((img, i) => {
           return (
             <div
@@ -31,6 +39,7 @@ function ProductPageGallery({ gallery, name }) {
             </div>
           );
         })}
+
       </div>
 
       {/* ACTIVE IMAGE */}

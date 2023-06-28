@@ -1,33 +1,31 @@
 //Core
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "engine/redux/hooks";
 
 //Actions
 import { setIsCurrencySelectorOpen } from "engine/redux/slices/headerSlice";
 
 //Components
-import DropdownContent from "./DropdownContent";
-import DropdownButton from "./DropdownButton";
+import DropdownCurrencySelectorContent from "ui/scenes/header/DropdownCurrencySelector/DropdownCurrencySelectorContent/";
+import DropdownCurrencySelectorButton from "ui/scenes/header/DropdownCurrencySelector/DropdownCurrencySelectorButton";
 
 //Styles
-import { useStyles } from "./styles";
+import useDropdownCurrencySelectorStyles from "ui/scenes/header/DropdownCurrencySelector/styles";
 
 
 
-function DropdownCurrencySelector() {
+const DropdownCurrencySelector: React.FC = () => {
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  /**/
-  const classNames = useStyles();
-  /**/
+  const classNames = useDropdownCurrencySelectorStyles();
 
   return (
     <div
       onMouseEnter={() => dispatch(setIsCurrencySelectorOpen(true))}
       onMouseLeave={() => dispatch(setIsCurrencySelectorOpen(false))}
       className={classNames.container}>
-      <DropdownButton />
-      <DropdownContent />
+      <DropdownCurrencySelectorButton />
+      <DropdownCurrencySelectorContent />
     </div>
   );
 }

@@ -62,7 +62,7 @@ function CartModalContent() {
     return () => {
       window.removeEventListener("keydown", handleEscapeKeyListener);
     };
-  }, [dispatch]);
+  }, []);
 
   if (!isCartModalOpen) return null;
 

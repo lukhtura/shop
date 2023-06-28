@@ -1,7 +1,7 @@
 import { createUseStyles } from "react-jss";
 
 
-export const useStyles = createUseStyles(theme => ({
+const useProductCardStyles = createUseStyles(theme => ({
   skeleton: {
     width: "100%",
     height: "100%"
@@ -107,3 +107,5 @@ export const useStyles = createUseStyles(theme => ({
     },
   },
 }));
+
+export default useProductCardStyles;

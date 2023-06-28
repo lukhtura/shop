@@ -1,4 +1,7 @@
-export function getCurrentDateTime() {
+
+
+
+export function getCurrentDateTime(): string {
   const now = new Date();
 
   const day = String(now.getDate()).padStart(2, '0');

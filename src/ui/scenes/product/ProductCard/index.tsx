@@ -1,17 +1,28 @@
 //Core
 import { Link } from "react-router-dom";
 
+//Types
+import { Price } from "engine/types/products";
+
 //Styles
-import { useStyles } from "./styles";
+import useProductCardStyles from "ui/scenes/product/ProductCard/styles";
 
 //Images
 import greenCartIcon from "assets/icons/green-cart-icon.svg";
 
 
+interface ProductCardProps {
+  name: string;
+  brand: string;
+  price: Price;
+  image: string;
+  inStock: boolean;
+  id: string;
+}
 
-function ProductCard({ name, brand, price, image, inStock, id }) {
+const ProductCard: React.FC<ProductCardProps> = ({ name, brand, price, image, inStock, id }) => {
 
-  const classNames = useStyles();
+  const classNames = useProductCardStyles();
 
   return (
     <Link

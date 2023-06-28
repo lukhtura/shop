@@ -3,7 +3,7 @@ import { gql } from "@apollo/client";
 
 
 export const SEND_ORDER = gql`
-mutation CreateOrderWithBuyer($input: CreateOrderInput!) {
+mutation createOrderWithBuyer($input: CreateOrderInput!) {
   createOrderWithBuyer(input: $input) {
     buyerID,
     date

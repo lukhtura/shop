@@ -12,6 +12,16 @@ export const GET_ALL_PRODUCTS = gql`
                 gallery,
                 description,
                 brand,
+                attributes{
+                  id,
+                  name,
+                  type,
+                  items{
+                    value,
+                    displayValue,
+                    id,
+                  },
+                },
                 prices {
                     currency{
                         label,
@@ -33,13 +43,16 @@ export const GET_PRODUCT_BY_ID = gql`
             inStock,
             gallery,
             category,
-            attributes {
-                name,
-                items {
+            attributes{
+                  id,
+                  name,
+                  type,
+                  items{
+                    value,
                     displayValue,
-                    value
-                }
-            }
+                    id,
+                  },
+            },
             prices {
                 currency {
                     label,

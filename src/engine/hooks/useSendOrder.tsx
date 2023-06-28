@@ -10,15 +10,28 @@ import { getCurrentDateTime } from "utils/getCurrentDateTime";
 
 
 
+export interface ProductInOrder {
+  id: string;
+  price: string;
+  currency: string;
+}
+
+export interface NewOrderDetails {
+  buyerID: string,
+  date: string,
+  products: ProductInOrder[]
+}
+
+
 function useSendOrder() {
 
-  const [createOrder, { data, loading, error }] = useMutation(SEND_ORDER);
+  const [createOrderWithBuyer, { data, loading, error }] = useMutation<{ createOrderWithBuyer: NewOrderDetails }>(SEND_ORDER);
   const itemsInCart = useAppSelector(state => state.cart.itemsInCart);
-  const { currencySelected } = useAppSelector(state => state.header);
+  const currencySelected = useAppSelector(state => state.header.currencySelected);
 
-  function submitOrder() {
+  function submitOrder(UserID: string): void {
 
-    const products = [];
+    const products: ProductInOrder[] = [];
 
     itemsInCart.forEach(item => {
       const price = item.prices.filter(price => price.currency.label === currencySelected.label);
@@ -29,10 +42,10 @@ function useSendOrder() {
       });
     });
 
-    createOrder({
+    createOrderWithBuyer({
       variables: {
         input: {
-          buyerID: "id",
+          buyerID: UserID,
           date: getCurrentDateTime(),
           products: products
         }
@@ -40,7 +53,12 @@ function useSendOrder() {
     });
   }
 
-  return [submitOrder, data, loading, error];
+  return {
+    submitOrder,
+    data,
+    loading,
+    error
+  };
 }
 
 export default useSendOrder;

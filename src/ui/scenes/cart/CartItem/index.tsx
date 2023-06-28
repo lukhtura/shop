@@ -2,7 +2,7 @@
 import { useAppDispatch, useAppSelector } from "engine/redux/hooks";
 
 //Types
-import { Attribute, ProductInCart } from "engine/types/products";
+import { ActiveAttribute, ProductInCart } from "engine/types/products";
 
 //Actions
 import { addToCart, removeFromCart } from "engine/redux/slices/cartSlice";
@@ -23,8 +23,10 @@ const CartItem: React.FC<ProductInCart> = (props) => {
 
   const classNames = useCartItemStyles();
 
-  const countCartItemsQuantity = (products: typeof itemsInCart, id: string): number => {
+  const countCartItemQuantity = (products: typeof itemsInCart, id: string): number => {
+
     let res = 0;
+
     products.forEach(item => {
       if (item.shopId === id) {
         res = item.quantity;
@@ -33,13 +35,14 @@ const CartItem: React.FC<ProductInCart> = (props) => {
     return res;
   }
 
-  const { shopId, name, brand, prices, gallery, activeAttrs } = props;
+  const { shopId, name, brand, prices, gallery, activeAttributes } = props;
 
   const selectedCurrencyPrice = currencyExchanger(prices, currencySelected);
 
-  const renderActiveAttrs = (attributes: Attribute[]): JSX.Element[] => {
+  const renderActiveAttributes = (attributes: ActiveAttribute[]): JSX.Element[] => {
 
     return attributes.map((item, i) => {
+      console.log(item)
       if (item.name === "Color") {
         return (
           <div className={classNames.attribute} key={i}>
@@ -75,7 +78,7 @@ const CartItem: React.FC<ProductInCart> = (props) => {
         <h2 className={classNames.brand}>{brand}</h2>
         <h3 className={classNames.name}>{name}</h3>
         <p className={classNames.price}>{selectedCurrencyPrice.currency.symbol} {selectedCurrencyPrice.amount}</p>
-        {renderActiveAttrs(activeAttrs)}
+        {renderActiveAttributes(activeAttributes)}
       </div>
 
       {/* IMAGE AND QUANTITY COUNTER */}
@@ -86,7 +89,7 @@ const CartItem: React.FC<ProductInCart> = (props) => {
           <div
             onClick={() => dispatch(addToCart(props))}
             className={classNames.counterButton}>+</div>
-          <div className={classNames.counterNumber}>{countCartItemsQuantity(itemsInCart, shopId)}</div>
+          <div className={classNames.counterNumber}>{countCartItemQuantity(itemsInCart, shopId)}</div>
           <div onClick={() => dispatch(removeFromCart(shopId))}
             className={classNames.counterButton}>-</div>
         </div>

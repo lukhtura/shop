@@ -1,12 +1,11 @@
 //Core
-// import { useSelector, useDispatch } from "react-redux";
 import { useAppDispatch, useAppSelector } from "engine/redux/hooks";
 import { Link as RouterLink } from "react-router-dom";
 import useMediaQuery from "engine/hooks/useMediaQuery";
 import { useLayoutEffect, useRef } from "react";
 
 //Actions
-import { setHeaderHeight } from "engine/redux/slices/headerSlice";
+import { setHeaderHeight, setActiveCategory } from "engine/redux/slices/headerSlice";
 
 //Components
 import HeaderCategories from "ui/scenes/header/HeaderCategories/";
@@ -15,17 +14,17 @@ import CartModal from "ui/scenes/cart/CartModal/";
 import HeaderCategoriesDropdownButton from "ui/scenes/header/HeaderDropdownCategories/HeaderCategoriesDropdownButton";
 
 //Styles
-import { useStyles } from "./styles";
+import useHeaderStyles from "ui/scenes/header/HeaderComponent/styles";
 import logo from "assets/img/green-logo.svg";
 
 
 
-function Header() {
+const Header: React.FC = () => {
 
   const dispatch = useAppDispatch();
-  const filterContainerWidth = useAppSelector(state => state.header.filterContainerWidth);
+  const categoryContainerWidth = useAppSelector(state => state.header.categoryContainerWidth);
 
-  const classNames = useStyles();
+  const classNames = useHeaderStyles();
 
   const headerRef = useRef<HTMLDivElement | null>(null);
 
@@ -35,7 +34,7 @@ function Header() {
     if (headerRef.current) {
       dispatch(setHeaderHeight(`${headerRef.current.offsetHeight}px`));
     }
-  }, [dispatch, isMobile])
+  }, [isMobile, headerRef.current])
 
   return (
     <header
@@ -47,17 +46,20 @@ function Header() {
 
 
         {/* LOGO */}
-        <RouterLink to={"./"} className={classNames.logo}>
+        <RouterLink
+          to={"./"}
+          className={classNames.logo}>
           <img
             src={logo}
             alt="logotype"
+            onClick={() => dispatch(setActiveCategory("all"))}
           />
         </RouterLink>
         {/* LOGO */}
 
         <div
           className={classNames.buttonsContainer}
-          style={{ width: filterContainerWidth }}>
+          style={{ width: categoryContainerWidth }}>
           <DropdownCurrencySelector />
           <CartModal />
         </div>

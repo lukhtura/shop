@@ -3,33 +3,33 @@ import { useRef } from "react";
 import { useAppDispatch, useAppSelector } from "engine/redux/hooks";
 
 //Actions
-import { setIsCategoriesDropdownmenuOpen } from "engine/redux/slices/headerSlice";
+import { setIsCategoriesDropdownMenuOpen } from "engine/redux/slices/headerSlice";
 
 //Components
 import HeaderCategories from "ui/scenes/header/HeaderCategories"
 
 //Styles
-import { useStyles } from "./styles";
+import useHeaderCategoriesDropdownContentStyles from "ui/scenes/header/HeaderDropdownCategories/HeaderCategoriesDropdownContent/styles";
 
 
 
 const HeaderCategoriesDropdownContent: React.FC = () => {
 
   const dispatch = useAppDispatch();
-  const { headerHeight, isCategoriesDropdownmenuOpen } = useAppSelector(state => state.header)
+  const { headerHeight, isCategoriesDropdownMenuOpen } = useAppSelector(state => state.header)
 
-  const classNames = useStyles();
+  const classNames = useHeaderCategoriesDropdownContentStyles();
 
-  const containerRef = useRef();
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
-  if (isCategoriesDropdownmenuOpen) return (
+  if (isCategoriesDropdownMenuOpen && containerRef.current) return (
     <div
       className={classNames.wrapper}
-      onMouseEnter={() => dispatch(setIsCategoriesDropdownmenuOpen(true))}
-      onMouseLeave={() => dispatch(setIsCategoriesDropdownmenuOpen(false))}
+      onMouseEnter={() => dispatch(setIsCategoriesDropdownMenuOpen(true))}
+      onMouseLeave={() => dispatch(setIsCategoriesDropdownMenuOpen(false))}
       ref={containerRef}
       style={
-        !isCategoriesDropdownmenuOpen && containerRef.current?.offsetHeight
+        !isCategoriesDropdownMenuOpen && containerRef.current.offsetHeight
           ? { top: -(containerRef.current.offsetHeight - parseInt(headerHeight)) }
           : { top: headerHeight }
       }

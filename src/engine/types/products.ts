@@ -14,9 +14,16 @@ export interface Price {
   amount: number;
 }
 
-export interface Attribute {
+interface AttributeItem {
   name: string;
   value: string;
+  displayValue: string;
+}
+
+export interface Attribute {
+  name: string;
+  type: "text" | "swatch";
+  items: AttributeItem[]
 }
 
 export interface Product {
@@ -31,8 +38,12 @@ export interface Product {
   brand: string;
 }
 
+export interface ActiveAttribute extends Omit<Attribute, "type" | "items"> {
+  value: string;
+}
+
 export interface ProductInCart extends Omit<Product, "inStock" | "category" | "description"> {
   shopId: string;
   quantity: number;
-  activeAttrs: Attribute[];
+  activeAttributes: ActiveAttribute[];
 }

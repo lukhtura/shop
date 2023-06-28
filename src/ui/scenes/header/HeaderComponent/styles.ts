@@ -1,7 +1,7 @@
 import { createUseStyles } from "react-jss";
 
 
-export const useStyles = createUseStyles(theme => ({
+const useHeaderStyles = createUseStyles(theme => ({
   header: {
     width: "100%",
     padding: "0 20px",
@@ -32,11 +32,11 @@ export const useStyles = createUseStyles(theme => ({
   },
 
 
-  [`@media(max-width: ${theme.breakpoints.xl})`]: {
-    buttonsContainer: {
-      marginRight: "20px"
-    },
-  },
+  // [`@media(max-width: ${theme.breakpoints.xl})`]: {
+  //   buttonsContainer: {
+  //     marginRight: "20px"
+  //   },
+  // },
 
   [`@media(max-width: ${theme.breakpoints.md})`]: {
     inner: {
@@ -44,3 +44,5 @@ export const useStyles = createUseStyles(theme => ({
     },
   },
 }));
+
+export default useHeaderStyles;

@@ -2,7 +2,7 @@ import { createUseStyles } from "react-jss";
 
 
 
-export const useStyles = createUseStyles(theme => ({
+const useProductFormStyles = createUseStyles(theme => ({
   "@keyframes blink": {
     '0%': { opacity: 0 },
     '50%': { opacity: 1 },
@@ -53,3 +53,5 @@ export const useStyles = createUseStyles(theme => ({
     animation: "$blink 1.5s infinite",
   },
 }));
+
+export default useProductFormStyles;

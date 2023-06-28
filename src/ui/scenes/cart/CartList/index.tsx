@@ -22,7 +22,7 @@ const CartList: React.FC<CartListProps> = ({ data }) => {
             prices={item.prices}
             gallery={item.gallery}
             attributes={item.attributes}
-            activeAttrs={item.activeAttrs}
+            activeAttributes={item.activeAttributes}
             quantity={item.quantity}
           />
         ))}

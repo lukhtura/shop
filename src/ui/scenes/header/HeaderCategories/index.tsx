@@ -10,25 +10,31 @@ import { GET_ALL_CATEGORIES } from "api/queries/categories";
 
 //Actions
 import { setActiveCategory } from "engine/redux/slices/headerSlice";
-import { setFilterContainerWidth } from "engine/redux/slices/headerSlice";
+import { setCategoryContainerWidth } from "engine/redux/slices/headerSlice";
 
 //Styles
-import { useStyles } from "./styles";
+import useHeaderCategoriesStyles from "ui/scenes/header/HeaderCategories/styles";
 
+interface Category {
+  name: string
+}
 
+interface CategoriesData {
+  categories: Category[];
+}
 
-function HeaderCategories() {
+const HeaderCategories: React.FC = () => {
 
   const dispatch = useAppDispatch();
   const { activeCategory } = useAppSelector(state => state.header);
 
-  const { data, loading, error } = useQuery(GET_ALL_CATEGORIES);
+  const { data, loading, error } = useQuery<CategoriesData>(GET_ALL_CATEGORIES);
 
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   const isMobile = useMediaQuery('(max-width: 960px)');
 
-  const classNames = useStyles();
+  const classNames = useHeaderCategoriesStyles();
 
   const location = useLocation();
 
@@ -40,9 +46,9 @@ function HeaderCategories() {
 
   useLayoutEffect((): void => {
     if (!loading && !error && !isMobile && containerRef.current) {
-      dispatch(setFilterContainerWidth(`${containerRef.current.offsetWidth}px`));
+      dispatch(setCategoryContainerWidth(`${containerRef.current.offsetWidth}px`));
     }
-  }, [dispatch, loading, error, isMobile, location]);
+  }, [loading, error, isMobile, containerRef.current]);
 
 
 
@@ -88,6 +94,8 @@ function HeaderCategories() {
       })}
     </div>
   );
+
+  return null;
 }
 
 export default HeaderCategories;

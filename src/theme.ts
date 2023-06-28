@@ -1,4 +1,4 @@
-export const theme = {
+const theme = {
   colors: {
     primary: "#5ECE7B",
     text: "#1D1F22",
@@ -20,3 +20,5 @@ export const theme = {
     dropdown: 110
   }
 };
+
+export default theme;

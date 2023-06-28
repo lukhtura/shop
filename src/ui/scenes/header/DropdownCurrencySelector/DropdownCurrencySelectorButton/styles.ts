@@ -1,6 +1,6 @@
 import { createUseStyles } from "react-jss";
 
-export const useStyles = createUseStyles({
+const useDropdownCurrencySelectorButtonStyles = createUseStyles({
   currencySelectorBtn: {
     display: "flex",
     gap: "5px",
@@ -22,3 +22,5 @@ export const useStyles = createUseStyles({
     width: "10px"
   },
 });
+
+export default useDropdownCurrencySelectorButtonStyles;

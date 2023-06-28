@@ -14,6 +14,7 @@ const useProductsGridStyles = createUseStyles(theme => ({
     // gridTemplateColumns: "repeat(3, 33%)",
     gridTemplateColumns: "repeat(auto-fill, 480px)",
     justifyItems: "center",
+    justifyContent: "center"
   },
 
 

@@ -39,7 +39,7 @@ const OrderMessage: React.FC = () => {
 
   if (!isMessage) return null;
 
-  if (OrderStatus.Succes) {
+  if (orderStatus === OrderStatus.Succes) {
     return (
       <div
         className={`${classNames.container} ${classNames.positive}`}
@@ -47,7 +47,7 @@ const OrderMessage: React.FC = () => {
         <p className={classNames.text}>Your order is recieved! Thank you :)</p>
       </ div >
     );
-  } else if (OrderStatus.Error) {
+  } else if (orderStatus === OrderStatus.Error) {
     return (
       <div
         className={`${classNames.container}  ${classNames.negative}`}

@@ -10,6 +10,7 @@ export const countTotalPriceOfCart = (itemsInCart: ProductInCart[], currencySele
 
 
   if (itemsInCart.length > 0) {
+
     itemsInCart.forEach((item) => {
       itemQuantity = item.quantity;
       item.prices.forEach(item => {
@@ -17,6 +18,7 @@ export const countTotalPriceOfCart = (itemsInCart: ProductInCart[], currencySele
           totalPrice = totalPrice + item.amount * itemQuantity;
         }
       });
+
       itemQuantity = 0;
     });
   }

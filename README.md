@@ -9,6 +9,7 @@ Build a UI of single page application shop with cart, product page and category 
 
 ### Built with:
 <div>
+<img style="width: 50px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/80px-Typescript_logo_2020.svg.png" alt="TypeScript" />
 <img style="width: 50px" src="https://user-images.githubusercontent.com/25181517/183897015-94a058a6-b86e-4e42-a37f-bf92061753e5.png" alt="React" />
 <img style="width: 50px" src="https://user-images.githubusercontent.com/25181517/187896150-cc1dcb12-d490-445c-8e4d-1275cd2388d6.png" alt="Redux" />
 <img style="width: 100px" src="https://user-images.githubusercontent.com/841294/53402609-b97a2180-39ba-11e9-8100-812bab86357c.png" alt="ApolloClient" />
