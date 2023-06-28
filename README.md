@@ -14,7 +14,6 @@ Build a UI of single page application shop with cart, product page and category 
 <img style="width: 50px" src="https://user-images.githubusercontent.com/25181517/187896150-cc1dcb12-d490-445c-8e4d-1275cd2388d6.png" alt="Redux" />
 <img style="width: 100px" src="https://user-images.githubusercontent.com/841294/53402609-b97a2180-39ba-11e9-8100-812bab86357c.png" alt="ApolloClient" />
   <img style="width: 50px" src="https://avatars1.githubusercontent.com/u/9503099" alt="JSS" />
-<img style="width: 50px" src="https://user-images.githubusercontent.com/25181517/192158956-48192682-23d5-4bfc-9dfb-6511ade346bc.png" alt="SASS" />
   <img style="width: 50px" src="https://camo.githubusercontent.com/61e102d7c605ff91efedb9d7e47c1c4a07cef59d3e1da202fd74f4772122ca4e/68747470733a2f2f766974656a732e6465762f6c6f676f2e737667" alt="VITE" />
  </div>
 
