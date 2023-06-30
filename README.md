@@ -1,7 +1,9 @@
 # Online shop
 
-<a href="https://shop-ts-pearl.vercel.app/">DEMO</a>
-
+<h2 align="center"> Tap for demo:
+<a href="https://shop-ts-pearl.vercel.app/">>>>DEMO<<<</a>
+</h2>
+<br>
 <p align="center">
   <img src="https://github.com/lukhtura/react-graphql-shop/blob/typescript/other/screen.jpg" alt="screen" />
 </p>
