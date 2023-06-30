@@ -1,7 +1,9 @@
 # Online shop
 
+<a href="https://shop-ts-pearl.vercel.app/">DEMO</a>
+
 <p align="center">
-  <img src="https://github.com/lukhtura/react-graphql-shop/blob/main/other/screen.jpg" alt="screen" />
+  <img src="https://github.com/lukhtura/react-graphql-shop/blob/typescript/other/screen.jpg" alt="screen" />
 </p>
 
 ### Goal of the project:
