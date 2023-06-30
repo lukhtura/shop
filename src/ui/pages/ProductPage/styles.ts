@@ -1,6 +1,7 @@
 import { createUseStyles } from "react-jss";
+import { Theme } from "theme";
 
-const useProductPageStyles = createUseStyles(theme => ({
+const useProductPageStyles = createUseStyles((theme: Theme) => ({
   container: {
     marginTop: "120px",
     display: "flex",

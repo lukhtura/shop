@@ -1,8 +1,9 @@
 import { createUseStyles } from "react-jss";
+import { Theme } from "theme";
 
 
 
-const useProductFormStyles = createUseStyles(theme => ({
+const useProductFormStyles = createUseStyles((theme: Theme) => ({
   "@keyframes blink": {
     '0%': { opacity: 0 },
     '50%': { opacity: 1 },

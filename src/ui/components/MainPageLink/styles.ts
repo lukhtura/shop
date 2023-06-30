@@ -1,6 +1,7 @@
 import { createUseStyles } from "react-jss";
+import { Theme } from "theme";
 
-const useMainPageLinkStyles = createUseStyles(theme => ({
+const useMainPageLinkStyles = createUseStyles((theme: Theme) => ({
   link: {
     color: theme.colors.primaryHover,
     display: "block",

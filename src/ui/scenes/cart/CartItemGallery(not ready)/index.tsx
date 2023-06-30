@@ -1,35 +1,35 @@
-// THIS COMPONENT IS NOT READY YET
+// // THIS COMPONENT IS NOT READY YET
 
-import { useStyles } from "./styles";
-import galleryButton from "assets/img/galleryArrow.svg";
-
-
-function CartItemGallery({ images }) {
-
-  const classNames = useStyles();
+// import { useStyles } from "./styles";
+// import galleryButton from "assets/img/galleryArrow.svg";
 
 
-  const renderGallerySlider = (data) => {
-    return data.map((item, i) => <img key={item} className={classNames.galleryItem} src={gallery[i]} alt="alt" />);
-  }
+// function CartItemGallery({ images }) {
 
-  return (
-    <div className={classNames.container}>
-      <div className={classNames.galleryFlow}>
-        {renderGallerySlider(images)}
-      </div>
-      <div>
-        <img
-          className={classNames.nextBtn}
-          src={galleryButton}
-          alt="next" />
-        <img
-          className={classNames.prevBtn}
-          src={galleryButton}
-          alt="previous" />
-      </div>
-    </div>
-  )
-}
+//   const classNames = useStyles();
 
-export default CartItemGallery;
+
+//   const renderGallerySlider = (data) => {
+//     return data.map((item, i) => <img key={item} className={classNames.galleryItem} src={gallery[i]} alt="alt" />);
+//   }
+
+//   return (
+//     <div className={classNames.container}>
+//       <div className={classNames.galleryFlow}>
+//         {renderGallerySlider(images)}
+//       </div>
+//       <div>
+//         <img
+//           className={classNames.nextBtn}
+//           src={galleryButton}
+//           alt="next" />
+//         <img
+//           className={classNames.prevBtn}
+//           src={galleryButton}
+//           alt="previous" />
+//       </div>
+//     </div>
+//   )
+// }
+
+// export default CartItemGallery;

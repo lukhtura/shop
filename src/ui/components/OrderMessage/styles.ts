@@ -1,6 +1,7 @@
 import { createUseStyles } from "react-jss";
+import { Theme } from "theme";
 
-const useOrderMessageStyles = createUseStyles(theme => ({
+const useOrderMessageStyles = createUseStyles((theme: Theme) => ({
   container: {
     maxWidth: "500px",
     height: "40px",

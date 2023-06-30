@@ -1,6 +1,7 @@
-import { createUseStyles } from "react-jss"
+import { createUseStyles } from "react-jss";
+import { Theme } from "theme";
 
-const useConfirmationOrderModalStyles = createUseStyles(theme => ({
+const useConfirmationOrderModalStyles = createUseStyles((theme: Theme) => ({
   modalOverflow: {
     display: "flex",
     justifyContent: "center",

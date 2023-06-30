@@ -1,7 +1,8 @@
 import { createUseStyles } from "react-jss";
+import { Theme } from "theme";
 
 
-const useLayoutStyles = createUseStyles(theme => ({
+const useLayoutStyles = createUseStyles((theme: Theme) => ({
   content: {
     maxWidth: "1440px",
     margin: "80px auto 0",

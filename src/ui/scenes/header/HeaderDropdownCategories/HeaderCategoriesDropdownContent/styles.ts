@@ -1,6 +1,7 @@
 import { createUseStyles } from "react-jss";
+import { Theme } from "theme";
 
-const useHeaderCategoriesDropdownContentStyles = createUseStyles(theme => ({
+const useHeaderCategoriesDropdownContentStyles = createUseStyles((theme: Theme) => ({
   wrapper: {
     zIndex: theme.zIndex.dropdown,
     position: "fixed",

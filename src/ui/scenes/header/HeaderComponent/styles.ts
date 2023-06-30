@@ -1,7 +1,8 @@
 import { createUseStyles } from "react-jss";
+import { Theme } from "theme";
 
 
-const useHeaderStyles = createUseStyles(theme => ({
+const useHeaderStyles = createUseStyles((theme: Theme) => ({
   header: {
     width: "100%",
     padding: "0 20px",

@@ -1,7 +1,8 @@
 import { createUseStyles } from "react-jss";
+import { Theme } from "theme";
 
 
-const useProductFormAttributesStyles = createUseStyles(theme => ({
+const useProductFormAttributesStyles = createUseStyles((theme: Theme) => ({
   label: {
     fontWeight: "700",
     fontSize: "18px",

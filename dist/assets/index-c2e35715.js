@@ -1,0 +1,1 @@
+import{c as a,j as o,L as e}from"./index-a3058b41.js";const n=a(s=>({link:{color:s.colors.primaryHover,display:"block",fontWeight:"bold",fontSize:24,marginTop:30}})),t=()=>{const s=n();return o.jsx(e,{to:"/",className:s.link,children:"Back to main page"})};export{t as M};

@@ -1,6 +1,7 @@
 import { createUseStyles } from "react-jss";
+import { Theme } from "theme";
 
-const useProductsGridStyles = createUseStyles(theme => ({
+const useProductsGridStyles = createUseStyles((theme: Theme) => ({
   headerText: {
     marginBottom: "40px",
     fontSize: "42px",

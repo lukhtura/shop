@@ -1,4 +1,5 @@
 import { createUseStyles } from "react-jss";
+import { Theme } from "theme";
 
 export const useStyles = createUseStyles(
   {

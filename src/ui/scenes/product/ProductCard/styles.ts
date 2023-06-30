@@ -1,7 +1,8 @@
 import { createUseStyles } from "react-jss";
+import { Theme } from "theme";
 
 
-const useProductCardStyles = createUseStyles(theme => ({
+const useProductCardStyles = createUseStyles((theme: Theme) => ({
   skeleton: {
     width: "100%",
     height: "100%"

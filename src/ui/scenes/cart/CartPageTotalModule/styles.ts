@@ -1,4 +1,5 @@
 import { createUseStyles } from "react-jss";
+import { Theme } from "theme";
 
 const useCartPageTotalModuleStyles = createUseStyles({
   permanentText: {

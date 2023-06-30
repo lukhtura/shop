@@ -1,6 +1,7 @@
 import { createUseStyles } from "react-jss";
+import { Theme } from "theme";
 
-const useCartItemStyles = createUseStyles(theme => ({
+const useCartItemStyles = createUseStyles((theme: Theme) => ({
   cartContext: {
     brand: {
       color: "red"

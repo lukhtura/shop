@@ -1,6 +1,7 @@
 import { createUseStyles } from "react-jss";
+import { Theme } from "theme";
 
-const useDropdownCurrencySelectorContentStyles = createUseStyles(theme => ({
+const useDropdownCurrencySelectorContentStyles = createUseStyles((theme: Theme) => ({
   selector: {
     background: theme.colors.background,
     position: "absolute",

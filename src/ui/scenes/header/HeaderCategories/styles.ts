@@ -1,6 +1,7 @@
 import { createUseStyles } from "react-jss";
+import { Theme } from "theme";
 
-const useHeaderCategoriesStyles = createUseStyles(theme => ({
+const useHeaderCategoriesStyles = createUseStyles((theme: Theme) => ({
   categoriesContainer: {
     display: "flex",
     justifyContent: "space-between",

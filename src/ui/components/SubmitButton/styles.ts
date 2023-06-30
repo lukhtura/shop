@@ -1,6 +1,7 @@
 import { createUseStyles } from "react-jss";
+import { Theme } from "theme";
 
-const useSubmitButtonStyles = createUseStyles(theme => ({
+const useSubmitButtonStyles = createUseStyles((theme: Theme) => ({
   button: {
     position: "relative",
     background: theme.colors.primary,

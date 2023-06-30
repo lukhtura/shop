@@ -1,6 +1,7 @@
 import { createUseStyles } from "react-jss";
+import { Theme } from "theme";
 
-const useCartModalContentStyles = createUseStyles(theme => ({
+const useCartModalContentStyles = createUseStyles((theme: Theme) => ({
   modalOverflow: {
     display: "flex",
     justifyContent: "center",

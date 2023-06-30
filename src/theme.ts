@@ -1,3 +1,26 @@
+export interface Theme {
+  colors: {
+    primary: string;
+    text: string;
+    background: string;
+    primaryHover: string;
+    dropdownHover: string;
+    danger: string;
+  };
+  breakpoints: {
+    xs: string;
+    sm: string;
+    md: string;
+    lg: string;
+    xl: string;
+  };
+  zIndex: {
+    modal: number;
+    header: number;
+    dropdown: number;
+  };
+}
+
 const theme = {
   colors: {
     primary: "#5ECE7B",

@@ -1,8 +1,9 @@
 import { createUseStyles } from "react-jss";
+import { Theme } from "theme";
 
 
 
-const useDeclineButtonStyles = createUseStyles(theme => ({
+const useDeclineButtonStyles = createUseStyles((theme: Theme) => ({
   removeBtn: {
     backgroundColor: theme.colors.danger,
     border: "none",
