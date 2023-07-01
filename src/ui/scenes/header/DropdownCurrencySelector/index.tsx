@@ -1,5 +1,5 @@
 //Core
-import { useAppDispatch } from "engine/redux/hooks";
+import { useAppDispatch, useAppSelector } from "engine/redux/hooks";
 
 //Actions
 import { setIsCurrencySelectorOpen } from "engine/redux/slices/headerSlice";
@@ -16,6 +16,7 @@ import useDropdownCurrencySelectorStyles from "ui/scenes/header/DropdownCurrency
 const DropdownCurrencySelector: React.FC = () => {
 
   const dispatch = useAppDispatch();
+  const isCurrencySelectorOpen = useAppSelector(state => state.header.isCurrencySelectorOpen);
 
   const classNames = useDropdownCurrencySelectorStyles();
 
@@ -23,6 +24,7 @@ const DropdownCurrencySelector: React.FC = () => {
     <div
       onMouseEnter={() => dispatch(setIsCurrencySelectorOpen(true))}
       onMouseLeave={() => dispatch(setIsCurrencySelectorOpen(false))}
+      onTouchStart={() => dispatch(setIsCurrencySelectorOpen(!isCurrencySelectorOpen))}
       className={classNames.container}>
       <DropdownCurrencySelectorButton />
       <DropdownCurrencySelectorContent />

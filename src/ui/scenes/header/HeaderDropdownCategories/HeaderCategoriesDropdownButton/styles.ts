@@ -1,8 +1,10 @@
 import { createUseStyles } from "react-jss";
-import { Theme } from "theme";
 
-const useHeaderCategoriesDropdownButtonStyles = createUseStyles((theme: Theme) => ({
+
+const useHeaderCategoriesDropdownButtonStyles = createUseStyles(() => ({
   container: {
+    width: "54px",
+    paddingLeft: "20px",
     display: "flex",
     alignItems: "center",
     cursor: "pointer",
