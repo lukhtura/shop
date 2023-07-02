@@ -24,7 +24,7 @@ const HeaderCategoriesDropdownContent: React.FC = () => {
 
   if (isCategoriesDropdownMenuOpen) return (
     <div
-      className={classNames.overlay}
+      className={classNames.overflow}
       onClick={() => dispatch(setIsCategoriesDropdownMenuOpen(false))}
     >
       <div

@@ -2,7 +2,7 @@ import { createUseStyles } from "react-jss";
 import { Theme } from "theme";
 
 const useHeaderCategoriesDropdownContentStyles = createUseStyles((theme: Theme) => ({
-  overlay: {
+  overflow: {
     zIndex: theme.zIndex.dropdown,
     position: 'fixed',
     top: 0,

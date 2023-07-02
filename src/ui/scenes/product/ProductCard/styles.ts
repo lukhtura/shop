@@ -102,6 +102,19 @@ const useProductCardStyles = createUseStyles((theme: Theme) => ({
   //   },
   // },
 
+  [`@media(max-width: ${theme.breakpoints.md})`]: {
+    card: {
+      "&:hover": {
+        boxShadow: "inherit",
+      },
+
+      /* CART ICON VISIBLE */
+      "&:hover $cartIcon": {
+        opacity: "1",
+      }
+    },
+  },
+
   [`@media(max-width: ${theme.breakpoints.xs})`]: {
     card: {
       margin: 0,
