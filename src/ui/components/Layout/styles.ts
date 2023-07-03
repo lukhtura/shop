@@ -14,11 +14,11 @@ const useLayoutStyles = createUseStyles((theme: Theme) => ({
   //   }
   // },
 
-  [`@media(max-width: ${theme.breakpoints.md})`]: {
-    content: {
-      margin: "30px auto 0",
-    }
-  },
+  // [`@media(max-width: ${theme.breakpoints.md})`]: {
+  //   content: {
+  //     margin: "30px auto 0",
+  //   }
+  // },
 
   // [`@media(max-width: ${theme.breakpoints.xs})`]: {
   //   content: {

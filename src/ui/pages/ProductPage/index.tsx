@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { useDispatch } from "react-redux";
+import useMediaQuery from "engine/hooks/useMediaQuery";
 
 //Api
 import { GET_PRODUCT_BY_ID } from "api/queries/products";
@@ -15,6 +16,7 @@ import { Product } from "engine/types/products";
 
 //Components
 import ProductPageGallery from "ui/scenes/product/ProductPageGallery";
+import ProductPageGalleryMobile from "ui/scenes/product/ProductPageGallery/Mobile";
 import ProductForm from "ui/scenes/product/ProductForm";
 import ErrorMessage from "ui/components/ErrorMessage";
 import Spinner from "ui/components/Spinner";
@@ -41,6 +43,8 @@ function ProductPage() {
     }
   });
 
+  const isMobile: boolean = useMediaQuery('(max-width: 960px)');
+
   const classNames = useProductPageStyles();
 
   useEffect((): void => {
@@ -58,9 +62,15 @@ function ProductPage() {
   const renderProduct = (data: Product) => {
     return (
       <>
-        <ProductPageGallery
-          name={data.name}
-          gallery={data.gallery} />
+        {
+          isMobile
+            ? <ProductPageGalleryMobile
+              name={data.name}
+              gallery={data.gallery} />
+            : <ProductPageGallery
+              name={data.name}
+              gallery={data.gallery} />
+        }
         <ProductForm
           name={data.name}
           brand={data.brand}
@@ -74,7 +84,7 @@ function ProductPage() {
     );
   }
 
-  const view = data ? renderProduct(data.product) : null;
+  const view: JSX.Element | null = data ? renderProduct(data.product) : null;
 
   return (
     <div className={classNames.container}>

@@ -2,6 +2,7 @@
 import { useEffect, Suspense } from "react";
 import { useAppDispatch } from "engine/redux/hooks";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import useMediaQuery from "engine/hooks/useMediaQuery";
 
 //Actions
 import { restoreCartFromLocalStorage } from "engine/redux/slices/cartSlice";
@@ -22,6 +23,8 @@ import theme from "theme";
 const App: React.FC = () => {
 
   const dispatch = useAppDispatch();
+
+  const isMobile: boolean = useMediaQuery(`max-width: ${theme.breakpoints.md}`);
 
   // SAVE AND RESTORE LOCAL STORAGE
   useEffect(() => {

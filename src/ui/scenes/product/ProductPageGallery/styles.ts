@@ -1,6 +1,7 @@
 import { createUseStyles } from "react-jss";
+import { Theme } from "theme";
 
-const useProductPageGalleryStyles = createUseStyles({
+const useProductPageGalleryStyles = createUseStyles((theme: Theme) => ({
   gallery: {
     width: "25%",
     display: "flex",
@@ -35,31 +36,13 @@ const useProductPageGalleryStyles = createUseStyles({
     height: "70vh",
     objectFit: "contain",
   },
-  sliderButtonsContainer: {
-    width: "100%",
-    height: "40px",
-    position: "absolute",
-    top: "50%",
-    transform: "translateY(-50%)",
-    display: "flex",
-    justifyContent: "space-between"
+
+
+  [`@media(max-width: ${theme.breakpoints.md})`]: {
+    activeImgContainer: {
+      width: "100%",
+    },
   },
-  sliderButton: {
-    width: "40px",
-  },
-  previousSliderButton: {
-    transform: "rotateY(180deg)",
-  },
-  sliderOverflow: {
-    width: "49%",
-    overflow: "hidden"
-  },
-  activeSlide: {
-    display: "flex",
-  },
-  disabled: {
-    opacity: "0,5"
-  }
-});
+}));
 
 export default useProductPageGalleryStyles;

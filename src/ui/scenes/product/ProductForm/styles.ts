@@ -53,6 +53,14 @@ const useProductFormStyles = createUseStyles((theme: Theme) => ({
     marginBottom: "10px",
     animation: "$blink 1.5s infinite",
   },
+
+  [`@media(max-width: ${theme.breakpoints.md})`]: {
+    container: {
+      width: "100%",
+      padding: "0 20px"
+    },
+  },
+
 }));
 
 export default useProductFormStyles;

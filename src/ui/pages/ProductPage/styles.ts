@@ -33,7 +33,16 @@ const useProductPageStyles = createUseStyles((theme: Theme) => ({
   quantity: {
     fontWeight: "500",
     fontSize: "24px",
-  }
+  },
+
+
+  [`@media(max-width: ${theme.breakpoints.md})`]: {
+    container: {
+      marginTop: "0px",
+      flexDirection: "column",
+      gap: "50px"
+    },
+  },
 }));
 
 export default useProductPageStyles;
