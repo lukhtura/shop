@@ -1,9 +1,8 @@
 //Core
-import { useLayoutEffect, useRef, useState } from "react";
-import { useAppDispatch } from "engine/redux/hooks";
+import { useAppDispatch, useAppSelector } from "engine/redux/hooks";
 
 //Actions
-import { setCategoryContainerWidth, setIsCategoriesDropdownMenuOpen } from "engine/redux/slices/headerSlice";
+import { setIsCategoriesDropdownMenuOpen } from "engine/redux/slices/headerSlice";
 
 //Styles
 import useHeaderCategoriesDropdownButtonStyles from "ui/scenes/header/HeaderDropdownCategories/HeaderCategoriesDropdownButton/styles";
@@ -11,40 +10,31 @@ import theme from "theme";
 
 
 
-
 const HeaderCategoriesDropdownButton: React.FC = () => {
 
-  const [onHover, setOnHover] = useState<boolean>(false);
-
   const dispatch = useAppDispatch();
+  const isCategoriesDropdownMenuOpen = useAppSelector(state => state.header.isCategoriesDropdownMenuOpen)
 
   const classNames = useHeaderCategoriesDropdownButtonStyles();
 
-  const containerRef = useRef<HTMLDivElement | null>(null);
-
-  useLayoutEffect(() => {
-    if (containerRef.current && containerRef.current.offsetWidth !== 0)
-      dispatch(setCategoryContainerWidth(`${containerRef.current.offsetWidth}px`));
-  }, []);
-
-  function controlMouse(boolean: boolean) {
-    setOnHover(boolean);
+  function controlMouse(boolean: boolean): void {
     dispatch(setIsCategoriesDropdownMenuOpen(boolean));
   }
 
+
   return (
     <div
+      onTouchStart={() => controlMouse(!isCategoriesDropdownMenuOpen)}
       onMouseEnter={() => controlMouse(true)}
       onMouseLeave={() => controlMouse(false)}
-      ref={containerRef}
       className={classNames.container}>
       <svg
         style={{
           cursor: "pointer"
         }}
-        fill={onHover ? theme.colors.primary : "black"}
-        width={onHover ? "34px" : "32px"}
-        height={onHover ? "34px" : "32px"}
+        fill={isCategoriesDropdownMenuOpen ? theme.colors.primary : "black"}
+        width={isCategoriesDropdownMenuOpen ? "34px" : "32px"}
+        height={isCategoriesDropdownMenuOpen ? "34px" : "32px"}
         id="Layer_1"
         version="1.1"
         viewBox="0 0 32 32"

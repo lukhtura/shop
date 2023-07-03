@@ -56,17 +56,29 @@ function CartModalContent() {
     }
   }
 
+  function enableScroll(): void {
+    document.body.style.overflow = "auto"
+  }
+
+  function disableScroll(): void {
+    document.body.style.overflow = "hidden"
+  }
+
   useEffect(() => {
-    window.addEventListener("keydown", handleEscapeKeyListener);
+    if (isCartModalOpen) {
+      window.addEventListener("keydown", handleEscapeKeyListener);
+      disableScroll()
+    }
 
     return () => {
       window.removeEventListener("keydown", handleEscapeKeyListener);
+      enableScroll();
     };
   }, []);
 
   if (!isCartModalOpen) return null;
 
-  const view: JSX.Element = (
+  const view = (
     <div
       onClick={closeModal}
       className={classNames.modalOverflow} >

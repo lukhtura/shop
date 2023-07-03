@@ -79,7 +79,16 @@ const useCartModalContentStyles = createUseStyles((theme: Theme) => ({
   },
   emptyMessage: {
     padding: "10px"
-  }
+  },
+
+
+  [`@media(max-width: ${theme.breakpoints.md})`]: {
+    modalContent: {
+      minWidth: "50%",
+      maxWidth: "80%",
+    },
+  },
+
 }));
 
 export default useCartModalContentStyles;

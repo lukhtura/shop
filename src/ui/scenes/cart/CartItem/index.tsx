@@ -42,7 +42,6 @@ const CartItem: React.FC<ProductInCart> = (props) => {
   const renderActiveAttributes = (attributes: ActiveAttribute[]): JSX.Element[] => {
 
     return attributes.map((item, i) => {
-      console.log(item)
       if (item.name === "Color") {
         return (
           <div className={classNames.attribute} key={i}>

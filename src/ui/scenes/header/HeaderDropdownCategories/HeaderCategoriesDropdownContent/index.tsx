@@ -22,19 +22,25 @@ const HeaderCategoriesDropdownContent: React.FC = () => {
 
   const containerRef = useRef<HTMLDivElement | null>(null);
 
-  if (isCategoriesDropdownMenuOpen && containerRef.current) return (
+  if (isCategoriesDropdownMenuOpen) return (
     <div
-      className={classNames.wrapper}
-      onMouseEnter={() => dispatch(setIsCategoriesDropdownMenuOpen(true))}
-      onMouseLeave={() => dispatch(setIsCategoriesDropdownMenuOpen(false))}
-      ref={containerRef}
-      style={
-        !isCategoriesDropdownMenuOpen && containerRef.current.offsetHeight
-          ? { top: -(containerRef.current.offsetHeight - parseInt(headerHeight)) }
-          : { top: headerHeight }
-      }
+      className={classNames.overflow}
+      onClick={() => dispatch(setIsCategoriesDropdownMenuOpen(false))}
     >
-      <HeaderCategories />
+      <div
+        className={classNames.wrapper}
+        onClick={(e) => e.stopPropagation()}
+        onMouseEnter={() => dispatch(setIsCategoriesDropdownMenuOpen(true))}
+        onMouseLeave={() => dispatch(setIsCategoriesDropdownMenuOpen(false))}
+        ref={containerRef}
+        style={
+          !isCategoriesDropdownMenuOpen && containerRef.current
+            ? { top: -(containerRef.current.offsetHeight - parseInt(headerHeight)) }
+            : { top: headerHeight }
+        }
+      >
+        <HeaderCategories />
+      </div>
     </div>
   );
 

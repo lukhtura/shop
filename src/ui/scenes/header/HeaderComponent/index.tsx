@@ -1,5 +1,5 @@
 //Core
-import { useAppDispatch, useAppSelector } from "engine/redux/hooks";
+import { useAppDispatch } from "engine/redux/hooks";
 import { Link as RouterLink } from "react-router-dom";
 import useMediaQuery from "engine/hooks/useMediaQuery";
 import { useLayoutEffect, useRef } from "react";
@@ -22,7 +22,6 @@ import logo from "assets/img/green-logo.svg";
 const Header: React.FC = () => {
 
   const dispatch = useAppDispatch();
-  const categoryContainerWidth = useAppSelector(state => state.header.categoryContainerWidth);
 
   const classNames = useHeaderStyles();
 
@@ -58,8 +57,7 @@ const Header: React.FC = () => {
         {/* LOGO */}
 
         <div
-          className={classNames.buttonsContainer}
-          style={{ width: categoryContainerWidth }}>
+          className={classNames.buttonsContainer}>
           <DropdownCurrencySelector />
           <CartModal />
         </div>

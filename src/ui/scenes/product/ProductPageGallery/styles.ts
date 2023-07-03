@@ -1,5 +1,4 @@
 import { createUseStyles } from "react-jss";
-import { Theme } from "theme";
 
 const useProductPageGalleryStyles = createUseStyles({
   gallery: {
@@ -29,11 +28,37 @@ const useProductPageGalleryStyles = createUseStyles({
   },
   activeImgContainer: {
     width: "49%",
+    position: "relative"
   },
   activeImg: {
     width: "100%",
     height: "70vh",
     objectFit: "contain",
+  },
+  sliderButtonsContainer: {
+    width: "100%",
+    height: "40px",
+    position: "absolute",
+    top: "50%",
+    transform: "translateY(-50%)",
+    display: "flex",
+    justifyContent: "space-between"
+  },
+  sliderButton: {
+    width: "40px",
+  },
+  previousSliderButton: {
+    transform: "rotateY(180deg)",
+  },
+  sliderOverflow: {
+    width: "49%",
+    overflow: "hidden"
+  },
+  activeSlide: {
+    display: "flex",
+  },
+  disabled: {
+    opacity: "0,5"
   }
 });
 

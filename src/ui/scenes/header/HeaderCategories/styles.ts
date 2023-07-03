@@ -4,8 +4,9 @@ import { Theme } from "theme";
 const useHeaderCategoriesStyles = createUseStyles((theme: Theme) => ({
   categoriesContainer: {
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "flex-start",
     gap: "16px",
+    paddingLeft: "20px"
   },
   categoryButton: {
     textDecoration: "none",

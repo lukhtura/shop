@@ -52,6 +52,7 @@ const DropdownCurrencySelectorContent: React.FC = () => {
   if (!loading && !error && isCurrencySelectorOpen && data) return (
     <div
       className={classNames.selector}
+      onTouchStart={(e) => e.stopPropagation()}
     >
       <div className={classNames.inner}>
         {renderCurrencies(data)}

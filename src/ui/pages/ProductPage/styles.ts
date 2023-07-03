@@ -3,7 +3,8 @@ import { Theme } from "theme";
 
 const useProductPageStyles = createUseStyles((theme: Theme) => ({
   container: {
-    marginTop: "120px",
+    marginTop: "75px",
+    alignItems: "center",
     display: "flex",
     justifyContent: "center",
     gap: "14px"
