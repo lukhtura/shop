@@ -7,6 +7,9 @@ const useProductCardStyles = createUseStyles((theme: Theme) => ({
     height: "100%",
     width: "100%",
     textDecoration: "none",
+    display: "flex",
+    justifyContent: "center",
+    gridRowGap: "10px"
   },
   card: {
     padding: "16px",

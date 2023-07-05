@@ -2,21 +2,22 @@ import { createUseStyles } from "react-jss";
 import { Theme } from "theme";
 
 const useProductsGridStyles = createUseStyles((theme: Theme) => ({
-  headerText: {
-    marginBottom: "40px",
-    fontSize: "42px",
-    lineHeight: "160%",
-    color: theme.colors.text
-  },
 
   productsGrid: {
     display: "grid",
     width: "100%",
     gridTemplateColumns: "repeat(auto-fill, 480px)",
     justifyItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    rowGap: "30px"
   },
 
+  headerText: {
+    marginBottom: "40px",
+    fontSize: "42px",
+    lineHeight: "160%",
+    color: theme.colors.text
+  },
 
 
   [`@media(max-width: ${theme.breakpoints.xl})`]: {

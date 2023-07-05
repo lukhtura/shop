@@ -38,7 +38,8 @@ const useProductPageGalleryStyles = createUseStyles((theme: Theme) => ({
   },
   activeImg: {
     width: "100%",
-    minHeight: "70vh",
+    maxWidth: "550px",
+    height: "70vh",
     objectFit: "contain",
   },
 

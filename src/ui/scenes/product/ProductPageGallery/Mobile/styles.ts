@@ -40,6 +40,7 @@ const useProductPageGalleryMobileStyles = createUseStyles({
     height: "auto",
     objectFit: "contain",
     minHeight: "50vh",
+    maxHeight: "80vh",
     margin: "0 auto"
   },
   sliderCounter: {
