@@ -3,9 +3,10 @@ import { Theme } from "theme";
 
 const useOrderMessageStyles = createUseStyles((theme: Theme) => ({
   container: {
+    position: "fixed",
+    zIndex: theme.zIndex.dropdown,
     maxWidth: "500px",
-    height: "40px",
-    position: "absolute",
+    minHeight: "40px",
     left: "50%",
     transform: "translateX(-50%)",
     padding: "10px",

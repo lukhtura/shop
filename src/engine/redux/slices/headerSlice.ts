@@ -12,7 +12,6 @@ interface HeaderState {
     symbol: string;
   };
   activeCategory: string;
-  headerHeight: string;
 }
 
 const initialState: HeaderState = {
@@ -24,39 +23,12 @@ const initialState: HeaderState = {
     symbol: "$"
   },
   activeCategory: "all",
-  headerHeight: "80px"
 }
 
 const headerSlice = createSlice({
   name: "header",
   initialState,
   reducers: {
-    /*     setModalOpen: (state, action: PayloadAction<string>) => {
-          switch (action.payload) {
-            case "cart":
-              state.isCartModalOpen = true;
-              break;
-            case "currency":
-              state.isCurrencySelectorOpen = true;
-              break;
-            case "categories":
-              state.isCategoriesDropdownMenuOpen = true;
-              break;
-          }
-        },
-        setModalClose: (state, action: PayloadAction<string>) => {
-          switch (action.payload) {
-            case "cart":
-              state.isCartModalOpen = false;
-              break;
-            case "currency":
-              state.isCurrencySelectorOpen = false;
-              break;
-            case "categories":
-              state.isCategoriesDropdownMenuOpen = false;
-              break;
-          }
-        }, */
     setIsCartModalOpen: (state, action: PayloadAction<boolean>) => {
       state.isCartModalOpen = action.payload;
     },
@@ -73,9 +45,6 @@ const headerSlice = createSlice({
     setActiveCategory: (state, action: PayloadAction<string>) => {
       state.activeCategory = action.payload;
     },
-    setHeaderHeight: (state, action: PayloadAction<string>) => {
-      state.headerHeight = action.payload;
-    },
   }
 });
 
@@ -86,7 +55,7 @@ export const {
   setIsCurrencySelectorOpen,
   setIsCategoriesDropdownMenuOpen,
   setCurrencySelected,
-  setHeaderHeight,
+
   setActiveCategory } = actions;
 
 export default reducer;

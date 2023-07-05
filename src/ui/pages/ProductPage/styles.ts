@@ -4,7 +4,6 @@ import { Theme } from "theme";
 const useProductPageStyles = createUseStyles((theme: Theme) => ({
   container: {
     marginTop: "75px",
-    alignItems: "center",
     display: "flex",
     justifyContent: "center",
     gap: "14px"
@@ -36,7 +35,7 @@ const useProductPageStyles = createUseStyles((theme: Theme) => ({
   },
 
 
-  [`@media(max-width: ${theme.breakpoints.md})`]: {
+  [`@media(max-width: ${theme.breakpoints.sm})`]: {
     container: {
       marginTop: "0px",
       flexDirection: "column",

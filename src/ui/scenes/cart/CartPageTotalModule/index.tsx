@@ -1,8 +1,14 @@
 //Core
-import { useAppSelector } from "engine/redux/hooks";
+import { useAppSelector, useAppDispatch } from "engine/redux/hooks";
+
+//Utils
+import { countTotalPriceOfCart } from "utils/totalPriceCounter";
 
 //Actions
-import { countTotalPriceOfCart } from "utils/totalPriceCounter";
+import { setIsConfirmationOrderModalOpen } from "engine/redux/slices/cartSlice";
+
+//Components
+import SubmitButton from "ui/components/SubmitButton";
 
 //Styles
 import useCartPageTotalModuleStyles from "ui/scenes/cart/CartPageTotalModule/styles";
@@ -11,6 +17,7 @@ import useCartPageTotalModuleStyles from "ui/scenes/cart/CartPageTotalModule/sty
 
 const CartPageTotalModule: React.FC = () => {
 
+  const dispatch = useAppDispatch();
   const { quantity, itemsInCart } = useAppSelector(state => state.cart);
   const currencySelected = useAppSelector(state => state.header.currencySelected);
 
@@ -25,15 +32,20 @@ const CartPageTotalModule: React.FC = () => {
   /* TAXES */
 
   return (
-    <>
+    <div className={classNames.totalModule}>
       {/* TAXES */}
       <p className={classNames.permanentText}>Tax {taxesProcent}%: <span className={classNames.dynamicText}>{currencySelected.symbol}{countTaxes(taxesProcent, countTotalPriceOfCart(itemsInCart, currencySelected))}</span></p>
       {/* QUANTITY */}
       <p className={classNames.permanentText}>Quantity: <span className={classNames.dynamicText}>{quantity}</span></p>
       {/* TOTAL PRICE */}
       <p className={classNames.permanentText}>Total: <span className={classNames.dynamicText}>{currencySelected.symbol}{countTotalPriceOfCart(itemsInCart, currencySelected)}</span></p>
-    </>
-  );
+      <SubmitButton
+        onClick={() => dispatch(setIsConfirmationOrderModalOpen(true))}
+        className={classNames.orderBtn}
+      >
+        ORDER
+      </SubmitButton>
+    </div>)
 }
 
 export default CartPageTotalModule;

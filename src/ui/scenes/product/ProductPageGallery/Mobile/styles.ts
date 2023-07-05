@@ -26,17 +26,21 @@ const useProductPageGalleryMobileStyles = createUseStyles({
     // display: "flex",
     display: "inline-block",
     whiteSpace: "nowrap",
-    transition: "0.5s"
+    transition: "0.5s",
+    maxHeight: "80vh"
   },
   sliderImageContainer: {
     display: "inline-block",
     verticalAlign: "top",
-    width: "100%"
+    width: "100%",
   },
   sliderImage: {
     display: "block",
     maxWidth: "100%",
-    height: "auto"
+    height: "auto",
+    objectFit: "contain",
+    minHeight: "50vh",
+    margin: "0 auto"
   },
   sliderCounter: {
     position: "absolute",

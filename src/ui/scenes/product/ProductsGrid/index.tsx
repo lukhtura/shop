@@ -34,7 +34,7 @@ const ProductsGrid: React.FC = () => {
 
   const classNames = useProductsGridStyles();
 
-  function sortProductsByInStock(products: Product[]) {
+  function sortProductsByInStock(products: Product[]): Product[] {
     return [...products].sort((a, b) => a.inStock && !b.inStock ? -1 : 0);
   }
 
@@ -47,7 +47,7 @@ const ProductsGrid: React.FC = () => {
     const filtredAndSortedProducts: Product[] = filterByActiveCategory(sortProductsByInStock(products));
 
     return (
-      <div className={classNames.container}>
+      <>
         <p className={classNames.headerText}>{activeCategory.toUpperCase()}</p>
         <div className={classNames.productsGrid}>
           {products.length === 0
@@ -68,7 +68,7 @@ const ProductsGrid: React.FC = () => {
               );
             })}
         </div>
-      </div>
+      </>
     );
   } else {
 

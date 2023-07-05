@@ -16,13 +16,14 @@ interface ProductPageGalleryProps {
 
 const ProductPageGallery: React.FC<ProductPageGalleryProps> = ({ gallery, name }) => {
 
-  const [activeSlide, setActiveSlide] = useState(gallery[0]);
+  const [activeSlide, setActiveSlide] = useState<string>(gallery[0]);
 
   const classNames = useProductPageGalleryStyles();
 
 
   return (
-    <>
+
+    <div className={classNames.galleryContainer}>
       {/* IMAGE PICKER */}
       <div className={classNames.gallery}>
         {gallery.map((img, i) => {
@@ -52,7 +53,8 @@ const ProductPageGallery: React.FC<ProductPageGalleryProps> = ({ gallery, name }
           loading="lazy" />
 
       </div>
-    </>
+    </div>
+
   );
 }
 

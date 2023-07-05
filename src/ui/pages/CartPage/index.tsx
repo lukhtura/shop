@@ -4,12 +4,11 @@ import { useAppSelector, useAppDispatch } from "engine/redux/hooks";
 //Components
 import CartList from "ui/scenes/cart/CartList";
 import CartPageTotalModule from "ui/scenes/cart/CartPageTotalModule";
-import SubmitButton from "ui/components/SubmitButton";
 import DeclineButton from "ui/components/DeclineButton";
 import MainPageLink from "ui/components/MainPageLink";
 
 //Actions
-import { removeFromCart, setIsConfirmationOrderModalOpen } from "engine/redux/slices/cartSlice";
+import { removeFromCart } from "engine/redux/slices/cartSlice";
 
 //Styles
 import useCartPageStyles from "ui/pages/CartPage/styles";
@@ -27,7 +26,7 @@ function CartPage() {
 
 
   return (
-    <>
+    <div className={classNames.cartPageContainer}>
       {/* HEADER */}
       <div className={classNames.headerContainer}>
         <h1 className={classNames.header}>CART</h1>
@@ -47,22 +46,15 @@ function CartPage() {
       <CartList data={itemsInCart} />
 
       {/* TOTAL MODULE */}
-      <div className={classNames.totalModule}>
+      <>
         {!isCartEmpty && <CartPageTotalModule />}
 
         {/* ORDER BUTTON */}
         {
-          !isCartEmpty
-            ? <SubmitButton
-              onClick={() => dispatch(setIsConfirmationOrderModalOpen(true))}
-              className={classNames.orderBtn}
-            >
-              ORDER
-            </SubmitButton>
-            : <MainPageLink />
+          isCartEmpty && <MainPageLink />
         }
-      </div>
-    </>
+      </>
+    </div>
   );
 }
 

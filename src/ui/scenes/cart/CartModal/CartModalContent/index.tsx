@@ -112,7 +112,7 @@ function CartModalContent() {
                   <p className={classNames.totalPriceText}>{currencySelected.symbol}{countTotalPriceOfCart(itemsInCart, currencySelected)}</p>
                 </div>
 
-                <div className={classNames.buttonContainer}>
+                <div className={classNames.buttonsContainer}>
                   {/* GO TO CART BUTTON */}
                   <Link
                     to={"/cart"}

@@ -49,7 +49,7 @@ const useCartModalContentStyles = createUseStyles((theme: Theme) => ({
     margin: "0",
     fontWeight: "700",
   },
-  buttonContainer: {
+  buttonsContainer: {
     margin: "15px 0",
     display: "flex",
     justifyContent: "space-between",
@@ -88,6 +88,24 @@ const useCartModalContentStyles = createUseStyles((theme: Theme) => ({
       maxWidth: "80%",
     },
   },
+
+  [`@media(max-width: ${theme.breakpoints.md})`]: {
+    modalContent: {
+      minWidth: "50%",
+      maxWidth: "80%",
+    },
+  },
+
+  [`@media(max-width: ${theme.breakpoints.xs})`]: {
+    buttonsContainer: {
+      minWidth: "auto"
+    },
+    button: {
+      width: "100px"
+    },
+  },
+
+
 
 }));
 

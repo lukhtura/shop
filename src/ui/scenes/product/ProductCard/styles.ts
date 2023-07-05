@@ -3,11 +3,9 @@ import { Theme } from "theme";
 
 
 const useProductCardStyles = createUseStyles((theme: Theme) => ({
-  skeleton: {
-    width: "100%",
-    height: "100%"
-  },
   linkWrapper: {
+    height: "100%",
+    width: "100%",
     textDecoration: "none",
   },
   card: {
@@ -60,7 +58,6 @@ const useProductCardStyles = createUseStyles((theme: Theme) => ({
   },
   descriptionContainer: {
     width: "354px",
-    height: "58",
   },
   descriptionText: {
     margin: "0",
@@ -82,42 +79,24 @@ const useProductCardStyles = createUseStyles((theme: Theme) => ({
   },
 
 
-  // [`@media(max-width: ${theme.breakpoints.xl})`]: {
-  //   card: {
-  //     padding: "10px",
-  //     width: "386px",
-  //     height: "444px",
-  //     position: "relative",
-  //     cursor: "pointer",
-  //     transition: "0.3s",
-
-  //     "&:hover": {
-  //       boxShadow: "0 4px 35px 0 rgba(168, 172, 176, 0.19)",
-  //     },
-
-  //     /* CART ICON VISIBLE */
-  //     "&:hover $cartIcon": {
-  //       opacity: "1",
-  //     }
-  //   },
-  // },
-
-  [`@media(max-width: ${theme.breakpoints.md})`]: {
-    card: {
-      "&:hover": {
-        boxShadow: "inherit",
-      },
-
-      /* CART ICON VISIBLE */
-      "&:hover $cartIcon": {
-        opacity: "1",
-      }
-    },
-  },
-
   [`@media(max-width: ${theme.breakpoints.xs})`]: {
     card: {
-      margin: 0,
+      margin: "0",
+      padding: "0",
+      maxWidth: "100%",
+      justifyContent: "flex-start",
+    },
+    descriptionContainer: {
+      textAlign: "center",
+      height: "58px",
+    },
+    imgContainer: {
+      maxWidth: "100%",
+    },
+    img: {
+      maxWidth: "100%",
+      maxHeight: "100%",
+      objectFit: "contain"
     },
   },
 }));

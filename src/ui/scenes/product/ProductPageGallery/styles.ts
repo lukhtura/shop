@@ -2,11 +2,16 @@ import { createUseStyles } from "react-jss";
 import { Theme } from "theme";
 
 const useProductPageGalleryStyles = createUseStyles((theme: Theme) => ({
+  galleryContainer: {
+    display: "flex",
+    gap: "5%",
+    padding: "0 20px"
+  },
   gallery: {
-    width: "25%",
+    width: "15%",
     display: "flex",
     flexDirection: "column",
-    alignItems: "flex-end"
+    alignItems: "centr"
   },
   galleryItem: {
     marginBottom: "40px",
@@ -28,12 +33,12 @@ const useProductPageGalleryStyles = createUseStyles((theme: Theme) => ({
     height: "80px"
   },
   activeImgContainer: {
-    width: "49%",
+    width: "80%",
     position: "relative"
   },
   activeImg: {
     width: "100%",
-    height: "70vh",
+    minHeight: "70vh",
     objectFit: "contain",
   },
 

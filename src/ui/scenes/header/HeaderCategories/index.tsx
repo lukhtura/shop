@@ -7,7 +7,7 @@ import { Link, useLocation } from "react-router-dom";
 import { GET_ALL_CATEGORIES } from "api/queries/categories";
 
 //Actions
-import { setActiveCategory } from "engine/redux/slices/headerSlice";
+import { setActiveCategory, setIsCategoriesDropdownMenuOpen } from "engine/redux/slices/headerSlice";
 
 //Styles
 import useHeaderCategoriesStyles from "ui/scenes/header/HeaderCategories/styles";
@@ -24,6 +24,7 @@ const HeaderCategories: React.FC = () => {
 
   const dispatch = useAppDispatch();
   const activeCategory = useAppSelector(state => state.header.activeCategory);
+  const isMobile = useAppSelector(state => state.technical.isMobile);
 
   const { data, loading, error } = useQuery<CategoriesData>(GET_ALL_CATEGORIES);
 
@@ -53,7 +54,12 @@ const HeaderCategories: React.FC = () => {
                     ? `${classNames.categoryButtonInner} ${classNames.activeCategory}`
                     : classNames.categoryButtonInner
                 }
-                onClick={() => setCategory(activeCategory, name)}
+                onClick={() => {
+                  setCategory(activeCategory, name);
+                  if (isMobile) {
+                    dispatch(setIsCategoriesDropdownMenuOpen(false));
+                  }
+                }}
                 key={name} >{name.toUpperCase()}
               </div>
             </div>
@@ -71,7 +77,12 @@ const HeaderCategories: React.FC = () => {
                     ? `${classNames.categoryButtonInner} ${classNames.activeCategory}`
                     : classNames.categoryButtonInner
                 }
-                onClick={() => setCategory(activeCategory, name)}
+                onClick={() => {
+                  setCategory(activeCategory, name);
+                  if (isMobile) {
+                    dispatch(setIsCategoriesDropdownMenuOpen(false));
+                  }
+                }}
                 key={name} >{name.toUpperCase()}
               </div>
             </Link>

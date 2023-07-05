@@ -17,10 +17,13 @@ const useCartItemStyles = createUseStyles((theme: Theme) => ({
     borderTop: "1px solid #e5e5e5",
     borderBottom: "1px solid #e5e5e5",
   },
-  cartItemInnerRight: {
+  imageCounterContainer: {
     width: "270px",
     gap: "24px",
     display: "flex",
+  },
+  infoContainer: {
+    display: "block"
   },
   brand: {
     margin: "0 0 16px",
@@ -45,13 +48,7 @@ const useCartItemStyles = createUseStyles((theme: Theme) => ({
     fontWeight: "700",
     fontSize: "24px",
     lineHeight: "24px",
-
-    "@container (max-width: 5px)": {
-      fontWeight: "500",
-      fontSize: "16px",
-      lineHeight: "160%",
-      margin: "4px 0 8px",
-    }
+    color: theme.colors.primary
   },
   attribute: {
     marginBottom: "10px",
@@ -63,10 +60,10 @@ const useCartItemStyles = createUseStyles((theme: Theme) => ({
     margin: "0",
   },
   attrValue: {
-    color: "green",
     fontWeight: "700",
     fontSize: "27px",
     margin: "0",
+    color: theme.colors.primary
   },
   attrColor: {
     width: "16px",
@@ -105,8 +102,108 @@ const useCartItemStyles = createUseStyles((theme: Theme) => ({
   image: {
     objectFit: "contain",
     width: "200px",
-    height: "288px",
+    margin: "0 auto"
   },
+
+  [`@media(max-width: ${theme.breakpoints.sm})`]: {
+    cartItem: {
+      display: "grid",
+      gridTemplateColumns: "100px 1fr",
+      gap: "5%",
+      padding: "16px 0",
+      minHeight: "auto"
+    },
+    imageCounterContainer: {
+      width: "auto",
+      order: "1",
+      flexDirection: "column-reverse",
+      justifyContent: "space-around"
+    },
+    image: {
+      width: "100%"
+    },
+    counterContainer: {
+      display: "flex",
+      flexDirection: "row-reverse",
+      justifyContent: "space-between",
+      alignItems: "center",
+    },
+    counterButton: {
+      width: "20px",
+      height: "20px"
+    },
+    counterNumber: {
+      fontSize: "20px"
+    },
+    infoContainer: {
+      order: "2",
+    },
+    brand: {
+      marginBottom: "10px",
+      fontWeight: "500",
+      fontSize: "20px",
+      lineHeight: "22px",
+    },
+    name: {
+      fontWeight: "400",
+      fontSize: "24px",
+      lineHeight: "26px",
+      margin: "8px 0 10px",
+    },
+    price: {
+      margin: "10px 0",
+      fontWeight: "600",
+      fontSize: "20px",
+      lineHeight: "22px",
+    },
+    attribute: {
+      display: "flex",
+      gap: "10px",
+      alignItems: "center"
+    },
+    attrName: {
+      fontWeight: "600",
+      fontSize: "16px",
+      lineHeight: "18px",
+    },
+    attrValue: {
+      color: theme.colors.primary,
+      fontWeight: "700",
+      fontSize: "24px",
+    },
+  },
+
+
+  [`@media(max-width: ${theme.breakpoints.xs})`]: {
+    cartItem: {
+      padding: "10px",
+      gridTemplateColumns: "80px 1fr"
+    },
+    brand: {
+      fontSize: "16px",
+      lineHeight: "20px",
+    },
+    name: {
+      fontSize: "20px",
+      lineHeight: "22px",
+    },
+    price: {
+      fontSize: "18px",
+      lineHeight: "20px",
+    },
+    attribute: {
+      gap: "5px",
+    },
+    attrName: {
+      fontWeight: "600",
+      fontSize: "14px",
+      lineHeight: "18px",
+    },
+    attrValue: {
+      fontWeight: "600",
+      fontSize: "16px",
+    },
+  }
 }));
 
 export default useCartItemStyles;

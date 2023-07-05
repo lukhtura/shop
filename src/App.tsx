@@ -7,6 +7,7 @@ import useMediaQuery from "engine/hooks/useMediaQuery";
 //Actions
 import { restoreCartFromLocalStorage } from "engine/redux/slices/cartSlice";
 import { setCurrencySelected } from "engine/redux/slices/headerSlice";
+import { setIsMobile } from "engine/redux/slices/technicalSlice";
 
 //Components
 import Layout from "ui/components/Layout";
@@ -24,7 +25,15 @@ const App: React.FC = () => {
 
   const dispatch = useAppDispatch();
 
-  const isMobile: boolean = useMediaQuery(`max-width: ${theme.breakpoints.md}`);
+  const isMobile: boolean = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
+
+  useEffect(() => {
+    if (isMobile) {
+      dispatch(setIsMobile(true));
+    } else {
+      dispatch(setIsMobile(false));
+    }
+  }, [isMobile]);
 
   // SAVE AND RESTORE LOCAL STORAGE
   useEffect(() => {

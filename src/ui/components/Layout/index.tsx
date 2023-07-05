@@ -1,5 +1,5 @@
 //Core
-import useMediaQuery from "engine/hooks/useMediaQuery";
+import { useAppSelector } from "engine/redux/hooks";
 
 //Components
 import { Outlet } from "react-router-dom";
@@ -18,7 +18,8 @@ import useLayoutStyles from "ui/components/Layout/styles";
 
 const Layout: React.FC = () => {
 
-  const isMobile = useMediaQuery('(max-width: 960px)');
+  const isMobile = useAppSelector(state => state.technical.isMobile);
+
   const classNames = useLayoutStyles();
 
 
@@ -27,7 +28,7 @@ const Layout: React.FC = () => {
       {/* HEADER */}
       < Header />
       {
-        isMobile ? <HeaderCategoriesDropdownContent /> : null
+        isMobile && <HeaderCategoriesDropdownContent />
       }
       {/* HEADER */}
       <OrderMessage />

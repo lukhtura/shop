@@ -9,7 +9,7 @@ const useProductFormStyles = createUseStyles((theme: Theme) => ({
     '50%': { opacity: 1 },
     '100%': { opacity: 0 },
   },
-  container: {
+  formContainer: {
     width: "25%",
   },
   brand: {
@@ -55,9 +55,15 @@ const useProductFormStyles = createUseStyles((theme: Theme) => ({
   },
 
   [`@media(max-width: ${theme.breakpoints.md})`]: {
-    container: {
-      width: "100%",
+    formContainer: {
+      width: "35%",
       padding: "0 20px"
+    },
+  },
+
+  [`@media(max-width: ${theme.breakpoints.sm})`]: {
+    formContainer: {
+      width: "100%",
     },
   },
 

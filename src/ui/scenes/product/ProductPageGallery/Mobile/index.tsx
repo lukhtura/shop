@@ -15,6 +15,7 @@ interface ProductPageGalleryProps {
   name: Product["name"]
 }
 
+
 const ProductPageGalleryMobile: React.FC<ProductPageGalleryProps> = ({ gallery, name }) => {
 
   const activeSlideImgRef = useRef<HTMLImageElement | null>(null);
@@ -59,7 +60,9 @@ const ProductPageGalleryMobile: React.FC<ProductPageGalleryProps> = ({ gallery, 
             )
           })}
         </div>
-        <p className={classNames.sliderCounter}>{(sliderCounter)}/{lastSlide}</p>
+        {
+          (lastSlide !== 1) && <p className={classNames.sliderCounter}>{(sliderCounter)}/{lastSlide}</p>
+        }
       </div>
 
 

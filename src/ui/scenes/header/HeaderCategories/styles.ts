@@ -32,7 +32,7 @@ const useHeaderCategoriesStyles = createUseStyles((theme: Theme) => ({
     borderBottom: `2px solid ${theme.colors.primary}`
   },
 
-  [`@media(max-width: ${theme.breakpoints.md})`]: {
+  [`@media(max-width: ${theme.breakpoints.sm})`]: {
     categoriesContainer: {
       gap: 0,
       flexDirection: "column",

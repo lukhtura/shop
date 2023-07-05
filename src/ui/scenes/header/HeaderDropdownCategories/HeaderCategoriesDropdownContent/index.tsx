@@ -16,7 +16,8 @@ import useHeaderCategoriesDropdownContentStyles from "ui/scenes/header/HeaderDro
 const HeaderCategoriesDropdownContent: React.FC = () => {
 
   const dispatch = useAppDispatch();
-  const { headerHeight, isCategoriesDropdownMenuOpen } = useAppSelector(state => state.header)
+  const isCategoriesDropdownMenuOpen = useAppSelector(state => state.header.isCategoriesDropdownMenuOpen);
+  const headerHeight = useAppSelector(state => state.technical.headerHeight);
 
   const classNames = useHeaderCategoriesDropdownContentStyles();
 

@@ -23,6 +23,7 @@ const CartItem: React.FC<ProductInCart> = (props) => {
 
   const classNames = useCartItemStyles();
 
+
   const countCartItemQuantity = (products: typeof itemsInCart, id: string): number => {
 
     let res = 0;
@@ -48,7 +49,6 @@ const CartItem: React.FC<ProductInCart> = (props) => {
 
             <p className={classNames.attrName}>
               {item.name.toUpperCase()}<br />
-
               <span
                 style={{ backgroundColor: item.value, display: "inline-block" }}
                 className={classNames.attrColor} key={i}>
@@ -61,7 +61,7 @@ const CartItem: React.FC<ProductInCart> = (props) => {
 
       return (
         <div key={i} className={classNames.attribute}>
-          <p className={classNames.attrName}>{item.name.toUpperCase()}</p>
+          <p className={classNames.attrName}>{item.name.toUpperCase()}:</p>
           <p className={classNames.attrValue}>{item.value}</p>
         </div>
       );
@@ -73,7 +73,7 @@ const CartItem: React.FC<ProductInCart> = (props) => {
     <div className={classNames.cartItem}>
 
       {/* ITEM INFO */}
-      <div>
+      <div className={classNames.infoContainer}>
         <h2 className={classNames.brand}>{brand}</h2>
         <h3 className={classNames.name}>{name}</h3>
         <p className={classNames.price}>{selectedCurrencyPrice.currency.symbol} {selectedCurrencyPrice.amount}</p>
@@ -81,7 +81,7 @@ const CartItem: React.FC<ProductInCart> = (props) => {
       </div>
 
       {/* IMAGE AND QUANTITY COUNTER */}
-      <div className={classNames.cartItemInnerRight}>
+      <div className={classNames.imageCounterContainer}>
 
         {/* ITEM QUANTITY COUNTER */}
         <div className={classNames.counterContainer}>

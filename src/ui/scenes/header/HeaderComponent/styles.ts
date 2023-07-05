@@ -41,7 +41,7 @@ const useHeaderStyles = createUseStyles((theme: Theme) => ({
   //   },
   // },
 
-  [`@media(max-width: ${theme.breakpoints.md})`]: {
+  [`@media(max-width: ${theme.breakpoints.sm})`]: {
     inner: {
       height: "60px",
     },

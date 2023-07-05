@@ -1,11 +1,11 @@
 //Core
-import { useAppDispatch } from "engine/redux/hooks";
+import { useAppDispatch, useAppSelector } from "engine/redux/hooks";
 import { Link as RouterLink } from "react-router-dom";
-import useMediaQuery from "engine/hooks/useMediaQuery";
 import { useLayoutEffect, useRef } from "react";
 
 //Actions
-import { setHeaderHeight, setActiveCategory } from "engine/redux/slices/headerSlice";
+import { setActiveCategory } from "engine/redux/slices/headerSlice";
+import { setHeaderHeight } from "engine/redux/slices/technicalSlice";
 
 //Components
 import HeaderCategories from "ui/scenes/header/HeaderCategories/";
@@ -22,12 +22,11 @@ import logo from "assets/img/green-logo.svg";
 const Header: React.FC = () => {
 
   const dispatch = useAppDispatch();
+  const isMobile = useAppSelector(state => state.technical.isMobile);
 
   const classNames = useHeaderStyles();
 
   const headerRef = useRef<HTMLDivElement | null>(null);
-
-  const isMobile = useMediaQuery("(max-width: 960px)");
 
   useLayoutEffect(() => {
     if (headerRef.current) {
@@ -41,7 +40,11 @@ const Header: React.FC = () => {
       className={classNames.header}>
       <div className={classNames.inner}>
 
-        {isMobile ? <HeaderCategoriesDropdownButton /> : <HeaderCategories />}
+        {
+          isMobile
+            ? <HeaderCategoriesDropdownButton />
+            : <HeaderCategories />
+        }
 
 
         {/* LOGO */}

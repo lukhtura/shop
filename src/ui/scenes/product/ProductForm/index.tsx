@@ -88,7 +88,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ id, name, brand, description,
 
 
   return (
-    <div className={classNames.container}>
+    <div className={classNames.formContainer}>
       <h2 className={classNames.brand}>{brand}</h2>
       <h3 className={classNames.name}>{name}</h3>
 

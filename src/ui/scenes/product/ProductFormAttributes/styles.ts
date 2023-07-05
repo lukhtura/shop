@@ -13,6 +13,7 @@ const useProductFormAttributesStyles = createUseStyles((theme: Theme) => ({
     display: "flex",
     gap: "8px",
     marginBottom: "16px",
+    flexWrap: "wrap"
   },
 
   /* --- COLOR PICKER RADIO BUTTONS --- */

@@ -2,8 +2,7 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { useDispatch } from "react-redux";
-import useMediaQuery from "engine/hooks/useMediaQuery";
+import { useAppDispatch, useAppSelector } from "engine/redux/hooks"
 
 //Api
 import { GET_PRODUCT_BY_ID } from "api/queries/products";
@@ -33,7 +32,8 @@ interface ProductPageParams {
 
 function ProductPage() {
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+  const isMobile = useAppSelector(state => state.technical.isMobile);
 
   const { productId } = useParams<keyof ProductPageParams>() as ProductPageParams;
 
@@ -42,8 +42,6 @@ function ProductPage() {
       id: productId
     }
   });
-
-  const isMobile: boolean = useMediaQuery('(max-width: 960px)');
 
   const classNames = useProductPageStyles();
 
@@ -64,9 +62,11 @@ function ProductPage() {
       <>
         {
           isMobile
+
             ? <ProductPageGalleryMobile
               name={data.name}
               gallery={data.gallery} />
+
             : <ProductPageGallery
               name={data.name}
               gallery={data.gallery} />

@@ -13,7 +13,7 @@ import useOrderMessageStyles from "ui/components/OrderMessage/styles";
 const OrderMessage: React.FC = () => {
 
   const [isMessage, setIsMessage] = useState(false);
-  const headerHeight = useAppSelector(state => state.header.headerHeight);
+  const headerHeight = useAppSelector(state => state.technical.headerHeight);
   const orderStatus = useAppSelector(state => state.cart.orderStatus);
 
   const classNames = useOrderMessageStyles();
@@ -43,7 +43,9 @@ const OrderMessage: React.FC = () => {
     return (
       <div
         className={`${classNames.container} ${classNames.positive}`}
-        style={{ top: topPositionWhenIsMessage }}>
+        style={{
+          top: topPositionWhenIsMessage
+        }}>
         <p className={classNames.text}>Your order is recieved! Thank you :)</p>
       </ div >
     );
