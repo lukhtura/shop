@@ -2,15 +2,15 @@
   "rewrites": [
     {
       "source": "/cart",
-      "destination": "/cart.html"
+      "destination": "/cart"
     },
     {
       "source": "/:productId",
-      "destination": "/product.html"
+      "destination": "/product"
     },
     {
       "source": "/(.*)",
-      "destination": "/404.html"
+      "destination": "/404"
     }
   ]
 }
