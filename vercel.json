@@ -1,16 +1,9 @@
 {
-  "rewrites": [
+  "routes": [
     {
-      "source": "/cart",
-      "destination": "/cart"
-    },
-    {
-      "source": "/:productId",
-      "destination": "/product"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/404"
+      "src": "/[^.]+",
+      "dest": "/",
+      "status": 200
     }
   ]
 }
