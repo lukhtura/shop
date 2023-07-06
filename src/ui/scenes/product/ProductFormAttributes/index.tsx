@@ -6,6 +6,7 @@ import { Attribute } from "engine/types/products";
 
 //Styles
 import useProductFormAttributesStylesStyles from "ui/scenes/product/ProductFormAttributes/styles";
+import theme from "theme";
 
 interface ProductFormAttributesProps {
   data: Attribute[];
@@ -27,7 +28,10 @@ const ProductFormAttributes: React.FC<ProductFormAttributesProps> = ({ data }) =
                 {attributeObject.items.map((color, i) => {
                   return (
                     <div
-                      style={{ backgroundColor: color.value }}
+                      style={{
+                        backgroundColor: color.value,
+                        border: color.value === theme.colors.background ? "1px solid #d5cece" : undefined
+                      }}
                       className={classNames.colorPicker} key={i}>
                       <Field
                         type="radio"

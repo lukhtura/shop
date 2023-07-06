@@ -14,6 +14,7 @@ const useCartItemStyles = createUseStyles((theme: Theme) => ({
     padding: "24px 0",
     display: "flex",
     justifyContent: "space-between",
+    gap: "10px",
     borderTop: "1px solid #e5e5e5",
     borderBottom: "1px solid #e5e5e5",
   },
@@ -68,7 +69,8 @@ const useCartItemStyles = createUseStyles((theme: Theme) => ({
   attrColor: {
     width: "16px",
     height: "16px",
-    marginTop: "5px",
+    borderRadius: "20px",
+    border: "1px solid #d5cece"
   },
   counterContainer: {
     display: "flex",

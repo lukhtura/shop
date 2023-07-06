@@ -20,6 +20,7 @@ const useProductFormAttributesStyles = createUseStyles((theme: Theme) => ({
   colorPicker: {
     height: "32px",
     width: "32px",
+    borderRadius: "20px",
 
     "& input": {
       display: "none"
@@ -30,14 +31,14 @@ const useProductFormAttributesStyles = createUseStyles((theme: Theme) => ({
     },
 
     "& label": {
-      border: "1px solid #d5cece",
       height: "32px",
       width: "32px",
       display: "flex",
       justifyContent: "center",
       lineHeight: "45px",
       cursor: "pointer",
-      userSelect: "none"
+      userSelect: "none",
+      borderRadius: "20px",
     },
   },
 

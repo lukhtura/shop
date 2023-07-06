@@ -46,7 +46,7 @@ const ProductForm: React.FC<ProductFormProps> = ({ id, name, brand, description,
     if (data) {
       data.map(item => item)
         .forEach(item => {
-          if (item.name === "Color") {
+          if (item.name.toLowerCase() === "color") {
             initialValues[item.name] = item.items[0].displayValue
           } else {
             initialValues[item.name] = item.items[0].value

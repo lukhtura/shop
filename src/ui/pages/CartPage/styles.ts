@@ -3,7 +3,9 @@ import { Theme } from "theme";
 
 const useCartPageStyles = createUseStyles((theme: Theme) => ({
   cartPageContainer: {
-    padding: "0 50px"
+    margin: "0 auto",
+    maxWidth: "1000px",
+    padding: "0 50px",
   },
   headerContainer: {
     margin: "50px 0 15px",

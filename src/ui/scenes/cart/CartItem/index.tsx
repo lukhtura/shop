@@ -43,18 +43,20 @@ const CartItem: React.FC<ProductInCart> = (props) => {
   const renderActiveAttributes = (attributes: ActiveAttribute[]): JSX.Element[] => {
 
     return attributes.map((item, i) => {
-      if (item.name === "Color") {
+      if (item.name.toLowerCase() === "color") {
         return (
           <div className={classNames.attribute} key={i}>
 
             <p className={classNames.attrName}>
-              {item.name.toUpperCase()}<br />
-              <span
-                style={{ backgroundColor: item.value, display: "inline-block" }}
-                className={classNames.attrColor} key={i}>
-              </span>
-
+              {item.name.toUpperCase()}:
             </p>
+            <span
+              style={{
+                backgroundColor: item.value,
+                display: "inline-block"
+              }}
+              className={classNames.attrColor} key={i}>
+            </span>
           </div>
         );
       }

@@ -83,7 +83,10 @@ function CartModalContent() {
       onClick={closeModal}
       className={classNames.modalOverflow} >
 
-      <div onClick={e => e.stopPropagation()} className={classNames.modalContent}>
+      <div
+        onClick={e => e.stopPropagation()}
+        className={classNames.modalContent}
+      >
 
         <CloseButton onClick={closeModal} />
 
