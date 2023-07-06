@@ -8,6 +8,12 @@ const useLayoutStyles = createUseStyles((theme: Theme) => ({
     margin: "0 auto",
   },
 
+  [`@media(min-width: ${theme.breakpoints.xxl})`]: {
+    content: {
+      maxWidth: "1720px"
+    }
+  }
+
   // [`@media(max-width: ${theme.breakpoints.xl})`]: {
   //   content: {
   //     padding: "0 50px",

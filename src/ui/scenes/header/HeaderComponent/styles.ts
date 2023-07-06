@@ -46,6 +46,12 @@ const useHeaderStyles = createUseStyles((theme: Theme) => ({
       height: "60px",
     },
   },
+
+  [`@media(min-width: ${theme.breakpoints.xxl})`]: {
+    inner: {
+      maxWidth: "1720px"
+    }
+  }
 }));
 
 export default useHeaderStyles;

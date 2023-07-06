@@ -47,6 +47,13 @@ const useProductsGridStyles = createUseStyles((theme: Theme) => ({
       gridTemplateColumns: "repeat(auto-fill, 100%)",
     },
   },
+
+  [`@media(min-width: ${theme.breakpoints.xxl})`]: {
+    productsGrid: {
+      justifyContent: "space-between"
+    },
+  },
+
 }));
 
 export default useProductsGridStyles;

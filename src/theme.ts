@@ -13,6 +13,7 @@ export interface Theme {
     md: "960px";
     lg: "1280px";
     xl: "1520px";
+    xxl: "1920px"
   };
   zIndex: {
     modal: 1000;
@@ -21,7 +22,7 @@ export interface Theme {
   };
 }
 
-const theme = {
+const theme: Theme = {
   colors: {
     primary: "#5ECE7B",
     text: "#1D1F22",
@@ -36,6 +37,7 @@ const theme = {
     md: "960px",
     lg: "1280px",
     xl: "1520px",
+    xxl: "1920px"
   },
   zIndex: {
     modal: 1000,

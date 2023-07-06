@@ -11,26 +11,28 @@ const useProductPageGalleryStyles = createUseStyles((theme: Theme) => ({
     width: "15%",
     display: "flex",
     flexDirection: "column",
-    alignItems: "centr"
+    alignItems: "centr",
+    gap: "40px"
   },
   galleryItem: {
-    marginBottom: "40px",
-    width: "80px",
-    height: "80px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    maxWidth: "80px",
+    maxHeight: "80px",
     cursor: "pointer",
     transition: "0.1s",
 
     "&:hover": {
       "& img": {
-        width: "90px",
-        height: "90px",
+        width: "95px",
       }
     }
   },
   galleryItemImg: {
-    objectFit: "cover",
+    objectFit: "contain",
     width: "80px",
-    height: "80px"
+    transition: "0.3s"
   },
   activeImgContainer: {
     width: "80%",
@@ -47,6 +49,25 @@ const useProductPageGalleryStyles = createUseStyles((theme: Theme) => ({
   [`@media(max-width: ${theme.breakpoints.md})`]: {
     activeImgContainer: {
       width: "100%",
+    },
+  },
+
+  [`@media(min-width: ${theme.breakpoints.xxl})`]: {
+    activeImg: {
+      maxWidth: "1000px",
+    },
+    galleryItem: {
+      maxWidth: "90%",
+      maxHeight: "90%",
+
+      "&:hover": {
+        "& img": {
+          width: "100%",
+        }
+      }
+    },
+    galleryItemImg: {
+      width: "90%",
     },
   },
 }));
