@@ -52,7 +52,7 @@ const App: React.FC = () => {
   return (
     <ErrorBoundary>
       <ThemeProvider theme={theme}>
-        <Router>
+        <Router basename="/">
           <Suspense fallback={<Spinner />}>
             <Routes>
               <Route path="/" element={<Layout />}>
