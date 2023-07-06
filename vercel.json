@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/cart",
+      "destination": "/cart.html"
+    },
+    {
+      "source": "/:productId",
+      "destination": "/product.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/404.html"
+    }
+  ]
+}
