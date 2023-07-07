@@ -51,19 +51,17 @@ const useProductCardStyles = createUseStyles((theme: Theme) => ({
   },
   imgContainer: {
     width: "354px",
-    height: "330px",
     marginBottom: "24px",
   },
   img: {
-    width: "354px",
+    width: "100%",
     height: "330px",
     objectFit: "contain"
   },
   descriptionContainer: {
-    width: "354px",
+    width: "100%",
   },
   descriptionText: {
-    margin: "0",
     fontSize: "18px",
     color: theme.colors.text,
   },
@@ -81,6 +79,14 @@ const useProductCardStyles = createUseStyles((theme: Theme) => ({
     transition: "0.3s",
   },
 
+
+  [`@media(max-width: ${theme.breakpoints.sm})`]: {
+    card: {
+      width: "100%",
+      height: "auto"
+      // height: "444px",
+    },
+  },
 
   [`@media(max-width: ${theme.breakpoints.xs})`]: {
     card: {

@@ -10,7 +10,7 @@ interface useProductPageGalleryMobileProps {
 
 interface ReturningValues {
   sliderCounter: number;
-  activeSlide: number;
+  activeSlideTranslate: number;
   handleTouchStart: (event: TouchEvent) => void;
   handleTouchMove: (event: TouchEvent) => void;
   handleTouchEnd: () => void;
@@ -20,7 +20,7 @@ interface ReturningValues {
 
 function useProductPageGalleryMobile({ activeSlideImgRef, lastSlide }: useProductPageGalleryMobileProps): ReturningValues {
 
-  const [activeSlide, setActiveSlide] = useState(0);
+  const [activeSlideTranslate, setActiveSlideTranslate] = useState(0);
   const [sliderCounter, setSliderCounter] = useState(1);
   const [touchStartX, setTouchStartX] = useState(0);
   const [touchEndX, setTouchEndX] = useState(0);
@@ -28,13 +28,15 @@ function useProductPageGalleryMobile({ activeSlideImgRef, lastSlide }: useProduc
   function turnSlide(direction: "next" | "prev"): void {
     if (activeSlideImgRef.current) {
       if (direction === "next" && sliderCounter < lastSlide) {
-        setActiveSlide(activeSlide - activeSlideImgRef.current.offsetWidth);
-        setSliderCounter(sliderCounter + 1);
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        setActiveSlideTranslate((prev) => prev - activeSlideImgRef.current!.offsetWidth);
+        setSliderCounter((prev) => prev + 1);
       }
 
       if (direction === "prev" && sliderCounter > 1) {
-        setActiveSlide(activeSlide + activeSlideImgRef.current.offsetWidth);
-        setSliderCounter(sliderCounter - 1);
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        setActiveSlideTranslate((prev) => prev + activeSlideImgRef.current!.offsetWidth);
+        setSliderCounter((sliderCounter) => sliderCounter - 1);
       }
     }
   }
@@ -66,7 +68,7 @@ function useProductPageGalleryMobile({ activeSlideImgRef, lastSlide }: useProduc
 
   return {
     sliderCounter,
-    activeSlide,
+    activeSlideTranslate,
     handleTouchStart,
     handleTouchMove,
     handleTouchEnd,

@@ -23,7 +23,6 @@ const useProductPageGalleryMobileStyles = createUseStyles({
     position: "relative"
   },
   sliderInner: {
-    // display: "flex",
     display: "inline-block",
     whiteSpace: "nowrap",
     transition: "0.5s",
@@ -36,12 +35,11 @@ const useProductPageGalleryMobileStyles = createUseStyles({
   },
   sliderImage: {
     display: "block",
-    maxWidth: "100%",
+    width: "100%",
     height: "auto",
     objectFit: "contain",
     minHeight: "50vh",
     maxHeight: "80vh",
-    margin: "0 auto"
   },
   sliderCounter: {
     position: "absolute",

@@ -18,20 +18,20 @@ const useProductPageGalleryStyles = createUseStyles((theme: Theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    maxWidth: "80px",
-    maxHeight: "80px",
+    maxWidth: "90px",
+    // maxHeight: "80px",
     cursor: "pointer",
     transition: "0.1s",
 
     "&:hover": {
       "& img": {
-        width: "95px",
+        width: "100%",
       }
     }
   },
   galleryItemImg: {
     objectFit: "contain",
-    width: "80px",
+    width: "90%",
     transition: "0.3s"
   },
   activeImgContainer: {

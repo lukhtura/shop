@@ -23,7 +23,7 @@ const ProductPageGalleryMobile: React.FC<ProductPageGalleryProps> = ({ gallery, 
 
   const lastSlide: number = gallery.length;
 
-  const { handleTouchStart, handleTouchMove, handleTouchEnd, sliderCounter, activeSlide } = useProductPageGalleryMobile({ activeSlideImgRef, lastSlide });
+  const { handleTouchStart, handleTouchMove, handleTouchEnd, sliderCounter, activeSlideTranslate } = useProductPageGalleryMobile({ activeSlideImgRef, lastSlide });
 
   const classNames = useProductPageGalleryMobileStyles();
 
@@ -39,7 +39,7 @@ const ProductPageGalleryMobile: React.FC<ProductPageGalleryProps> = ({ gallery, 
         <div
           className={classNames.sliderInner}
           style={{
-            transform: `translateX(${activeSlide}px)`
+            transform: `translateX(${activeSlideTranslate}px)`
           }}
         >
           {gallery.map((imgUrl) => {

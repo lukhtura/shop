@@ -38,6 +38,12 @@ const useProductsGridStyles = createUseStyles((theme: Theme) => ({
     },
   },
 
+  [`@media(max-width: ${theme.breakpoints.sm})`]: {
+    productsGrid: {
+      gridTemplateColumns: "repeat(auto-fill, 75%)"
+    },
+  },
+
 
   [`@media(max-width: ${theme.breakpoints.xs})`]: {
     headerText: {

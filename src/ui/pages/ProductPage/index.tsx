@@ -28,6 +28,13 @@ interface ProductPageParams {
   productId: string;
 }
 
+interface ProductData {
+  product: Product;
+}
+
+interface ProductVars {
+  id: string;
+}
 
 
 function ProductPage() {
@@ -37,7 +44,7 @@ function ProductPage() {
 
   const { productId } = useParams<keyof ProductPageParams>() as ProductPageParams;
 
-  const { data, loading, error } = useQuery(GET_PRODUCT_BY_ID, {
+  const { data, loading, error } = useQuery<ProductData, ProductVars>(GET_PRODUCT_BY_ID, {
     variables: {
       id: productId
     }

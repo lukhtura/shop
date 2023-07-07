@@ -13,7 +13,7 @@ export interface Theme {
     md: "960px";
     lg: "1280px";
     xl: "1520px";
-    xxl: "1920px"
+    xxl: "2048px"
   };
   zIndex: {
     modal: 1000;
@@ -37,7 +37,7 @@ const theme: Theme = {
     md: "960px",
     lg: "1280px",
     xl: "1520px",
-    xxl: "1920px"
+    xxl: "2048px"
   },
   zIndex: {
     modal: 1000,
