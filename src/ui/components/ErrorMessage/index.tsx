@@ -1,13 +1,12 @@
+// Styles
+import useErrorMessageStyles from "./styles";
 
+const ErrorMessage = () => {
 
+  const classNames = useErrorMessageStyles();
 
-const ErrorMessage: React.FC = () => {
   return (
-    <div style={{
-      fontSize: "20px",
-      display: "flex",
-      justifyContent: "center",
-    }}>
+    <div className={classNames.errorMessage}>
       <p>Oops! Something went wrong...</p>
     </div>
   );

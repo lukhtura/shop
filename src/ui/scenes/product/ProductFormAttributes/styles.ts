@@ -1,7 +1,6 @@
 import { createUseStyles } from "react-jss";
 import { Theme } from "theme";
 
-
 const useProductFormAttributesStyles = createUseStyles((theme: Theme) => ({
   label: {
     fontWeight: "700",
@@ -65,7 +64,7 @@ const useProductFormAttributesStyles = createUseStyles((theme: Theme) => ({
       cursor: "pointer",
       userSelect: "none"
     },
-  },
+  }
 }));
 
 export default useProductFormAttributesStyles;

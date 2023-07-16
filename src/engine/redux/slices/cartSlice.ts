@@ -2,10 +2,16 @@ import { createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
 
 //Types
-import { OrderStatus, ProductInCart } from "engine/types/products";
+import { ProductInCart } from "engine/types/products";
 
 //Utils
 import { countTotalQuantity } from "utils/countTotalQuality";
+
+export enum OrderStatus {
+  Idle = "idle",
+  Succes = "succes",
+  Error = "error"
+}
 
 export interface CartState {
   itemsInCart: ProductInCart[];
@@ -18,7 +24,7 @@ const initialState: CartState = {
   itemsInCart: [],
   quantity: 0,
   isConfirmationOrderModalOpen: false,
-  orderStatus: OrderStatus.Idle
+  orderStatus: OrderStatus.Idle,
 }
 
 const cartSlice = createSlice(

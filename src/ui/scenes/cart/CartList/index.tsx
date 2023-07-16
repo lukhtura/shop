@@ -8,24 +8,26 @@ interface CartListProps {
   data: ProductInCart[];
 }
 
-const CartList: React.FC<CartListProps> = ({ data }) => {
+const CartList = ({ data }: CartListProps) => {
   if (data.length > 0) {
     return (
       <>
-        {data.map((item: ProductInCart) => (
-          <CartItem
-            key={item.id}
-            id={item.id}
-            shopId={item.shopId}
-            name={item.name}
-            brand={item.brand}
-            prices={item.prices}
-            gallery={item.gallery}
-            attributes={item.attributes}
-            activeAttributes={item.activeAttributes}
-            quantity={item.quantity}
-          />
-        ))}
+        {
+          data.map((item: ProductInCart) => (
+            <CartItem
+              key={item.id}
+              id={item.id}
+              shopId={item.shopId}
+              name={item.name}
+              brand={item.brand}
+              prices={item.prices}
+              gallery={item.gallery}
+              attributes={item.attributes}
+              activeAttributes={item.activeAttributes}
+              quantity={item.quantity}
+            />
+          ))
+        }
       </>
     );
   } else {

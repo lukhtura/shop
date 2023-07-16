@@ -1,7 +1,5 @@
-//Core
+// Core
 import { useState, RefObject, TouchEvent } from "react";
-
-
 
 interface useProductPageGalleryMobileProps {
   activeSlideImgRef: RefObject<HTMLDivElement>,
@@ -15,8 +13,6 @@ interface ReturningValues {
   handleTouchMove: (event: TouchEvent) => void;
   handleTouchEnd: () => void;
 }
-
-
 
 function useProductPageGalleryMobile({ activeSlideImgRef, lastSlide }: useProductPageGalleryMobileProps): ReturningValues {
 

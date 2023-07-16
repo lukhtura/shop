@@ -1,15 +1,15 @@
-//Core
+// Core
 import { useAppDispatch, useAppSelector } from "engine/redux/hooks";
 import { useQuery } from "@apollo/client";
 import { Link, useLocation } from "react-router-dom";
 
-//API
+// API
 import { GET_ALL_CATEGORIES } from "api/queries/categories";
 
-//Actions
+// Actions
 import { setActiveCategory, setIsCategoriesDropdownMenuOpen } from "engine/redux/slices/headerSlice";
 
-//Styles
+// Styles
 import useHeaderCategoriesStyles from "ui/scenes/header/HeaderCategories/styles";
 
 interface Category {
@@ -20,7 +20,7 @@ interface CategoriesData {
   categories: Category[];
 }
 
-const HeaderCategories: React.FC = () => {
+const HeaderCategories = () => {
 
   const dispatch = useAppDispatch();
   const activeCategory = useAppSelector(state => state.header.activeCategory);
@@ -32,63 +32,67 @@ const HeaderCategories: React.FC = () => {
 
   const location = useLocation();
 
-  function setCategory(prevCategory: string, newCategory: string): void {
+  function setCategory(
+    prevCategory: string,
+    newCategory: string
+  ): void {
     if (newCategory !== prevCategory) {
       dispatch(setActiveCategory(newCategory));
     }
   }
 
-
   if (data && !loading && !error) return (
     <div
       className={classNames.categoriesContainer}
     >
-      {data.categories.map(({ name }: { name: string }) => {
-        if (location.pathname === "/") {
-          return (
-            <div key={name} className={classNames.categoryButton} >
-              <div
-                className={
-                  /* ADD ACTIVE CLASS FOR BUTTON */
-                  activeCategory === name
-                    ? `${classNames.categoryButtonInner} ${classNames.activeCategory}`
-                    : classNames.categoryButtonInner
-                }
-                onClick={() => {
-                  setCategory(activeCategory, name);
-                  if (isMobile) {
-                    dispatch(setIsCategoriesDropdownMenuOpen(false));
+      {
+        data.categories.map(({ name }: { name: string }) => {
+          if (location.pathname === "/") {
+            return (
+              <div key={name} className={classNames.categoryButton} >
+                <div
+                  className={
+                    /* ADD ACTIVE CLASS FOR BUTTON */
+                    activeCategory === name
+                      ? `${classNames.categoryButtonInner} ${classNames.activeCategory}`
+                      : classNames.categoryButtonInner
                   }
-                }}
-                key={name} >{name.toUpperCase()}
+                  onClick={() => {
+                    setCategory(activeCategory, name);
+                    if (isMobile) {
+                      dispatch(setIsCategoriesDropdownMenuOpen(false));
+                    }
+                  }}
+                  key={name} >{name.toUpperCase()}
+                </div>
               </div>
-            </div>
-          );
-        } else {
-          return (
-            <Link
-              key={name}
-              className={classNames.categoryButton}
-              to={"/"} >
-              <div
-                className={
-                  /* ADD ACTIVE CLASS FOR BUTTON */
-                  activeCategory === name
-                    ? `${classNames.categoryButtonInner} ${classNames.activeCategory}`
-                    : classNames.categoryButtonInner
-                }
-                onClick={() => {
-                  setCategory(activeCategory, name);
-                  if (isMobile) {
-                    dispatch(setIsCategoriesDropdownMenuOpen(false));
+            );
+          } else {
+            return (
+              <Link
+                key={name}
+                className={classNames.categoryButton}
+                to={"/"} >
+                <div
+                  className={
+                    /* ADD ACTIVE CLASS FOR BUTTON */
+                    activeCategory === name
+                      ? `${classNames.categoryButtonInner} ${classNames.activeCategory}`
+                      : classNames.categoryButtonInner
                   }
-                }}
-                key={name} >{name.toUpperCase()}
-              </div>
-            </Link>
-          );
-        }
-      })}
+                  onClick={() => {
+                    setCategory(activeCategory, name);
+                    if (isMobile) {
+                      dispatch(setIsCategoriesDropdownMenuOpen(false));
+                    }
+                  }}
+                  key={name} >{name.toUpperCase()}
+                </div>
+              </Link>
+            );
+          }
+        })
+      }
     </div>
   );
 

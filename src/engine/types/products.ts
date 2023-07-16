@@ -1,9 +1,3 @@
-export enum OrderStatus {
-  Idle = "idle",
-  Succes = "succes",
-  Error = "error"
-}
-
 export interface Currency {
   label: string;
   symbol: string;

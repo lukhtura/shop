@@ -6,14 +6,12 @@ import { useAppDispatch, useAppSelector } from "engine/redux/hooks";
 import { setIsCategoriesDropdownMenuOpen } from "engine/redux/slices/headerSlice";
 
 //Components
-import HeaderCategories from "ui/scenes/header/HeaderCategories"
+import HeaderCategories from "ui/scenes/header/HeaderCategories";
 
 //Styles
 import useHeaderCategoriesDropdownContentStyles from "ui/scenes/header/HeaderDropdownCategories/HeaderCategoriesDropdownContent/styles";
 
-
-
-const HeaderCategoriesDropdownContent: React.FC = () => {
+const HeaderCategoriesDropdownContent = () => {
 
   const dispatch = useAppDispatch();
   const isCategoriesDropdownMenuOpen = useAppSelector(state => state.header.isCategoriesDropdownMenuOpen);

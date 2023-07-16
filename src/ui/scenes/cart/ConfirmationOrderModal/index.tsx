@@ -1,23 +1,22 @@
-//Core
+// Core
 import ReactDOM from "react-dom";
 import { useAppDispatch, useAppSelector } from "engine/redux/hooks";
 import { useEffect } from "react";
 import useSendOrder from "engine/hooks/useSendOrder";
 import useProcessOrder from "engine/hooks/useProcessOrder";
 
-//Actions
+// Actions
 import { setIsConfirmationOrderModalOpen } from "engine/redux/slices/cartSlice";
 
-//Components
+// Components
 import SubmitButton from "ui/components/SubmitButton";
 import DeclineButton from "ui/components/DeclineButton";
 import Spinner from "ui/components/Spinner";
 
-//Style
+// Style
 import useConfirmationOrderModalStyles from "ui/scenes/cart/ConfirmationOrderModal/styles";
 
-
-const ConfirmationOrderModal: React.FC = () => {
+const ConfirmationOrderModal = () => {
 
   const dispatch = useAppDispatch();
   const isConfirmationOrderModalOpen = useAppSelector(state => state.cart.isConfirmationOrderModalOpen);
@@ -50,14 +49,13 @@ const ConfirmationOrderModal: React.FC = () => {
     processOrder({ data, loading, error });
   }, [data, loading, error]);
 
-
-
   if (!isConfirmationOrderModalOpen) return null;
 
   return ReactDOM.createPortal(
     <div
       onClick={closeModal}
-      className={classNames.modalOverflow} >
+      className={classNames.modalOverflow}
+    >
 
       {/* CONTENT */}
       <div onClick={e => e.stopPropagation()} className={classNames.modalContent}>
@@ -65,7 +63,6 @@ const ConfirmationOrderModal: React.FC = () => {
           <p className={classNames.message}>Confirm order?</p>
         </div>
         <div className={classNames.btnsContainer}>
-
           {
             loading
               ? <Spinner width="50px" />

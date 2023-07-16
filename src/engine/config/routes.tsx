@@ -1,7 +1,7 @@
 // Engine
 import { paths } from "engine/config/paths";
 
-//Components
+// Components
 import { MainPage } from "engine/config/pages";
 import { CartPage } from "engine/config/pages";
 import { ProductPage } from "engine/config/pages";

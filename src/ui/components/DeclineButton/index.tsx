@@ -1,7 +1,7 @@
-//Types
+// Types
 import { PropsWithChildren } from "react";
 
-//Styles
+// Styles
 import useDeclineButtonStyles from "ui/components/DeclineButton/styles";
 
 interface DeclineButtonProps {
@@ -9,10 +9,12 @@ interface DeclineButtonProps {
   onClick: () => void;
 }
 
-const DeclineButton: React.FC<PropsWithChildren<DeclineButtonProps>> = ({
-  className,
-  children,
-  onClick }) => {
+const DeclineButton = (
+  {
+    className,
+    children,
+    onClick
+  }: PropsWithChildren<DeclineButtonProps>) => {
 
   const classNames = useDeclineButtonStyles();
 

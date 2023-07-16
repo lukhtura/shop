@@ -1,14 +1,12 @@
-//Core
+// Core
 import { useAppSelector } from 'engine/redux/hooks';
 
-//Api
+// Api
 import { useMutation } from '@apollo/client';
 import { SEND_ORDER } from "api/mutations/order";
 
-//Utils
+// Utils
 import { getCurrentDateTime } from "utils/getCurrentDateTime";
-
-
 
 export interface ProductInOrder {
   id: string;
@@ -21,7 +19,6 @@ export interface NewOrderDetails {
   date: string,
   products: ProductInOrder[]
 }
-
 
 function useSendOrder() {
 
@@ -58,7 +55,7 @@ function useSendOrder() {
     data,
     loading,
     error
-  };
+  }
 }
 
 export default useSendOrder;

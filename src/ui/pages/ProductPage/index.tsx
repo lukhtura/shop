@@ -1,28 +1,27 @@
-//Core
+// Core
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { useAppDispatch, useAppSelector } from "engine/redux/hooks"
 
-//Api
+// Api
 import { GET_PRODUCT_BY_ID } from "api/queries/products";
 
-//Actions
+// Actions
 import { setActiveCategory } from "engine/redux/slices/headerSlice";
 
-//Types
+// Types
 import { Product } from "engine/types/products";
 
-//Components
+// Components
 import ProductPageGallery from "ui/scenes/product/ProductPageGallery";
 import ProductPageGalleryMobile from "ui/scenes/product/ProductPageGallery/Mobile";
 import ProductForm from "ui/scenes/product/ProductForm";
 import ErrorMessage from "ui/components/ErrorMessage";
 import Spinner from "ui/components/Spinner";
 
-//Styles 
+// Styles 
 import useProductPageStyles from "ui/pages/ProductPage/styles";
-
 
 interface ProductPageParams {
   productId: string;
@@ -36,8 +35,7 @@ interface ProductVars {
   id: string;
 }
 
-
-function ProductPage() {
+const ProductPage = () => {
 
   const dispatch = useAppDispatch();
   const isMobile = useAppSelector(state => state.technical.isMobile);
@@ -54,7 +52,7 @@ function ProductPage() {
 
   useEffect((): void => {
     if (data) {
-      dispatch(setActiveCategory(data.product.category))
+      dispatch(setActiveCategory(data.product.category));
     }
   }, [data])
 

@@ -11,8 +11,8 @@ const useProductPageGalleryStyles = createUseStyles((theme: Theme) => ({
     width: "15%",
     display: "flex",
     flexDirection: "column",
-    alignItems: "centr",
-    gap: "40px"
+    gap: "40px",
+    paddingBottom: "20px"
   },
   galleryItem: {
     display: "flex",

@@ -1,10 +1,8 @@
-//Types
-import { PropsWithChildren, FC } from "react";
+// Types
+import { PropsWithChildren } from "react";
 
-//Styles
+// Styles
 import useSubmitButtonStyles from "ui/components/SubmitButton/styles";
-
-
 
 interface SubmitButtonProps {
   disabled?: boolean;
@@ -12,17 +10,25 @@ interface SubmitButtonProps {
   onClick: () => void;
 }
 
-const SubmitButton: FC<PropsWithChildren<SubmitButtonProps>> = ({ disabled, className, onClick, children }) => {
+const SubmitButton = (
+  {
+    disabled,
+    className,
+    onClick,
+    children
+  }: PropsWithChildren<SubmitButtonProps>) => {
 
   const classNames = useSubmitButtonStyles();
 
-  return <button
-    onClick={onClick}
-    className={`${classNames.button} ${className}`}
-    type="submit"
-    disabled={disabled}>
-    {children}
-  </button>
+  return (
+    <button
+      onClick={onClick}
+      className={`${classNames.button} ${className}`}
+      type="submit"
+      disabled={disabled}>
+      {children}
+    </button>
+  );
 }
 
 export default SubmitButton;

@@ -1,4 +1,4 @@
-//PATHS FOR ROUTES
+// PATHS FOR ROUTES
 
 interface Paths {
   main: "/",

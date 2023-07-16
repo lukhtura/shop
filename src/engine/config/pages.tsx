@@ -1,7 +1,7 @@
-//Core
+// Core
 import { lazy } from "react";
 
-//Pages
+// Pages
 export const MainPage = lazy(() => import("ui/pages/MainPage"));
 export const CartPage = lazy(() => import("ui/pages/CartPage"));
 export const ProductPage = lazy(() => import("ui/pages/ProductPage"));

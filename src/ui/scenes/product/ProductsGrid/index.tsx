@@ -1,23 +1,22 @@
-//Core
+// Core
 import { useAppSelector } from "engine/redux/hooks";
 import { useQuery } from "@apollo/client";
 
-//Utils
+// Utils
 import { currencyExchanger } from "utils/currencyExchanger";
 
-//Api
+// Api
 import { GET_ALL_PRODUCTS } from "api/queries/products";
 
-//Types
+// Types
 import { Product } from "engine/types/products";
 
-//Components
+// Components
 import ProductCard from "ui/scenes/product/ProductCard";
 import Spinner from "ui/components/Spinner";
 
-//Style
+// Style
 import useProductsGridStyles from "ui/scenes/product/ProductsGrid/styles";
-
 
 interface ProductsData {
   category: {
@@ -25,8 +24,7 @@ interface ProductsData {
   }
 }
 
-
-const ProductsGrid: React.FC = () => {
+const ProductsGrid = () => {
 
   const { currencySelected, activeCategory } = useAppSelector(state => state.header);
 
@@ -50,30 +48,28 @@ const ProductsGrid: React.FC = () => {
       <>
         <p className={classNames.headerText}>{activeCategory.toUpperCase()}</p>
         <div className={classNames.productsGrid}>
-          {products.length === 0
-
-            ? <h2>There is no products...</h2>
-
-            : filtredAndSortedProducts.map(({ id, inStock, brand, name, prices, gallery }) => {
-              return (
-                <ProductCard
-                  key={id}
-                  inStock={inStock}
-                  id={id}
-                  brand={brand}
-                  name={name}
-                  price={currencyExchanger(prices, currencySelected)}
-                  image={gallery[0]}
-                />
-              );
-            })}
+          {
+            products.length === 0
+              ? <h2>There is no products...</h2>
+              : filtredAndSortedProducts.map(({ id, inStock, brand, name, prices, gallery }) => {
+                return (
+                  <ProductCard
+                    key={id}
+                    inStock={inStock}
+                    id={id}
+                    brand={brand}
+                    name={name}
+                    price={currencyExchanger(prices, currencySelected)}
+                    image={gallery[0]}
+                  />
+                );
+              })
+          }
         </div>
       </>
     );
   } else {
-
     return <Spinner />
-
   }
 }
 

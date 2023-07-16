@@ -1,13 +1,13 @@
-//Types
+// Types
 import { Currency, ProductInCart } from "engine/types/products";
 
-
-
-export const countTotalPriceOfCart = (itemsInCart: ProductInCart[], currencySelected: Currency): number => {
+export const countTotalPriceOfCart = (
+  itemsInCart: ProductInCart[],
+  currencySelected: Currency
+): number => {
 
   let totalPrice = 0;
   let itemQuantity = 0;
-
 
   if (itemsInCart.length > 0) {
 

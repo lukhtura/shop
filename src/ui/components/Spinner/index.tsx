@@ -1,4 +1,4 @@
-//Style
+// Style
 import useSpinnerStyles from "./styles";
 
 interface SpinnerProps {
@@ -6,10 +6,11 @@ interface SpinnerProps {
   width?: string;
 }
 
-const Spinner: React.FC<SpinnerProps> = ({
-  fill = "#5ECE7B",
-  width = "100px"
-}) => {
+const Spinner = (
+  {
+    fill = "#5ECE7B",
+    width = "100px"
+  }: SpinnerProps) => {
 
   const classNames = useSpinnerStyles();
 

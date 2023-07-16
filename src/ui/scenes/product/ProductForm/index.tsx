@@ -28,9 +28,17 @@ interface FormValues {
   [key: string]: string;
 }
 
-
-
-const ProductForm: React.FC<ProductFormProps> = ({ id, name, brand, description, attributes, prices, gallery, inStock }) => {
+const ProductForm = (
+  {
+    id,
+    name,
+    brand,
+    description,
+    attributes,
+    prices,
+    gallery,
+    inStock
+  }: ProductFormProps) => {
 
   const dispatch = useAppDispatch();
   const currencySelected = useAppSelector(state => state.header.currencySelected);
@@ -85,8 +93,6 @@ const ProductForm: React.FC<ProductFormProps> = ({ id, name, brand, description,
     }, 1500);
   }
 
-
-
   return (
     <div className={classNames.formContainer}>
       <h2 className={classNames.brand}>{brand}</h2>
@@ -100,7 +106,6 @@ const ProductForm: React.FC<ProductFormProps> = ({ id, name, brand, description,
         onSubmit={onSubmit}
       >
         <Form>
-
           <ProductFormAttributes data={attributes} />
 
           {/* PRICE AND ADD MESSAGE */}
@@ -114,7 +119,6 @@ const ProductForm: React.FC<ProductFormProps> = ({ id, name, brand, description,
             className={classNames.addToCartBtn}>
             {inStock ? "ADD TO CART" : "OUT OF STOCK"}
           </SubmitButton>
-
         </Form>
       </Formik>
 

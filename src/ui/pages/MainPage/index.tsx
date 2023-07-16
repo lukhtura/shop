@@ -6,7 +6,7 @@ import useMainPageStyles from "ui/pages/MainPage/styles";
 
 
 
-const MainPage: React.FC = () => {
+const MainPage = () => {
 
   const classNames = useMainPageStyles();
 

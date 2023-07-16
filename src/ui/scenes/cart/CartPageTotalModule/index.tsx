@@ -1,21 +1,19 @@
-//Core
+// Core
 import { useAppSelector, useAppDispatch } from "engine/redux/hooks";
 
-//Utils
+// Utils
 import { countTotalPriceOfCart } from "utils/totalPriceCounter";
 
-//Actions
+// Actions
 import { setIsConfirmationOrderModalOpen } from "engine/redux/slices/cartSlice";
 
-//Components
+// Components
 import SubmitButton from "ui/components/SubmitButton";
 
-//Styles
+// Styles
 import useCartPageTotalModuleStyles from "ui/scenes/cart/CartPageTotalModule/styles";
 
-
-
-const CartPageTotalModule: React.FC = () => {
+const CartPageTotalModule = () => {
 
   const dispatch = useAppDispatch();
   const { quantity, itemsInCart } = useAppSelector(state => state.cart);
@@ -45,7 +43,8 @@ const CartPageTotalModule: React.FC = () => {
       >
         ORDER
       </SubmitButton>
-    </div>)
+    </div>
+  )
 }
 
 export default CartPageTotalModule;

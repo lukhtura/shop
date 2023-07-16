@@ -1,12 +1,10 @@
-//Components
+// Components
 import MainPageLink from "ui/components/MainPageLink";
 
-//Styles
+// Styles
 import usePageNotFoundStyles from "ui/pages/Page404/styles";
 
-
-
-const Page404: React.FC = () => {
+const Page404 = () => {
 
   const classNames = usePageNotFoundStyles();
 

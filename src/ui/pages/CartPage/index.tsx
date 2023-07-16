@@ -1,19 +1,17 @@
-//Core
+// Core
 import { useAppSelector, useAppDispatch } from "engine/redux/hooks";
 
-//Components
+// Components
 import CartList from "ui/scenes/cart/CartList";
 import CartPageTotalModule from "ui/scenes/cart/CartPageTotalModule";
 import DeclineButton from "ui/components/DeclineButton";
 import MainPageLink from "ui/components/MainPageLink";
 
-//Actions
+// Actions
 import { removeFromCart } from "engine/redux/slices/cartSlice";
 
-//Styles
+// Styles
 import useCartPageStyles from "ui/pages/CartPage/styles";
-
-
 
 function CartPage() {
 
@@ -23,7 +21,6 @@ function CartPage() {
   const classNames = useCartPageStyles();
 
   const isCartEmpty = itemsInCart.length === 0;
-
 
   return (
     <div className={classNames.cartPageContainer}>

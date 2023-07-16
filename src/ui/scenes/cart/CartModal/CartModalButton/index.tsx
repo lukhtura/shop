@@ -8,9 +8,7 @@ import { setIsCartModalOpen } from "engine/redux/slices/headerSlice";
 import useCartModalButtonStyles from "ui/scenes/cart/CartModal/CartModalButton/styles";
 import cartImg from "assets/icons/cart-icon.svg";
 
-
-
-const CartModalButton: React.FC = () => {
+const CartModalButton = () => {
 
   const dispatch = useAppDispatch();
   const { isCartModalOpen } = useAppSelector(state => state.header);

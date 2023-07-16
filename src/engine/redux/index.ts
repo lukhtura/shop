@@ -1,5 +1,7 @@
+// Core
 import { configureStore } from "@reduxjs/toolkit";
 
+// Components
 import header from "engine/redux/slices/headerSlice";
 import cart from "engine/redux/slices/cartSlice";
 import technical from "engine/redux/slices/technicalSlice"

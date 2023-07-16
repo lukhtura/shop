@@ -1,24 +1,24 @@
-//Core
+// Core
 import { useAppDispatch, useAppSelector } from "engine/redux/hooks";
 import { useQuery } from "@apollo/client";
 
-//Actions
+// Actions
 import { setIsCurrencySelectorOpen, setCurrencySelected } from "engine/redux/slices/headerSlice";
 
-//API
+// API
 import { GET_ALL_CURRENCIES } from "api/queries/currencies";
 
-//Types
+// Types
 import { Currency } from "engine/types/products";
 
-//Styles
+// Styles
 import useDropdownCurrencySelectorContentStyles from "ui/scenes/header/DropdownCurrencySelector/DropdownCurrencySelectorContent/styles";
 
 interface CurrenciesData {
   currencies: Currency[]
 }
 
-const DropdownCurrencySelectorContent: React.FC = () => {
+const DropdownCurrencySelectorContent = () => {
 
   const dispatch = useAppDispatch();
   const isCurrencySelectorOpen = useAppSelector(state => state.header.isCurrencySelectorOpen);
@@ -49,7 +49,12 @@ const DropdownCurrencySelectorContent: React.FC = () => {
     return null;
   }
 
-  if (!loading && !error && isCurrencySelectorOpen && data) return (
+  if (
+    !loading
+    && !error
+    && isCurrencySelectorOpen
+    && data
+  ) return (
     <div
       className={classNames.selector}
       onTouchStart={(e) => e.stopPropagation()}

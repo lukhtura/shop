@@ -1,22 +1,24 @@
-//Core
+// Core
 import { useRef } from "react";
 import useProductPageGalleryMobile from "engine/hooks/useProductGallerySliderMobile";
 
-//Types
+// Types
 import { Product } from "engine/types/products";
 
-//Styles
+// Styles
 import useProductPageGalleryMobileStyles from "ui/scenes/product/ProductPageGallery/Mobile/styles";
 // import galleryArrow from "assets/icons/galleryArrow.svg"
-
 
 interface ProductPageGalleryProps {
   gallery: Product["gallery"];
   name: Product["name"]
 }
 
-
-const ProductPageGalleryMobile: React.FC<ProductPageGalleryProps> = ({ gallery, name }) => {
+const ProductPageGalleryMobile = (
+  {
+    gallery,
+    name
+  }: ProductPageGalleryProps) => {
 
   const activeSlideImgRef = useRef<HTMLImageElement | null>(null);
   const activeSlideContainerRef = useRef<HTMLDivElement | null>(null);
@@ -26,7 +28,6 @@ const ProductPageGalleryMobile: React.FC<ProductPageGalleryProps> = ({ gallery, 
   const { handleTouchStart, handleTouchMove, handleTouchEnd, sliderCounter, activeSlideTranslate } = useProductPageGalleryMobile({ activeSlideImgRef, lastSlide });
 
   const classNames = useProductPageGalleryMobileStyles();
-
 
   return (
     <>
@@ -64,8 +65,6 @@ const ProductPageGalleryMobile: React.FC<ProductPageGalleryProps> = ({ gallery, 
           (lastSlide !== 1) && <p className={classNames.sliderCounter}>{(sliderCounter)}/{lastSlide}</p>
         }
       </div>
-
-
 
       {/* BUTTONS */}
       {/* <div className={classNames.sliderButtonsContainer}>

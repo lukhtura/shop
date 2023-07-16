@@ -1,29 +1,26 @@
-//Core
+// Core
 import { Link } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "engine/redux/hooks";
 import ReactDOM from "react-dom";
 import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "engine/redux/hooks";
 
-//Actions
+// Actions
 import { setIsCartModalOpen } from "engine/redux/slices/headerSlice";
 import { removeFromCart, setIsConfirmationOrderModalOpen } from "engine/redux/slices/cartSlice";
 
-//Components
+// Components
 import CartList from "ui/scenes/cart/CartList";
 import SubmitButton from "ui/components/SubmitButton";
 import DeclineButton from "ui/components/DeclineButton";
 import CloseButton from "ui/components/CloseButton/CloseButton";
 
-//Utils
+// Utils
 import { countTotalPriceOfCart } from "utils/totalPriceCounter";
 
-//Style
+// Style
 import useCartModalContentStyles from "ui/scenes/cart/CartModal/CartModalContent/styles";
 
-
-
-
-function CartModalContent() {
+const CartModalContent = () => {
 
   const dispatch = useAppDispatch();
   const { currencySelected, isCartModalOpen } = useAppSelector(state => state.header);
@@ -36,7 +33,7 @@ function CartModalContent() {
   }
 
   function closeModal(): void {
-    dispatch(setIsCartModalOpen(false))
+    dispatch(setIsCartModalOpen(false));
   }
 
   function showCartModalEmptyMessageWithTimeout(delay: number): JSX.Element {
@@ -57,17 +54,17 @@ function CartModalContent() {
   }
 
   function enableScroll(): void {
-    document.body.style.overflow = "auto"
+    document.body.style.overflow = "auto";
   }
 
   function disableScroll(): void {
-    document.body.style.overflow = "hidden"
+    document.body.style.overflow = "hidden";
   }
 
   useEffect(() => {
     if (isCartModalOpen) {
       window.addEventListener("keydown", handleEscapeKeyListener);
-      disableScroll()
+      disableScroll();
     }
 
     return () => {

@@ -1,27 +1,27 @@
-//Core
+// Core
 import { useEffect, Suspense } from "react";
 import { useAppDispatch } from "engine/redux/hooks";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import useMediaQuery from "engine/hooks/useMediaQuery";
 
-//Actions
+// Actions
 import { restoreCartFromLocalStorage } from "engine/redux/slices/cartSlice";
 import { setCurrencySelected } from "engine/redux/slices/headerSlice";
 import { setIsMobile } from "engine/redux/slices/technicalSlice";
 
-//Components
+// Components
 import Layout from "ui/components/Layout";
 import ErrorBoundary from "ui/components/ErrorBoundary"
 import Spinner from "ui/components/Spinner";
 
-//Engine
+// Engine
 import { routes } from "engine/config/routes";
 
-//Styles
+// Styles
 import { ThemeProvider } from "react-jss";
 import theme from "theme";
 
-const App: React.FC = () => {
+const App = () => {
 
   const dispatch = useAppDispatch();
 
@@ -47,7 +47,6 @@ const App: React.FC = () => {
       dispatch(setCurrencySelected(JSON.parse(currencySelectedFromLocalStorage)));
     }
   }, []);
-
 
   return (
     <ErrorBoundary>

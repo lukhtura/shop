@@ -1,27 +1,24 @@
-//Core
+// Core
 import { useAppSelector } from "engine/redux/hooks";
 
-//Components
+// Components
 import { Outlet } from "react-router-dom";
 import Header from "ui/scenes/header/HeaderComponent";
 import HeaderCategoriesDropdownContent from "ui/scenes/header/HeaderDropdownCategories/HeaderCategoriesDropdownContent";
 import ConfirmationOrderModal from "ui/scenes/cart/ConfirmationOrderModal";
 import OrderMessage from "ui/components/OrderMessage";
 
-//Utils
+// Utils
 import ScrollToTop from "utils/scrollToTop";
 
-//Styles
+// Styles
 import useLayoutStyles from "ui/components/Layout/styles";
 
-
-
-const Layout: React.FC = () => {
+const Layout = () => {
 
   const isMobile = useAppSelector(state => state.technical.isMobile);
 
   const classNames = useLayoutStyles();
-
 
   return (
     <>

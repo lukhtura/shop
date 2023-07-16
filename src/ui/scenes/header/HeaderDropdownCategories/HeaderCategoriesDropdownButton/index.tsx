@@ -1,16 +1,14 @@
-//Core
+// Core
 import { useAppDispatch, useAppSelector } from "engine/redux/hooks";
 
-//Actions
+// Actions
 import { setIsCategoriesDropdownMenuOpen } from "engine/redux/slices/headerSlice";
 
-//Styles
+// Styles
 import useHeaderCategoriesDropdownButtonStyles from "ui/scenes/header/HeaderDropdownCategories/HeaderCategoriesDropdownButton/styles";
 import theme from "theme";
 
-
-
-const HeaderCategoriesDropdownButton: React.FC = () => {
+const HeaderCategoriesDropdownButton = () => {
 
   const dispatch = useAppDispatch();
   const isCategoriesDropdownMenuOpen = useAppSelector(state => state.header.isCategoriesDropdownMenuOpen)
@@ -21,13 +19,13 @@ const HeaderCategoriesDropdownButton: React.FC = () => {
     dispatch(setIsCategoriesDropdownMenuOpen(boolean));
   }
 
-
   return (
     <div
       onTouchStart={() => controlMouse(!isCategoriesDropdownMenuOpen)}
       onMouseEnter={() => controlMouse(true)}
       onMouseLeave={() => controlMouse(false)}
-      className={classNames.container}>
+      className={classNames.container}
+    >
       <svg
         style={{
           cursor: "pointer"

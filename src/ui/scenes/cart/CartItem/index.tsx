@@ -1,28 +1,25 @@
-//Core
+// Core
 import { useAppDispatch, useAppSelector } from "engine/redux/hooks";
 
-//Types
+// Types
 import { ActiveAttribute, ProductInCart } from "engine/types/products";
 
-//Actions
+// Actions
 import { addToCart, removeFromCart } from "engine/redux/slices/cartSlice";
 
-//Utils
+// Utils
 import { currencyExchanger } from "utils/currencyExchanger";
 
-//Styles
+// Styles
 import useCartItemStyles from "ui/scenes/cart/CartItem/styles";
 
-
-
-const CartItem: React.FC<ProductInCart> = (props) => {
+const CartItem = (props: ProductInCart) => {
 
   const dispatch = useAppDispatch();
   const itemsInCart = useAppSelector(state => state.cart.itemsInCart);
   const currencySelected = useAppSelector(state => state.header.currencySelected);
 
   const classNames = useCartItemStyles();
-
 
   const countCartItemQuantity = (products: typeof itemsInCart, id: string): number => {
 

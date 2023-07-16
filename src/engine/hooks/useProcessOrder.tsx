@@ -1,16 +1,15 @@
-//Core
-import { useAppDispatch, useAppSelector } from 'engine/redux/hooks';
-import { useLocation, useNavigate } from 'react-router-dom';
+// Core
+import { useAppDispatch, useAppSelector } from "engine/redux/hooks";
+import { useLocation, useNavigate } from "react-router-dom";
 
-//Types
-import { OrderStatus } from 'engine/types/products';
+// Types
+import { OrderStatus } from "engine/redux/slices/cartSlice";
 
-//Actions
+// Actions
 import { setIsConfirmationOrderModalOpen, removeFromCart, setOrderStatus } from "engine/redux/slices/cartSlice";
 import { setIsCartModalOpen } from "engine/redux/slices/headerSlice";
-import { NewOrderDetails } from 'engine/hooks/useSendOrder';
-import { ApolloError } from '@apollo/client';
-
+import { NewOrderDetails } from "engine/hooks/useSendOrder";
+import { ApolloError } from "@apollo/client";
 
 interface DataResponse {
   createOrderWithBuyer: NewOrderDetails;
@@ -21,7 +20,6 @@ interface ProccesOrderArgs {
   loading: boolean,
   error: ApolloError | undefined
 }
-
 
 function useProcessOrder() {
 
@@ -46,7 +44,7 @@ function useProcessOrder() {
       const timerID = setTimeout(() => {
         dispatch(setOrderStatus(OrderStatus.Idle));
         clearTimeout(timerID);
-      }, 3000)
+      }, 3000);
     }
 
     if (loading) {
@@ -55,13 +53,11 @@ function useProcessOrder() {
       const limitTimer = setTimeout(() => {
         dispatch(setOrderStatus(OrderStatus.Idle));
         clearTimeout(limitTimer);
-      }, limit)
+      }, limit);
 
-      console.log("loading");
     }
 
     if (data) {
-      console.log("Order completed. Your order is:", data);
 
       if (isCartModalOpen) {
         dispatch(setIsCartModalOpen(false));
@@ -78,7 +74,7 @@ function useProcessOrder() {
       const timerID = setTimeout(() => {
         dispatch(setOrderStatus(OrderStatus.Idle));
         clearTimeout(timerID);
-      }, 3000)
+      }, 3000);
     }
   }
 

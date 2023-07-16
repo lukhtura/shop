@@ -1,15 +1,14 @@
-//Core
+// Core
 import { Link } from "react-router-dom";
 
-//Types
+// Types
 import { Price } from "engine/types/products";
 
-//Styles
+// Styles
 import useProductCardStyles from "ui/scenes/product/ProductCard/styles";
 
-//Images
+// Images
 import greenCartIcon from "assets/icons/green-cart-icon.svg";
-
 
 interface ProductCardProps {
   name: string;
@@ -20,7 +19,13 @@ interface ProductCardProps {
   id: string;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ name, brand, price, image, inStock, id }) => {
+const ProductCard = ({
+  name,
+  brand,
+  price,
+  image,
+  inStock,
+  id }: ProductCardProps) => {
 
   const classNames = useProductCardStyles();
 
@@ -32,7 +37,6 @@ const ProductCard: React.FC<ProductCardProps> = ({ name, brand, price, image, in
       <div className={inStock
         ? classNames.card
         : `${classNames.card}  ${classNames.outStock}`}>
-
 
         {/* IMAGE */}
         <div className={classNames.imgContainer} >
