@@ -1,63 +1,63 @@
 //Core
-import { useAppDispatch, useAppSelector } from "engine/redux/hooks";
-import { Formik, Form } from "formik";
-import { v4 as genId } from "uuid";
-import { useState } from "react";
+import { useAppDispatch, useAppSelector } from 'engine/redux/hooks';
+import { Formik, Form } from 'formik';
+import { v4 as genId } from 'uuid';
+import { useState } from 'react';
 
 //Actions
-import { addToCart } from "engine/redux/slices/cartSlice";
+import { addToCart } from 'engine/redux/slices/cartSlice';
 
 //Types
-import { Attribute, Product } from "engine/types/products";
+import { Attribute, Product } from 'engine/types/products';
 
 //Utils
-import { currencyExchanger } from "utils/currencyExchanger";
-import { objectToStringID } from "utils/objectToStringID";
-import { objectToArrayOfObjects } from "utils/objectToArrayOfObjects";
+import { currencyExchanger } from 'utils/currencyExchanger';
+import { objectToStringID } from 'utils/objectToStringID';
+import { objectToArrayOfObjects } from 'utils/objectToArrayOfObjects';
 
 //Components
-import ProductFormAttributes from "ui/scenes/product/ProductFormAttributes";
-import SubmitButton from "ui/components/SubmitButton";
+import ProductFormAttributes from 'ui/scenes/product/ProductFormAttributes';
+import Button from 'ui/components/Button';
 
 //Styles
-import useProductFormStyles from "ui/scenes/product/ProductForm/styles";
+import useProductFormStyles from 'ui/scenes/product/ProductForm/styles';
 
-type ProductFormProps = Omit<Product, "category">;
+type ProductFormProps = Omit<Product, 'category'>;
 
 interface FormValues {
   [key: string]: string;
 }
 
-const ProductForm = (
-  {
-    id,
-    name,
-    brand,
-    description,
-    attributes,
-    prices,
-    gallery,
-    inStock
-  }: ProductFormProps) => {
-
+const ProductForm = ({
+  id,
+  name,
+  brand,
+  description,
+  attributes,
+  prices,
+  gallery,
+  inStock,
+}: ProductFormProps) => {
   const dispatch = useAppDispatch();
-  const currencySelected = useAppSelector(state => state.header.currencySelected);
+  const currencySelected = useAppSelector(
+    (state) => state.header.currencySelected
+  );
   const selectedCurrencyPrice = currencyExchanger(prices, currencySelected);
   const [isAddMessage, setIsAddMessage] = useState(false);
 
   const classNames = useProductFormStyles();
 
   function createFormValues(data: Attribute[]): FormValues {
-
     const initialValues: FormValues = {};
 
     if (data) {
-      data.map(item => item)
-        .forEach(item => {
-          if (item.name.toLowerCase() === "color") {
-            initialValues[item.name] = item.items[0].displayValue
+      data
+        .map((item) => item)
+        .forEach((item) => {
+          if (item.name.toLowerCase() === 'color') {
+            initialValues[item.name] = item.items[0].displayValue;
           } else {
-            initialValues[item.name] = item.items[0].value
+            initialValues[item.name] = item.items[0].value;
           }
         });
     }
@@ -67,17 +67,19 @@ const ProductForm = (
 
   function onSubmit(fields: FormValues): void {
     if (inStock) {
-      dispatch(addToCart({
-        id: genId(),
-        shopId: id + objectToStringID(fields),
-        name,
-        brand,
-        quantity: 1,
-        prices,
-        activeAttributes: objectToArrayOfObjects(fields),
-        gallery,
-        attributes
-      }));
+      dispatch(
+        addToCart({
+          id: genId(),
+          shopId: id + objectToStringID(fields),
+          name,
+          brand,
+          quantity: 1,
+          prices,
+          activeAttributes: objectToArrayOfObjects(fields),
+          gallery,
+          attributes,
+        })
+      );
     }
   }
 
@@ -99,36 +101,48 @@ const ProductForm = (
       <h3 className={classNames.name}>{name}</h3>
 
       {/* IN STOCK CHECK */}
-      {inStock ? null : <h3 className={classNames.outOfStockBlink}> Out of stock!</h3>}
+      {inStock ? null : (
+        <h3 className={classNames.outOfStockBlink}> Out of stock!</h3>
+      )}
 
-      <Formik
-        initialValues={createFormValues(attributes)}
-        onSubmit={onSubmit}
-      >
+      <Formik initialValues={createFormValues(attributes)} onSubmit={onSubmit}>
         <Form>
           <ProductFormAttributes data={attributes} />
 
           {/* PRICE AND ADD MESSAGE */}
           <p className={classNames.priceLabel}>PRICE:</p>
-          {isAddMessage ? <p className={classNames.addMessage}>Product added!</p> : <p className={classNames.priceNumber}>{selectedCurrencyPrice.currency.symbol} {selectedCurrencyPrice.amount}</p>}
+          {isAddMessage ? (
+            <p className={classNames.addMessage}>Product added!</p>
+          ) : (
+            <p className={classNames.priceNumber}>
+              {selectedCurrencyPrice.currency.symbol}{' '}
+              {selectedCurrencyPrice.amount}
+            </p>
+          )}
 
           {/* ADD TO CART BUTTON */}
-          <SubmitButton
+          <Button
+            variant="accept"
             onClick={showAndHideAddMessage}
-            disabled={isAddMessage || !inStock}
-            className={classNames.addToCartBtn}>
-            {inStock ? "ADD TO CART" : "OUT OF STOCK"}
-          </SubmitButton>
+            isDisabled={isAddMessage || !inStock}
+            className={classNames.addToCartBtn}
+          >
+            {inStock ? 'ADD TO CART' : 'OUT OF STOCK'}
+          </Button>
         </Form>
       </Formik>
 
       {/* DESCRIPTION */}
-      {description[0] === "<" || description[1] === "<"
-        ? <div className={classNames.description} dangerouslySetInnerHTML={{ __html: description }}></div>
-        : <p className={classNames.description}>{description}</p>}
+      {description[0] === '<' || description[1] === '<' ? (
+        <div
+          className={classNames.description}
+          dangerouslySetInnerHTML={{ __html: description }}
+        ></div>
+      ) : (
+        <p className={classNames.description}>{description}</p>
+      )}
     </div>
   );
-}
-
+};
 
 export default ProductForm;

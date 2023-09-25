@@ -1,50 +1,69 @@
 // Core
-import { useAppSelector, useAppDispatch } from "engine/redux/hooks";
+import { useAppSelector, useAppDispatch } from 'engine/redux/hooks';
 
 // Utils
-import { countTotalPriceOfCart } from "utils/totalPriceCounter";
+import { countTotalPriceOfCart } from 'utils/totalPriceCounter';
 
 // Actions
-import { setIsConfirmationOrderModalOpen } from "engine/redux/slices/cartSlice";
+import { setIsConfirmationOrderModalOpen } from 'engine/redux/slices/cartSlice';
 
 // Components
-import SubmitButton from "ui/components/SubmitButton";
+import Button from 'ui/components/Button';
 
 // Styles
-import useCartPageTotalModuleStyles from "ui/scenes/cart/CartPageTotalModule/styles";
+import useCartPageTotalModuleStyles from 'ui/scenes/cart/CartPageTotalModule/styles';
 
 const CartPageTotalModule = () => {
-
   const dispatch = useAppDispatch();
-  const { quantity, itemsInCart } = useAppSelector(state => state.cart);
-  const currencySelected = useAppSelector(state => state.header.currencySelected);
+  const { quantity, itemsInCart } = useAppSelector((state) => state.cart);
+  const currencySelected = useAppSelector(
+    (state) => state.header.currencySelected
+  );
 
   const classNames = useCartPageTotalModuleStyles();
 
   /* TAXES */
   const taxesProcent = 21;
   const countTaxes = (procent: number, price: number): number => {
-    const res = price / 100 * procent;
+    const res = (price / 100) * procent;
     return +res.toFixed(2);
-  }
+  };
   /* TAXES */
 
   return (
     <div className={classNames.totalModule}>
       {/* TAXES */}
-      <p className={classNames.permanentText}>Tax {taxesProcent}%: <span className={classNames.dynamicText}>{currencySelected.symbol}{countTaxes(taxesProcent, countTotalPriceOfCart(itemsInCart, currencySelected))}</span></p>
+      <p className={classNames.permanentText}>
+        Tax {taxesProcent}%:{' '}
+        <span className={classNames.dynamicText}>
+          {currencySelected.symbol}
+          {countTaxes(
+            taxesProcent,
+            countTotalPriceOfCart(itemsInCart, currencySelected)
+          )}
+        </span>
+      </p>
       {/* QUANTITY */}
-      <p className={classNames.permanentText}>Quantity: <span className={classNames.dynamicText}>{quantity}</span></p>
+      <p className={classNames.permanentText}>
+        Quantity: <span className={classNames.dynamicText}>{quantity}</span>
+      </p>
       {/* TOTAL PRICE */}
-      <p className={classNames.permanentText}>Total: <span className={classNames.dynamicText}>{currencySelected.symbol}{countTotalPriceOfCart(itemsInCart, currencySelected)}</span></p>
-      <SubmitButton
+      <p className={classNames.permanentText}>
+        Total:{' '}
+        <span className={classNames.dynamicText}>
+          {currencySelected.symbol}
+          {countTotalPriceOfCart(itemsInCart, currencySelected)}
+        </span>
+      </p>
+      <Button
+        variant="accept"
         onClick={() => dispatch(setIsConfirmationOrderModalOpen(true))}
         className={classNames.orderBtn}
       >
         ORDER
-      </SubmitButton>
+      </Button>
     </div>
-  )
-}
+  );
+};
 
 export default CartPageTotalModule;
